@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="renderer" content="webkit">
+    <title>video 播放器</title>
+    <link rel="stylesheet" href="http://shaonq.github.io/css/nk.css">
+    <link rel="stylesheet" href="http://shaonq.github.io/css/mod.css">
+</head>
+<body>
+
+<div style="width: 640px; height: 360px; ">
+    <script type="text/javascript" src="player/sewise.player.min.js"></script>
+    <script type="text/javascript">
+        SewisePlayer.setup({
+            server: "vod",
+            type: "mp4",
+            videourl: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+            autostart:true,
+            starttime:0,
+            skin: "vodWhite",
+            title: "Tile 标题",
+            lang: 'zh_CN',
+            logo:'http://shaonq.github.io/favicon.ico',
+            buffer:5
+        });
+    </script>
+</div>
+</body>
+</html>
+
+
+

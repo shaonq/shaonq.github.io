@@ -1,0 +1,77 @@
+/**
+         * AMap skin
+         *
+         */
+
+/** marker */
+.nui-amap-marker{
+    position: relative;
+}
+.nui-amap-marker span{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -50%;
+    margin-left: 50%;
+    white-space: nowrap;
+    border-radius: 3px;
+    padding: 1px 3px;
+    background-color: rgba(255, 255, 255, .7);
+    -webkit-animation: fadeIn .35s;
+    animation: fadeIn .35s;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.nui-amap-marker:hover span{display: block}
+
+/** popup */
+.nui-amap-popup{
+    position: relative;
+    padding: 10px 10px 15px;
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 3px;
+    box-shadow: 1px 2px 1px rgba(0,0,0,.15);
+    font-size: 12px;
+    -webkit-animation:fadeInTop .35s;
+    animation:fadeInTop .35s;
+}
+.nui-amap-popup:after{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 10px solid transparent;
+    border-top-color: #fff;
+    border-top-color: rgba(255, 255, 255, 0.9);
+    box-shadow: none;
+}
+.nui-amap-popup a{
+    color: blue;
+}
+.nui-amap-popup{
+    position: relative;
+}
+.nui-amap-popup .nui-amap-popup-hd{
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.nui-amap-popup .nui-amap-popup-bd{padding-top: 10px}
+.nui-amap-popup .nui-amap-popup-img img{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    margin-bottom: 5px;
+}
+.nui-amap-popup .nui-amap-popup-img span{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+.nui-amap-popup .nui-amap-popup-img img+span{
+    margin-left: 5%;
+    width: 45%;
+}

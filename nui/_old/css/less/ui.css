@@ -1,0 +1,174 @@
+/*! nui.css | MIT License | shaonq@qq.com */
+/* 线条颜色 */
+/* 浅背景色 */
+/* 水平进度条*/
+.nui-progress {
+  width: 100%;
+  min-width: 80px;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+  background: #f7f7f7;
+}
+.nui-progress .progress-bar,
+.nui-progress .progress-ing {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.nui-progress .progress-bar {
+  background: #5bd9b3;
+  -webkit-transition: width 0.5s linear;
+  transition: width 0.5s linear;
+}
+.nui-progress .progress-ing {
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 25%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 75%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.2));
+  background-size: 30px 30px;
+  -webkit-animation: progress-ing 1s linear infinite;
+  animation: progress-ing 1s linear infinite;
+}
+@-webkit-keyframes progress-ing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+@keyframes progress-ing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 30px 0;
+  }
+}
+/* 盒子*/
+.nui-box {
+  border: 1px solid #e1e4e8;
+  border-radius: 2px 2px 0 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.nui-box .box-hd {
+  padding: 0 8px 0 20px;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #e1e4e8;
+  font-size: 14px;
+  color: #333;
+  overflow: hidden;
+  background-color: #f6f8fa;
+}
+.nui-box .box-hd cite {
+  font-size: 16px;
+}
+.nui-box.nui-box-large .box-hd {
+  height: 38px;
+  line-height: 38px;
+}
+.nui-box.nui-box-large .box-hd .fr {
+  margin-top: 7px;
+}
+.nui-box .box-bd {
+  padding: 20px;
+}
+.nui-box .box-bd .nui-form-block {
+  padding-right: 40px;
+}
+.nui-box .nui-table {
+  margin: -25px -1px -10px 0;
+  border: 0;
+}
+.nui-box .nui-table table {
+  border: 0;
+}
+/** 行处理 **/
+.nui-line-h1 {
+  color: #333;
+  border-bottom: 2px solid #63a1ec;
+  line-height: 38px;
+  padding: 0 20px;
+  background-color: #fff;
+}
+.nui-line-h1 cite {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 120px;
+  font-size: 20px;
+  line-height: 20px;
+}
+.nui-line-h1.nui-line-h1-large {
+  font-size: 18px;
+}
+.nui-line-h1.nui-line-h1-large .nui-line-nav > a {
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom-width: 4px;
+}
+.nui-line-nav {
+  position: relative;
+  bottom: -2px;
+  z-index: 2;
+}
+.nui-line-nav > a.this {
+  color: #237ae4;
+  border-color: #237ae4;
+}
+.nui-line-nav > a {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 38px;
+  height: 36px;
+  margin-right: 20px;
+  border-bottom: 3px solid transparent;
+  color: #3d3d3d;
+}
+/**  选项卡*/
+.nui-tab {
+  position: relative;
+  white-space: nowrap;
+  line-height: 40px;
+  font-size: 0;
+  border-bottom: 1px solid #e2e2e2;
+  transition: .2s;
+  -webkit-transition: .2s;
+}
+.nui-tab .nui-tab-item {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  position: relative;
+  min-width: 65px;
+  padding: 0 12px;
+  color: #333;
+}
+.nui-tab .nui-tab-item.this {
+  color: #1780fb;
+}
+.nui-tab-green .nui-tab-item.this {
+  color: #5bd9b3;
+}
+.nui-tab-orange .nui-tab-item.this {
+  color: #F7B824;
+}
+.nui-tab-red .nui-tab-item.this {
+  color: #f75b43;
+}
+.nui-tab .nui-tab-item.this:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -2px;
+  border-bottom: 3px solid ;
+  pointer-events: none;
+}
+.nui-tab.nui-tab-wire > a.this:after {
+  bottom: -1px;
+  border: 1px solid #e2e2e2;
+  border-bottom-color: #fff;
+  border-radius: 4px 4px 0 0;
+}

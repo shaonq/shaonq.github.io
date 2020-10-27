@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<!-- 按钮 -->
+<div class="na-page">
+    <div class="nui-box">
+        <div class="nui-box-bd">
+            <div class="">
+                <div class="nui-inline"> <a class="nui-btn nui-btn-black" onclick="window.click.dialog()">dialog</a></div>
+                <div class="nui-inline"> <a class="nui-btn nui-btn-red" onclick="window.click.alert()">alert</a></div>
+                <div class="nui-inline"><a class="nui-btn nui-btn-green" onclick="window.click.iframe()">iframe</a></div>
+                <div class="nui-inline "><input class="nui-input js-dropdown" placeholder="请输入日期"></div>
+                <a class="nui-btn nui-btn-blue" onclick="window.click.toptip()">toptip</a>
+                <div class="nui-inline js-dropdown fr"><a class="nui-btn"> 请选择查询日期 </a></div>
+            </div>
+            <table class="nui-mt nui-table">
+                <tbody><tr class="thead"> <th>属性</th> <th>描述</th> </tr>
+                <tr> <td> options.type:int</td> <td>弹出层的类型，<code class="code">0:dialog,1:alert,2:iframe,3:toptip,4:dropdown</code></td> </tr>
+                <tr> <td> options.shadow</td> <td><code class="code">false</code>:没有遮罩层,<code class="code">0.0-1.0</code> 有透明度对应的遮罩层</td> </tr>
+                <tr> <td> options.fixed:boolean</td> <td>定位</td> </tr>
+                <tr> <td> options.full:boolean</td> <td>是否可以全屏</td> </tr>
+                <tr> <td> options.content:string</td> <td>弹出层的内容</td> </tr>
+                <tr> <td> options.offset:string</td> <td>弹出层的位置</td> </tr>
+                <tr> <td> options.width:string</td> <td>弹出层的宽高 ,宽：<code class="code">"100px"</code>,高:<code class="code">["100px","80px"]</code></td> </tr>
+                <tr> <td> options.success:function(that,index)</td> <td><code class="code">that</code>:弹出层的jQ对象 <code class="code">index</code>:弹出层的索引</td> </tr>
+                </tbody></table>
+            <script type="text/html" id="_dropdown">
+                <div class="nui-dropdown">
+                    {{# for(var i=-2,j=2;i<=j;i++){ }}
+                    <a class="nui-dropdown-item {{ i==0?'this':'' }}"> {{ nui.util.date.now(i) }} </a>
+                    {{# } }}
+                </div>
+            </script>
+            <pre class="ing-pre nui-mt">
+
+window.click = {
+        dialog:function () {
+            nui.open({ content: "你好啊",shadow:!1, fixed: true, type: 0});
+        },
+        alert:function () {
+            nui.alert("你好啊");
+        },
+        iframe:function () {
+            nui.open({ content: location.href,shadow:.6 ,width: ["60%","60%"],full:true, offset:["10%"],fixed: true, type: 2,
+                success: function(that){ $("#user", this).val("父页传过来的内容").focus() }});
+        },
+        toptip:function () {
+            var skin = ",green,orange,blue,red".split(',')[(nui.util.randomSize(0,4))];
+            nui.open({ time: 0, skin:skin,content: "你好啊", fixed: true, type: 3});
+        }
+    };
+    $(".js-dropdown").on("click",function (e) {
+        var _this = this;
+        nui.open({ content: nui.tpl(document.getElementById("_dropdown").innerHTML,{_:null}),
+                title:"请选择",type: 4,time: 0, elem: this,
+                success: function(that,index){
+                    $("a",this).on("click",function () {
+                        _this.tagName.toLowerCase() === "input"?
+                        _this.value = this.innerHTML:
+                        nui.alert("你选择了"+this.innerHTML+"日");
+                        nui.close(index)
+                })
+        }});
+    });
+        </pre>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script src="../resource/na.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

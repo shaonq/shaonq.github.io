@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画布集合</title>
+    <script src="js/nui.canvas.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <style> html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: url(https://ss1.bdstatic.com/lvoZeXSm1A5BphGlnYG/skin/124.jpg?2) center no-repeat;
+    } </style>
+</head>
+<body>
+<canvas id="hb"></canvas>
+<script>
+    (function () {
+        var hb = new nui.canvas({el: "#hb"});
+        var Circle = function () {
+            var _this = this;
+            _this.pos = {};
+            // console.log(_this);
+            function init() {
+                _this.pos.x = Math.random() * hb.width;          // x坐标
+                _this.pos.y = Math.random() * 100 + hb.height;   // y坐标
+                _this.alpha = 0.1 + Math.random() * 0.3;         // 透明度
+                _this.scale = 0.1 + Math.random() * 0.3;         // 大小
+                _this.velocity = Math.random();                  // 移动速度
+            }
+            init();
+            this.draw = function () {                            // 运动控制
+                if (_this.alpha <= 0) {
+                    init();
+                }
+                _this.pos.y -= _this.velocity;
+                _this.alpha -= 0.0005;
+                hb.fillArc({
+                    x: _this.pos.x,
+                    y: _this.pos.y,
+                    r: _this.scale * 10,
+                    fillStyle: 'rgba(255,255,255,' + _this.alpha + ')'
+                });
+            };
+        };
+        var circles = [];
+        for (var x = 0; x < hb.width * 0.5; x++) {
+            var c = new Circle();
+            circles.push(c);
+        }
+        var update = function () {
+            hb.clear();
+            for (var i in circles) {
+                circles[i].draw();
+            }
+            requestAnimationFrame(update);
+        };
+        update();
+    }())
+</script>
+</body>
+</html>

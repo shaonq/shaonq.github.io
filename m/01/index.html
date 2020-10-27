@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>狗东H5</title>
+    <link rel="stylesheet" href="base/main.css">
+    <script>
+        (function (win) {
+            var remCalc = {};
+            var docEl = win.document.documentElement,
+                tid,
+                hasRem = true,
+                hasZoom = true,
+                zoomRuler = 'height',
+                designWidth = 1206,
+                designHeight = 750;
+
+            function refresh() {
+                var width = docEl.clientWidth;
+                var height = docEl.clientHeight;
+                // var width = window.innerWidth;
+                // var height = window.innerHeight;
+                window.J_width = width > height ? width : height;
+                window.J_height = width < height ? width : height;
+
+                // if (width > 768) { width = 768 }
+                if (hasRem) {
+                    var rem = window.J_height / 10;
+                    docEl.style.fontSize = rem + "px";
+                    remCalc.rem = rem;
+                    var actualSize = parseFloat(win.getComputedStyle(document.documentElement)["font-size"]);
+                    if (actualSize !== rem && actualSize > 0 && Math.abs(actualSize - rem) > 1) {
+                        var remScaled = rem * rem / actualSize;
+                        docEl.style.fontSize = remScaled + "px"
+                    }
+
+                }
+                if (hasZoom) {
+                    var style = document.getElementById('J__style');
+                    if (!style) {
+                        style = document.createElement('style');
+                        style.id = 'J__style'
+                    }
+                    // if (zoomRuler === 'height') {
+                    // style.innerHTML = '.__z{zoom:' + height / designHeight + '}'
+                    style.innerHTML = '.__z{zoom:' + window.J_height / designHeight + '}';
+                    // } else {
+                    //  style.innerHTML = '.__z{zoom:' + width / designWidth + '}'
+                    // }
+                    document.getElementsByTagName('head')[0].appendChild(style)
+                }
+
+                if (hasRem) {
+                    remCalc.refresh = refresh;
+                    remCalc.rem2px = function (d) {
+                        var val = +(parseFloat(d) * this.rem).toFixed(5);
+                        if (typeof d === "string" && d.match(/rem$/)) {
+                            val += "px"
+                        }
+                        return val
+                    };
+                    remCalc.px2rem = function (d) {
+                        var val = +(parseFloat(d) / this.rem).toFixed(5);
+                        if (typeof d === "string" && d.match(/px$/)) {
+                            val += "rem"
+                        }
+                        return val
+                    };
+                    win.remCalc = remCalc
+                }
+            }
+
+            function dbcRefresh() {
+                clearTimeout(tid);
+                tid = setTimeout(refresh, 100)
+            }
+
+            win.addEventListener("resize", function () {
+                dbcRefresh()
+            }, false);
+
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) {
+                    dbcRefresh()
+                }
+            }, false);
+            refresh();
+        })(window);
+    </script>
+</head>
+<body>
+<div class="main mainFadeIn">
+    <div class="home">
+        <div class="home-center">
+        </div>
+    </div>
+    <video id="J_video" class="video rotate90 fadeIn" src="//wq.360buyimg.com/data/ppms/movie/chic_3.mp4"></video>
+</div>
+<script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script>
+    var setVideoStyle = function () {
+        console.log("setVideoStyle() " + window.J_width + " " + window.J_height + " " + window.J_width / window.J_height);
+        var t = +16.08.toFixed(5), n = +(910 / 75).toFixed(5), r = +10..toFixed(5), o = {
+            width: t + "rem",
+            height: n + "rem",
+            "margin-left": t / -2 + "rem",
+            "margin-top": n / -2 + "rem"
+        }, a = {
+            width: t + "rem",
+            height: r + "rem",
+            "margin-left": t / -2 + "rem",
+            "margin-top": r / -2 + "rem"
+        };
+        if (window.J_width / window.J_height > 2) {
+            var  u = window.remCalc.rem2px(t), c = window.remCalc.rem2px(n),
+                l = window.remCalc.rem2px(r), d = window.J_width - u, p = {};
+            if (0 === window.orientation) {
+                var _ = c / -2 - (window.J_width - u) / 2, m = l / -2 - (window.J_width - u) / 2;
+                o["margin-top"] = window.remCalc.px2rem(_) + "rem", a["margin-top"] = window.remCalc.px2rem(m) + "rem", p.top = window.remCalc.px2rem(u + d / 2) + "rem", p.left = window.remCalc.px2rem(window.J_height / 2) + "rem"
+            } else {
+                var _ = u / -2 - (window.J_width - u) / 2;
+                o["margin-left"] = window.remCalc.px2rem(_) + "rem", a["margin-left"] = window.remCalc.px2rem(_) + "rem", p.top = window.remCalc.px2rem(window.J_height / 2) + "rem", p.left = window.remCalc.px2rem(u + d / 2) + "rem"
+            }
+        }
+        //rotate90
+        $("#J_video").css(o).get(0).play();
+    };
+    setVideoStyle();
+</script>
+</body>
+</html>

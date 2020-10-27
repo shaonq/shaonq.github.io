@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <!-- 按钮 -->
+    <div class="nui-box">
+        <div class="nui-box-bd">
+            <form>
+                <div class="nui-inlines">
+                    <!--        <div class="nui-inline na-upload">
+                                <a class="nui-btn" id="upload">上传</a>
+                                <input type="file" id="elem">
+                            </div>-->
+                    <div class="nui-btn-group">
+                        <div class="nui-inline nui-upload">
+                            <a class="nui-btn  nui-btn-default nui-btn-blue" id="upload"><i class="fa fa-cloud-upload"></i> 浏览图片</a>
+                            <input type="file" id="elem">
+                        </div>
+                        <label class="nui-inline "> <input readonly class="nui-input"  id="abc"></label>
+                    </div>
+                </div>
+            </form>
+            <pre class="ing-pre nui-mt">
+    nui.upload({
+        elem:"#elem",
+        url: '../../nui/doc/success.json',
+        ext:'jpg',
+        method:"get",
+        error: function(res){
+            nui.toast(res);
+        },
+        before: function(t){
+         //  $("#abc").val(t.value) ;
+        },
+        success: function(res,t){
+            console.log(res,t);
+             $("#abc").val(res.msg) ;
+        }
+    });
+</pre>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

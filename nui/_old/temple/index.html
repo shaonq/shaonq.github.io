@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <script>window._time_ = +new Date();</script>
+    <link rel="stylesheet" href="../../../nui/resource/nui.min.css">
+    <link rel="stylesheet" href="../css/ing.min.css">
+    <title> 欢迎您！ 一 NUI</title>
+    <style>
+        .nui-box.nui-box-large strong ~ .nui-inline:hover {
+            box-shadow: 0 1px 1px
+        }
+    </style>
+</head>
+<body>
+<script src="header.min.js"></script>
+<div class="ing-content nui-w960 nui-auto ">
+    <!-- 不遵循标准的属性 -->
+    <div class="nui-box">
+        <div class="nui-box-hd"> 属性</div>
+        <div class="nui-box-bd">
+               <pre class="">
+.cl             清除浮动
+.fl             左浮动
+.fr             右浮动
+.left           左对齐
+.right          右对齐
+.hide           优先级低默认隐藏
+.img-center     图片居中
+.nui-row        栅格 共12格(.nui-row .col.col-6)
+.nui-flex       模拟flex (.nui-flex>li)
+// Ps:奇怪的命名规则~  </pre>
+        </div>
+    </div>
+    <!-- 按钮 -->
+    <div class="nui-box nui-box-large" id="btn">
+        <div class="nui-box-hd">按钮</div>
+        <div class="nui-box-bd">
+            <div>
+                <span class="nui-inline"><a class="nui-btn nui-btn-min">默认按钮</a></span>
+                <span class="nui-inline"><a class="nui-btn nui-btn-default nui-btn-small">原始按钮</a></span>
+                <span class="nui-inline"><a class="nui-btn nui-btn-green">百搭按钮</a></span>
+                <span class="nui-inline"><a class="nui-btn nui-btn-black nui-btn-radius">黑色按钮</a></span>
+                <span class="nui-inline"><a class="nui-btn nui-btn-orange nui-btn-large">暖色按钮</a></span>
+                <span class="nui-inline"><a class="nui-btn nui-btn-red   nui-btn--square">警告</a></span>
+                <span class="nui-inline"><a class="nui-btn is-disabled ">禁用按钮</a></span>
+            </div>
+            <pre class="">
+.nui-btn-width       最小宽度
+.nui-btn-radius      圆角
+.nui-btn--square     方形
+.nui-btn-default     原始
+.nui-btn-green       绿色
+.nui-btn-red         红色
+.nui-btn-blue        蓝色
+.nui-btn-orange      橙色
+.nui-btn-black       黑色
+.nui-btn.is-disabled 禁用
+.nui-btn-large       大
+.nui-btn-small       小
+.nui-btn-min         超小
+.nui-block           块 </pre>
+        </div>
+    </div>
+    <!-- 排版 -->
+    <div class="nui-box nui-box-large" id="inline">
+        <div class="nui-box-hd">排版</div>
+        <div class="nui-box-bd">
+            <div>
+                <strong class="nui-mt nui-block">文字处理</strong>
+                <hr>
+                <div class="nui-inline nui-fc1"> .nui-fc1</div>
+                <div class="nui-inline nui-fc2"> .nui-fc2</div>
+                <div class="nui-inline nui-fc3"> .nui-fc3</div>
+                <div class="nui-inline nui-fc4"> .nui-fc4</div>
+                <div class="nui-inline nui-fc5"> .nui-fc5</div>
+                <div class="nui-inline nui-fcf"> .nui-fcf</div>
+                <del class="nui-inline "> 左边白色（.nui-fcf）</del>
+                <div class="nui-inline nui-fcb"> .nui-fcb</div>
+                <div class="nui-inline nui-fcr"> .nui-fcr</div>
+                <div class="nui-inline nui-fcg"> .nui-fcg</div>
+                <div class="nui-inline nui-fco"> .nui-fco</div>
+                <div class="nui-inline nui-fw"> nui-fw</div>
+                <strong class="nui-mt nui-block">超链接</strong>
+                <hr>
+                <a class="nui-inline nui-hand"> nui-hand </a>
+                <a class="nui-inline nui-tdu"> nui-tdu </a>
+                <a class="nui-inline nui-tdn"> nui-tdn </a>
+                <strong class="nui-mt nui-block">边距</strong>
+                <hr>
+                <div class="nui-inline nui-mt"> nui-mt</div>
+                <div class="nui-inline nui-mb"> nui-mb</div>
+                <a class="nui-inline nui-mr"> nui-mr </a>
+                <div class="nui-inline nui-ml"> nui-ml</div>
+                <strong class="nui-mt nui-block">行高</strong>
+                <hr>
+                <div class="nui-inline nui-lh24">nui-lh24</div>
+                <div class="nui-inline nui-lh30">nui-lh30</div>
+                <div class="nui-inline nui-lh44">nui-lh44</div>
+            </div>
+            <strong class="nui-mt nui-block">表单</strong>
+            <hr>
+            <div class="nui-inlines nui-inlines-row">
+                <div class="nui-inline"> 普通</div>
+                <label class="nui-inline"> <input class="nui-input"></label>
+                <div class="nui-inline"> 禁用</div>
+                <div class="nui-inline"><input class="nui-input " readonly="readonly"></div>
+                <div class="fr"><a class="nui-btn">提交</a></div>
+            </div>
+            <pre class="">
+hr                           分割线
+.nui-w80,.nui-w160 ~ nui-w1280 宽度
+.nui-inline                  行内元素
+        </pre>
+        </div>
+    </div>
+    <!-- 珊格 -->
+    <div class="nui-box nui-box-large" id="sg">
+        <div class="nui-box-hd">珊格(new)</div>
+        <div class="nui-box-bd">
+            <div class="nui-grid center nui-fc5">
+                <div class="nui-grid-100"></div>
+                <div class="nui-grid-95 nui-grid-m-50"></div>
+                <div class="nui-grid-5  nui-grid-m-50"></div>
+                <div class="nui-grid-90  "></div>
+                <div class="nui-grid-10"></div>
+                <div class="nui-grid-85"></div>
+                <div class="nui-grid-15"></div>
+                <div class="nui-grid-80"></div>
+                <div class="nui-grid-20"></div>
+                <div class="nui-grid-75"></div>
+                <div class="nui-grid-25"></div>
+                <div class="nui-grid-70"></div>
+                <div class="nui-grid-30"></div>
+                <div class="nui-grid-65"></div>
+                <div class="nui-grid-35"></div>
+                <div class="nui-grid-60"></div>
+                <div class="nui-grid-40"></div>
+                <div class="nui-grid-55"></div>
+                <div class="nui-grid-45"></div>
+                <div class="nui-grid-50"></div>
+                <div class="nui-grid-50"></div>
+            </div>
+
+            <style contenteditable="true" spellcheck="true">
+                #sg .nui-grid * {
+                    background-color: #999;
+                    height: 20px;
+                    margin-bottom: 20px;
+                    background-clip: content-box;
+                }
+                #sg .nui-grid *:before{
+                    content: attr(class);
+                    color: #fff;
+                }
+            </style>
+        </div>
+    </div>
+    <!-- 按钮组 -->
+    <div class="nui-box nui-box-large" id="btns">
+        <div class="nui-box-hd">按钮组</div>
+        <div class="nui-box-bd">
+            <div class="nui-inline nui-w80">默认</div>
+            <div class="nui-inline">
+                <div class="" data-tab="a|nui-btn-blue">
+                    <a class="nui-btn  nui-btn-default nui-btn-blue">左</a>
+                    <a class="nui-btn  nui-btn-default">中</a>
+                    <a class="nui-btn  nui-btn-default">右</a>
+                </div>
+            </div>
+            <hr>
+            <div class="nui-inline nui-w80">横排组</div>
+            <div class="nui-inline">
+                <div class="nui-btn-group" data-tab="a|nui-btn-blue">
+                    <a class="nui-btn  nui-btn-default nui-btn-blue">左</a>
+                    <a class="nui-btn  nui-btn-default">中</a>
+                    <a class="nui-btn    nui-btn-default">右</a>
+                </div>
+            </div>
+            <hr>
+            <div class="nui-inline nui-w80">竖排组</div>
+            <div class="nui-inline nui-w400">
+                <div class="nui-btn-group nui-btn-group--middle" data-tab="a|nui-btn-blue">
+                    <a class="nui-btn nui-block nui-btn-default nui-btn-blue">上</a>
+                    <a class="nui-btn nui-block nui-btn-default">中</a>
+                    <a class="nui-btn nui-block nui-btn-default">下</a>
+                </div>
+            </div>
+
+            <pre class="">
+.nui-btn-group 横排
+.nui-btn-group--middle 竖排
+        </pre>
+        </div>
+    </div>
+    <!-- nui.form -->
+    <div class="nui-box nui-box-large" id="form">
+        <div class="nui-box-hd">
+            <div>表单</div>
+        </div>
+        <div class="nui-box-bd">
+            <form class="nui-form" action="success.json">
+                <!-- 一堆资料  -->
+                <div class="nui-form-group">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label" for="user">账号</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="user" id="user" data-check="请填写账号" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label" for="company">公司名</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="company" id="company" data-check="请填写公司名" placeholder="必填">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-group">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">密码</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="pass" type="password" data-check="pass" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">确认密码</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="repass" type="password" data-check="repass"
+                                   placeholder="必填">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-group">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">地址</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="address" placeholder="">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">经营地址</label>
+                        <div class="nui-input-inline ">
+                            <input class="nui-input " name="jy_address" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-group">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">手机号</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="phone" data-check="phone" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">短信验证码</label>
+                        <div class="nui-input-inline nui-w240">
+                            <input class="nui-input " name="code" placeholder="必填" data-check="请填写短信验证码">
+                            <a class="nui-fc3" href="javascript:;">获取验证码</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 用户协议  -->
+                <div class="nui-form-group  center nui-inlines">
+                    <div class="nui-fcf nui-mb">
+                        <input type="checkbox" name="agreement" id="agreement" data-check="checked" title="请先阅读用户协议">
+                        <label class="nui-inline" for="agreement">同意<a href="javascript:;" target="_blank"
+                                                                       class="nui-fc1">《用户协议》</a></label>
+                    </div>
+                    <div class="nui-inline center nui-w240 ">
+                        <a class="nui-btn   nui-btn-width  nui-btn-blue"> 注 册</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 进度条 -->
+    <div class="nui-box nui-box-large" id="table">
+        <div class="nui-box-hd">进度条</div>
+        <div class="nui-box-bd">
+            <div class="nui-progress nui-progress-orange">
+                <div class="progress-bar" style="width: 60%">
+                    <i class="progress-ing"></i>
+                </div>
+            </div>
+            <div class="nui-progress nui-progress-black nui-mt">
+                <div class="progress-bar" style="width: 70%">
+                    <i class="progress-ing"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="nui-box nui-box-large" id="table">
+        <div class="nui-box-hd">表格</div>
+        <div class="nui-box-bd">
+            <table class="nui-table">
+                <tr class="thead">
+                    <th width="30">状态</th>
+                    <th width="60">姓名</th>
+                    <th>描述</th>
+                    <th width="100">操作</th>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="
+你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~
+你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+                <tr>
+                    <td class="center"><input type="checkbox" name="_checkbox"></td>
+                    <td>李四</td>
+                    <td><span title="你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~">你知道吗，我接下里要说一大段的废话，为的是撑开这个格子~</span></td>
+                    <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>
+                </tr>
+
+            </table>
+            <pre class="">
+在td里面加添加一个内联元素，附加title属性即可自适应
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
+<script src="footer.min.js"></script>
+<script>
+    console.log("loaded:", +new Date() - window._time_, "ms");
+</script>
+</html>

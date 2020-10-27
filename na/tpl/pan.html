@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://shaonq.github.io/nui/resource/nui.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+    <style>
+        /** download => http://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=1946 */
+        .t-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+        }
+
+        .t-txt {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAtUlEQVQ4T2NkYGBgePXq1QUGBgZ9EBsXaOuceGdCb6squjwj1ID/+DSD5CLjshh0dTTvTOhpRjGEJANABqEbgmKAiooKw6dPn+CO4ePjY7hz5w6YD3IBDCAbQrQLmtr6Ga7fuI1hCNEuAOlcsWIFQ15eHnJwMRLtApguNENQDUAPA2wxAwqXlpYWmEtIdwGaS8hzASxmxMTEyHcByCUYBhAbBsPUBQcYGBjsCeVINPmDYmJiDgCtcIURNhFnAgAAAABJRU5ErkJggg==);
+        }
+
+        .t-audio {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABB0lEQVQ4T2NkYGBgaN4XdoGRkUEfxMYFLqz8e2fNjLWq6PKMIIGW/WH/8WkGye3v/McgqMhwZ830NSiGkGQAyCB0Q0g2AN0Qog04v+wfw4fHCI/CXEK0ASCt53bcZ1jXeRo5uBjxGiDOI8/w8stDlPBFMwS/ASU28xl23VnAcOnFQVyG4Deg2mElWOOlFwcYdt1ZyPDzzze4QVCXEDag50gigwSPAljjww/XUFxS47gKuwH8HKIMaiImDG4qCQytB8JxpjGcBuRYTGEAGQICFBkAioE5Z8pIdwEo+uQFtBluvjnN8PHHa9INIJSxYPLwMGjeF3qAkZHRnliNIHX///8/WOu02gEAjymQERICPnkAAAAASUVORK5CYII=)
+        }
+
+        .t-doc {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABRElEQVQ4T2NkgIJXr15dYGBg0IfxsdFtnRPvTOhtVUWWY0Qy4D8+zSC5yLgsBl0dzTsTeprhhpBsAMggZEPIMgDZEJIMaGrrZ7h+4zbcpyCXkGQASOeKFSsY8vLy4IbADSAUgCD5169fO/z//38/siGMrvPOfGBkZOAnxoBdiSaMr169AscWzBBGt/lnwAKxBlIMd999Y7j44jNDoJYYw/prrxiUhbgYeNiYGY49+gA2H9kAmCEoBnz59YeBh42FYd21lwxuKsIM4jzsDLvuvGG49+47VgNAgigGwLyx+MIzsItAAMSGAXQXoBjQ7aEO9sKlF5/BTgd5RV+Cl4GbjZlhxqnHhF1AaiDC1DO6zT/dQIzmfwxMH1YHKC34/fv3e6yZ6eXLlw1MTEx4M9S/f/8MGBkZA3DlxgMMDAz2xLgGSc1BAL4presR91o3AAAAAElFTkSuQmCC)
+        }
+
+        .t-zip {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA6ElEQVQ4T2NkYGBgeHuj9gIDA6P+129/GRqmPGB4+OwnSBgDcHEwMdTnKDAoynAw/Gf4f0BEo9mREWJA3X+YalyGIGuGqRXWaGLEMAAkiW4INs0gdTgNQDbk1dvfDA25EGejA7wGgBS3TjzEICsjyhAXrIk1TAga0DnlIFhjeY79ABjAIWjBcPTMCwYbMwWw7d/fHiAtDITUG1E0vLtZPxQNKM91ADu7c/IBBrK8ANMECg+yDICF2vt3Lxj+v55OWiDCEhFIFz8vO0NGvAVuA95crz3AyMiIPblhTYMMDP///z8ootnsAADRppgR56iwegAAAABJRU5ErkJggg==)
+        }
+
+        .t-video {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxklEQVQ4T2NkYGBgeO/jc4GBkVEfxMYFmv6w3unfvk4VXZ4RbICv7398mkFyIb/ZGfQY/2EYQpIBIIPQDSHZAHRDiDag7g8rw7X/THCfwlxCtAEgncseP2bIvnABObgYSTIAiyGkG4BmCHYDBDZtYvixfDkDR2Qk2Lkw9gc/P7jzod7BbgBMI7IBMIOQA0Bw82bcBvy5fJmBRVcXrB7GBrmEKAOI8QLIILwuACkYOC8QylgweWQvHGBgYLAnViNU3UHBzZsdAAGEkhHzFY86AAAAAElFTkSuQmCC)
+        }
+
+        .t-xls {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABQ0lEQVQ4T2NkgIJXr15dYGBg0IfxsdFtnRPvTOhtVUWWY0Qy4D8+zSC5yLgsBl0dzTsTeprhhpBsAMggZEPIMgDZEJIMaGrrZ7h+4zbcpyCXkGQASOeKFSsY8vLy4IbADSAUgCD5169fO/z//38/siGMLftCPzAwMvITY0CN4yrGV69egWMLZghjy/6w/+I88gwffrxmkOBRAJvz8MM1MC0voMUgJ6DFcPjBGjAf2QCYIWAD2Fm4GPw0shhefnkIVnjowWow7aoSz7D7zkK449ANAEmADQAxYg3qwRrlBbThBoBcgMzHaYCehD3Dxx+vGfQkHMD0f4b/DI8+XANrBrkO5gq8LiA1EGHqGZv3hzUQo5mR4d+HbIPZC37//v0ea2Z6+fJlAxMTE94M9e/fPwNGRsYAXLnxAAMDgz0xrkFScxAAtl2s6/pgab8AAAAASUVORK5CYII=)
+        }
+
+        .t-gif {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABNUlEQVQ4T53TMUvDQBQH8P+LCloEcenegoNg0K2jfoAGXLM4dXLIZyiKAUGx7h0cSnt7PoA6dnMoKNgvkAs03YxEcnKnOQ+NNfGWR+7d++XlwiN8Ls75A4Dd/Lko+ufX097l2ZaZIwMQi4plzj06hr2zPe1dnGqkMiAhE/kXYCKVgBP/Co9Pz/pLZSeVAFnJGIPneRrRwF8XKPNRFB0IIW5NhGaOMydgowywGQTEOVd/K0codhy1sdJqYanRwGsQqPg2mWDVdQEhkDCmfBPIEQ2sdTp46fc/oGYTyWikABnz9R2Q+xpQbwOQcQ6rXleF676PZDhU3RR18AOgWg3peIxl267eQdVLzM9T3G53yxRDiDkGg5s0TePCYQrDsGtZ1sKByrJsj4gOf5vGOwD7pbr5OnT/Due7resm4tfVAAAAAElFTkSuQmCC)
+        }
+
+        .t-png {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABTElEQVQ4T2NkgIJXr15dYGBg0IfxsdFtnRPvTOhtVUWWY0Qy4D8+zSC5yLgsBl0dzTsTeprhhpBsAMggZEPIMgDZEJIMaGrrZ7h+4zbcpyCXkGQASOeKFSsY8vLy4IbADSAUgCD5169fO/z//38/siGMr065fGBgYOAnxgAxsz2Mr169AscWzBCQAf9ZefUZWHn1GL6/XMcAYv/6cAxMMzJzM7BwKYPF///9yoBsAMwQsAHc0nEM316sZWAXtGYAsd9fL2bgFHUHG/Dl0XQGNgErsKHoBoAMgRsA4oAM4ZIIBmsE2QgDf3++YPjxZhd+A74+XQRWD3LBz/dHwa4B28DMzfDz/TGG358v4jaAmAAEqcHqhZcnXRqIMYCJieEDi8rqBb9//36PNTO9fPmygYmJCW+G+vfvnwEjI2MArtx4gIGBwZ4Y1yCpOQgAbg2y6z6llbsAAAAASUVORK5CYII=)
+        }
+
+        .t-jpg {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABU0lEQVQ4T2NkgIJXr15dYGBg0IfxsdFtnRPvTOhtVUWWY0Qy4D8+zSC5yLgsBl0dzTsTeprhhpBsAMggZEPIMgDZEJIMaGrrZ7h+4zbcpyCXkGQASOeKFSsY8vLy4IbADSAUgCD5169fO/z//38/siGMlmuKPzAyMvATY8Cx4F7GV69egWMLZgij1dpiePQZiigzGIkqM9z68Izh/Js7DGEqtgy3PzxnOPz8Cth8ZANghqAYkKzpBlb4+fd3Bl5WToaVdw4xGIqo4DQApBZsAMjm82/uMoAMMBRVZlh5+zCDmoAUw7nXdxkMRZUYtj08w/Di23sMF8ANsJXUgWsAeWHu9V0MIDFJbkEGSS4hhomXNmL1AtwAYgIQWxhADShqIMaA/wwMH7Y51S74/fv3e6yZ6eXLlw1MTEx4M9S/f/8MGBkZA3DlxgMMDAz2xLgGSc1BACHRsOvJhAZlAAAAAElFTkSuQmCC)
+        }
+
+    </style>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box">
+        <div class="box-bd"><!--  头部 -->
+            <ul class="nui-flex">
+                <li><!-- 左侧内容 -->
+                    <a class="nui-btn"><i class="fa fa-cloud-upload">上传</i></a>
+                    <a class="nui-btn nui-btn-default "><i class="fa fa-lg fa-plus-circle"></i> 新建文件夹</a>
+                </li>
+                <li class="right" style="width: 300px"><!-- 右侧侧内容 -->
+                    <span class="nui-inline">
+                           <label class="nui-inline"><input class="nui-input"/></label>
+                           <a class="nui-btn "><i class="fa fa-search"></i> 搜索</a>
+                    </span>
+                </li>
+            </ul>
+            <hr>
+            <ul class="nui-flex nui-lh24">
+                <li><!-- 左侧内容 -->全部文件</li>
+                <li class="right" style="width: 300px"><!-- 右侧侧内容 -->
+                    <small>已全部加载，共12个</small>
+                </li>
+            </ul>
+            <table class="nui-table" style="margin: 0">
+                <tr class="thead">
+                    <th width="20"><input type="checkbox" title=""></th>
+                    <th>文件名</th>
+                    <th width="60">大小</th>
+                    <th width="180">修改日期</th>
+                    <th width="100">编辑</th>
+                </tr>
+                <!-- 填充内容 -->
+                <script>
+                    (function (a) {
+                        var a, b = ['txt', 'audio', 'doc', 'zip', 'video', 'xls', 'png', 'gif', 'jpg'];
+                        for (a in b) {
+                            document.writeln('\
+                                <tr>\
+                                <td class="center"><input type="checkbox" title=""></td>\
+                                <td><i class="t-icon t-' + b[a] + '"></i> 不知道什么文件.' + b[a] + '</td>\
+                                <td>10M</td>\
+                                <td><span title="">2010-10-10 10:15</span></td>\
+                                <td><a class="nui-btn nui-btn-small">确定</a><a class="nui-btn-red nui-btn nui-btn-small">删除</a></td>\
+                                </tr>'
+                            );
+                        }
+                    }())
+                </script>
+            </table>
+        </div>
+    </div>
+    <div class="nui-box" style="margin-top: 100px">
+        <div class="box-hd">参考内容</div>
+        <div class="box-bd">
+            <a class="nui-btn  nui-btn-black "> <i class="fa fa-refresh"></i> 啊啊 </a>
+            <a class="nui-btn  nui-btn-green "><i class="fa fa fa-star"></i> 收藏</a>
+            <a class="nui-btn  nui-btn-orange "><i class="fa fa-bitbucket"></i> 删除</a>
+            <a class="nui-btn  nui-btn-red "><i class="fa fa-share-alt"></i> 分享</a>
+            <a class="nui-btn  "><i class="fa fa-edit"></i> 编辑</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

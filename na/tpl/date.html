@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box nui-box-large">
+        <div class="nui-box-hd">日期插件</div>
+        <div class="nui-box-bd">
+            <div class="nui-form-group">
+                <div class="nui-input-inline nui-w240"><input type="datetime" id="date" class="nui-input"></div>
+            </div>
+            <div class="nui-form-group">
+                <pre class="ing-pre">
+nui.date({
+    elem: '#date',
+    //min:"2017-04-10",   // 日期初始日
+    //max:"2019-04-03",   // 填写max,min限制生效
+    format:"yyyy-MM-dd HH:mm:ss",
+    callback:function(e){nui.alert(JSON.stringify(e))}
+})
+// &lt;input data-date=""&gt;
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="NA_script">
+    <script src="../../nui/resource/jquery.min.js"></script>
+    <script src="../../nui/resource/nui.js"></script>
+    <script src="../resource/na.js"></script>
+    <script> new Function($('.ing-pre').html())()</script>
+</div>
+</body>
+</html>

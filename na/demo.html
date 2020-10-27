@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../nui/resource/nui.css">
+    <link rel="stylesheet" href="resource/na.css">
+
+    <title>页面示例 - 烟雨江南后台管理系统</title>
+</head>
+<body>
+<div id="NA_app" class="na-app">
+    <div class="na-head" id="NA_head">
+        <div class="na-head__side" style="background: url(../images/logo/logo.png) 20px center no-repeat;background-size: cover"></div>
+        <div class="na-head__content">
+            <a class="na-head__item" href="index.html">首页</a>
+            <a class="na-head__item" href="iconfont.html">字体图标</a>
+            <a class="na-head__item" href="echarts.html">图表</a>
+            <a class="na-head__item is-active" href="demo.html">页面示例</a>
+        </div>
+        <div class="na-head__fr">
+            <a class="nui-inline nui-mr" tip="刷新" tip-align="bottom" na-click="refresh"><i class="iconfont icon-danxunhuan" aria-hidden="true"></i></a>
+            <a class="nui-inline nui-mr" tip="浏览前台" tip-align="bottom" href="https://shaonq.github.io" target="_blank"><i class="iconfont icon-quanqiu" aria-hidden="true"></i></a>
+            <a class="nui-inline nui-mr" tip="看板模式" tip-align="bottom"   na-click="fullscreen"><i class="iconfont icon-shape" aria-hidden="true"></i></a>
+            <div class="nui-inline na-head__user">
+                <span class="na-head__user-photo"></span>
+                <span class="na-head__user-name">你好</span>
+            </div>
+        </div>
+    </div>
+    <div class="na-side" id="NA_side">
+        <!-- 菜单-->
+        <ul class="na-menu">
+            <li class="na-menu__one is-active">
+                <a href="javascript:;"  onclick='parentNode.className=parentNode.className==="na-menu__one"?"na-menu__one is-active":"na-menu__one"'>
+                    <span class="na-menu__title"><i class="iconfont icon-duanlashuoming" aria-hidden="true"></i> 页面类别</span><span class="na-menu__arrow"><i class="iconfont icon-arrow_r" aria-hidden="true"></i></span>
+                </a>
+                <ul>
+                    <li class="na-menu__two">
+                        <a na-route="demo/index.html"><span class="na-menu__title"> 简单表单</span><span class="na-menu__arrow"></span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="na-body" id="NA_body">
+        <div class="na-body__content">
+            <iframe id="NA_iframe" frameborder="0" src="demo/index.html" class="na-body__iframe"></iframe>
+        </div>
+    </div>
+</div>
+<div id="NA_script">
+    <script src="../nui/resource/jquery.min.js"></script>
+    <script src="../nui/resource/nui.js"></script>
+    <script src="resource/na.js"></script>
+    <script>
+        $('.na-head__user').on("click", function () {
+            nui.open({
+                content: nui.createDropdown(['个人中心', '我的资料', '其他']),
+                title: "用户中心", type: 4, shadow:0.1,time: 0, elem: this, success: function (that, index) {
+                    $("a", this).on("click", function () {
+                        nui.toast("你选择了" + this.innerHTML);
+                        nui.close(index)
+                    })
+                }
+            })
+        })
+    </script>
+</div>
+</body>
+</html>

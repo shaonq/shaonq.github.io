@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <style>
+        /* 简单写个table样式 */
+        body{ margin: 40px auto 0;max-width: 800px;font-family: Lato,"Microsoft Jhenghei","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+        body,textarea{color: #555;}
+        table{border-collapse:collapse; border-spacing:0;width:100%;}
+        table thead,table .thead{background-color:#eee;}
+        table th,
+        table td{padding:5px 20px; border:1px solid #DFDFDF; font-size:14px; line-height:22px; font-weight:400; text-align:center;}
+        table input{width:auto; height:auto;}
+        table a{color:#4f99cf;}
+
+        pre,textarea{
+            width: 100%;box-sizing: border-box;margin-bottom: 22px;
+            padding: 10px 15px;  font-size: 12px; border: 1px solid #ddd; border-left-width: 6px; background-color: #F2F2F2; font-family: Courier New sans-serif; overflow: auto;
+        }
+        textarea{;height: 274px;resize: none;outline: 0;}
+    </style>
+</head>
+<body>
+<table id="table">
+    <tr class="thead">
+        <th>菜单1</th>
+        <th>菜单1</th>
+        <th>菜单1</th>
+        <th>菜单1</th>
+    </tr>
+    <tr>
+        <td data-menu='[{"id":100},[0,1,2,5]]'>^ _^</td>
+        <td data-menu='[8,[0,3,2,5]]'>^ _^</td>
+        <td data-menu="3">^ _^</td>
+        <td data-menu="4">^ _^</td>
+    </tr>
+    <tr data-menu='[{"id":100},[0,1,2,5]]'>
+        <td>^ _^</td>
+        <td>^ _^</td>
+        <td>^ _^</td>
+        <td>^ _^</td>
+    </tr>
+    <tr>
+        <td data-menu="1">^ _^</td>
+        <td data-menu="2">^ _^</td>
+        <td data-menu="3">^ _^</td>
+        <td data-menu="4">^ _^</td>
+    </tr>
+    <tr>
+        <td data-menu="1">^ _^</td>
+        <td data-menu="2">^ _^</td>
+        <td data-menu="3">^ _^</td>
+        <td data-menu="4">^ _^</td>
+    </tr>
+</table>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    //创建右键菜单
+    window.eMenu={
+        node:function () { //元素节点
+          return $('<div style="width: 120px;line-height: 28px;margin: 2px 0 0 2px ;background-color: #fff;"></div>')
+        }(),
+        append:function(op){ //初始化
+            op=op||{};
+            this.del();
+            var i =0,menu=op.menu,index=[],_this=this;
+            try {
+                var _ = $.parseJSON(op.id);
+                index = _[1] ||index;
+                op._id =  _[0];
+            }catch (e){ }
+            if(!index.length){this.del(true);return;}
+            for(;i<index.length;i++){
+                try {
+                    var _i=index[i],text = menu[_i].text, fn = function (_i) {
+                        menu[_i].fn( op._id)
+                    },_str = _this.str+"-index";
+                    $('<div style="text-align: center;border: 1px solid #888; margin-top: -1px;cursor: pointer;" '+_str+'="'+_i+'">'+text+'</div>').on("click",function () {
+                        fn &&fn(this.getAttribute(_str))
+                    }).hover(function () {
+                        this.style.backgroundColor = '#f4f4f4'
+                    },function () {
+                        this.style.backgroundColor = ''
+                    }).each(function () {
+                        this.oncontextmenu= function() {  return false};
+                    }).appendTo(this.node);
+                } catch (e){}
+
+            }
+            this.node.css({position:'absolute',left:op.left+'px',top:op.top+'px'});
+            $("body").on("click",function(){eMenu.del(true)}).append(this.node)
+        },
+        del:function(b){ //销毁
+            var _this =this;
+            _this.node.html('').remove();
+            $(this.el).find("["+_this.str+"]").each(function () {
+                this.style.backgroundColor=""
+            });
+            !b&&$(this.tr).each(function () {
+                this.style.backgroundColor=_this.color
+            })
+
+        },
+        bind:function () { //事件
+            $(window).on('resize click',function () {
+               eMenu.del(true)
+            })
+        }(),
+        init:function (el,menu,c) {
+            el.oncontextmenu= function(e) {  return false};
+            c = c||{};
+            if(!el)return;
+            var _this =this ,that  = _this.el = $(el),_str = _this.str = "data-menu";
+            _this.color = c.color||"#FFFBF0";
+            that.find("td").on("mousedown",function (e) {
+                this.oncontextmenu= function() {  return false};
+                e.stopPropagation?e.stopPropagation():e.cancelBubble=!0;
+                if(e.which !== (c.which||3))return ;
+                return  _this.tr = function (t) {
+                    return t.getAttribute(_str)?t:t.parentElement
+                }(this),eMenu.append({
+                    left:$(window).scrollLeft()+e.clientX,
+                    top:$(window).scrollTop()+e.clientY,
+                    id: _this.tr.getAttribute(_str),/* data-menu = '[id,[0,1,2,3]]'  */
+                    menu:menu
+                }),!1;
+            });
+        }
+    };
+    /*! @Time:2016-09-05 window.eMenu = { node: function () { return $('<div style="width: 120px;line-height: 28px;margin: 2px 0 0 2px ;background-color: #fff;"></div>') }(), append: function (d) { d = d || {}; this.del(); var c = 0, a = d.menu, f = [], g = this; try { var k = $.parseJSON(d.id); f = k[1] || f; d._id = k[0] } catch (h) { } if (!f.length) { this.del(true); return } for (; c < f.length; c++) { try { var b = f[c], m = a[b].text, j = function (e) { a[e].fn(d._id) }, l = g.str + "-index"; $('<div style="text-align: center;border: 1px solid #888; margin-top: -1px;cursor: pointer;" ' + l + '="' + b + '">' + m + "</div>").on("click", function () { j && j(this.getAttribute(l)) }).hover(function () { this.style.backgroundColor = "#f4f4f4" }, function () { this.style.backgroundColor = "" }).each(function () { this.oncontextmenu = function () { return false } }).appendTo(this.node) } catch (h) { } } this.node.css({position: "absolute", left: d.left + "px", top: d.top + "px"}); $("body").append(this.node) }, del: function (a) { var c = this; c.node.html("").remove(); $(this.el).find("[" + c.str + "]").each(function () { this.style.backgroundColor = "" }); !a && $(this.tr).each(function () { this.style.backgroundColor = c.color }) }, bind: function () { $(window).on("resize click", function () { eMenu.del(true) }) }(), init: function (a, d, g) { a.oncontextmenu = function (c) { return false }; a.onclick = function (c) { c.stopPropagation ? c.stopPropagation() : c.cancelBubble = !0 }; g = g || {}; if (!a) { return } var f = this, b = f.el = $(a), e = f.str = "data-menu"; f.color = g.color || "#FFFBF0"; b.find("td").on("mousedown", function (c) { this.oncontextmenu = function () { return false }; if (c.which !== (g.which || 3)) { return } return f.tr = function (h) { return h.getAttribute(e) ? h : h.parentElement }(this), eMenu.append({ left: $(window).scrollLeft() + c.clientX, top: $(window).scrollTop() + c.clientY, id: f.tr.getAttribute(e), menu: d }), !1 }) }};
+     */
+</script>
+ <script>
+    //绑定
+    eMenu.init(document.getElementById("table"),[
+        {text:"开始",fn:function (a) {alert("开始")}},
+        {text:"菜单1",fn:function (a) {alert(a)}},
+        {text:"菜单2",fn:function (a) {alert(a)}},
+        {text:"菜单3",fn:function (a) {alert(a)}},
+        {text:"菜单4",fn:function (a) {alert(a)}},
+        {text:"结束",fn:function (a) {alert("结束")}}
+    ],{color:"",which:3});
+</script>
+<h3> API : </h3>
+<pre >
+       eMenu.init(a,b,c);
+           a:document.getElementById("table") //"object" 原生对象或者jq 如"#table" ,".table"等
+           b:[ {text:"开始",fn:function (id) {alert(id) }}] // "object" 菜单列表 text:文字 fn 相当于 onclick'
+           c:{color:"",which:1} //"object" color:选中后，对应tr或者td的背景色 which:3 123对应鼠标的左中右
+</pre>
+
+<h3>依赖 jQuery + 下面的code</h3>
+<pre>
+    &lt;script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"&gt; &lt;script&gt;
+</pre>
+<textarea title>
+window.eMenu={node:function(){return $('<div style="width: 120px;line-height: 28px;margin: 2px 0 0 2px ;background-color: #fff;"></div>')}(),append:function(d){d=d||{};this.del();var c=0,a=d.menu,f=[],g=this;try{var k=$.parseJSON(d.id);f=k[1]||f;d._id=k[0]}catch(h){}if(!f.length){this.del(true);return}for(;c<f.length;c++){try{var b=f[c],m=a[b].text,j=function(e){a[e].fn(d._id)},l=g.str+"-index";$('<div style="text-align: center;border: 1px solid #888; margin-top: -1px;cursor: pointer;" '+l+'="'+b+'">'+m+"</div>").on("click",function(){j&&j(this.getAttribute(l))}).hover(function(){this.style.backgroundColor="#f4f4f4"},function(){this.style.backgroundColor=""}).each(function(){this.oncontextmenu=function(){return false}}).appendTo(this.node)}catch(h){}}this.node.css({position:"absolute",left:d.left+"px",top:d.top+"px"});$("body").on("click",function(){eMenu.del(true)}).append(this.node)},del:function(a){var c=this;c.node.html("").remove();$(this.el).find("["+c.str+"]").each(function(){this.style.backgroundColor=""});!a&&$(this.tr).each(function(){this.style.backgroundColor=c.color})},bind:function(){$(window).on("resize click",function(){eMenu.del(true)})}(),init:function(a,d,g){a.oncontextmenu=function(c){return false};g=g||{};if(!a){return}var f=this,b=f.el=$(a),e=f.str="data-menu";f.color=g.color||"#FFFBF0";b.find("td").on("mousedown",function(c){this.oncontextmenu=function(){return false};c.stopPropagation?c.stopPropagation():c.cancelBubble=!0;if(c.which!==(g.which||3)){return}return f.tr=function(h){return h.getAttribute(e)?h:h.parentElement}(this),eMenu.append({left:$(window).scrollLeft()+c.clientX,top:$(window).scrollTop()+c.clientY,id:f.tr.getAttribute(e),menu:d}),!1})}};</textarea>
+<h3>初始化：</h3>
+<pre>
+    //绑定
+    eMenu.init(document.getElementById("table"),[
+        {text:"开始",fn:function (a) {alert("开始")}},
+        {text:"菜单1",fn:function (a) {alert(a)}},
+        {text:"菜单2",fn:function (a) {alert(a)}},
+        {text:"菜单3",fn:function (a) {alert(a)}},
+        {text:"菜单4",fn:function (a) {alert(a)}},
+        {text:"结束",fn:function (a) {alert("结束")}}
+    ]);
+</pre>
+</body>
+</html>
+
+
+

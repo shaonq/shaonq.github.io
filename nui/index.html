@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>编码本是一种自由</title>
+    <link rel="stylesheet" href="resource/nui.min.css">
+    <link rel="stylesheet" href="doc/index.min.css">
+</head>
+<body>
+<div id="J_head">
+    <div class="g-head-banner"  style="/*filter: grayscale(100%);*/background-image: url(img/2k/20180716.jpg)"  >
+        <div class="g-head">
+            <div class="g-head-main__bg" style="background-image: url(img/2k/20180716.jpg)"></div>
+            <div class="nui-main g-head-main">
+                <div class="nui-inlines nui-inlines-row">
+                    <div class="nui-inline">
+                        <a href="/"  class="g-head__logo"><img src="./../favicon.png" width="32"></a>
+                    </div>
+                    <div class="nui-inline">
+                        <form class="g-head__form">
+                            <input class="g-head__input">
+                            <button class="g-head__button"></button>
+                        </form>
+                    </div>
+                    <a href="/nui" class="nui-inline  g-head__nav-link">UI</a>
+                    <a href="/nui/api" class="nui-inline  g-head__nav-link">API</a>
+                    <a href="/nui/component" class="nui-inline  g-head__nav-link">组件</a>
+                    <a href="/nui/_old/temple/" target="_blank" class="nui-inline  g-head__nav-link">其他</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="g-head-line">
+        <i class="nui-btn-green nui-grid-100"></i>
+        <i class="nui-btn-blue nui-grid-80"></i>
+        <i class="nui-btn-orange nui-grid-60"></i>
+        <i class="nui-btn-red  nui-grid-40"></i>
+        <i class="nui-btn-black nui-grid-20"></i>
+    </div>
+</div>
+<div id="J_body" >
+    <div class="nui-main">
+        <!-- floor 0 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">
+                写在前面
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span>
+            </div>
+            <div class="nui-box-bd">
+                <div class="nui-lh24">
+                    <p>认真的整理代码了。</p>
+                    <p>为什么叫nui.js，其实就是new一个新的项目，作为ui的依赖，比较偏个人向。</p>
+                    <p>接下来的时间就是完善好nuiJs现在的功能，然后再出一个基于nui的后台。之前没有完善的后台，<a class="nui-btn nui-btn-default" target="_blank" href="../na/">先睹为快</a></p>
+                    <p class="nui-fc3">Ps：大多数css命名都使用[nui-*]的格式。</p>
+                    <p class="nui-fc1"> 查看源码功能已经屏蔽了多余的的代码，但是无法看到UI渲染之前的代码，因为UI的渲染是不可逆的。但是可以变通，就是删除渲染节点的UI,重新渲染变更后的代码。</p>
+                </div>
+            </div>
+        </div>
+        <!-- floor 1 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">按钮
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span>
+            </div>
+            <div class="nui-box-bd">
+                <div>常规按钮</div>
+                <div>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-default nui-btn-min">最小</a></span>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-small">小按钮</a></span>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-green">常规</a></span>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-black nui-btn-radius">圆角按钮</a></span>
+                    <span class="nui-inline"><a class="nui-btn  nui-btn-red">警告</a></span>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-medium is-disabled ">禁用按钮</a></span>
+                    <span class="nui-inline"><a class="nui-btn nui-btn-orange nui-btn-large">大按钮</a></span>
+                <pre class="">
+.nui-btn-width       // 最小宽度80px
+.nui-btn-radius      // 圆角
+.nui-btn-default     //  原始
+.nui-btn-green       // 绿色
+.nui-btn-red         // 红色
+.nui-btn-blue        // 蓝色
+.nui-btn-orange      // 橙色
+.nui-btn-black       // 黑色
+.nui-btn.is-disabled // 禁用
+.nui-btn-large       // 大
+.nui-btn-small       // 小
+.nui-btn-min         // 超小
+.nui-block           //块 </pre>
+            </div>
+                <div>按钮组</div>
+                <div>
+                    <div class="nui-inline nui-w80">默认</div>
+                    <div class="nui-inline">
+                        <div class="" data-tab="a|nui-btn-blue">
+                            <a class="nui-btn  nui-btn-default nui-btn-blue">左</a>
+                            <a class="nui-btn  nui-btn-default">中</a>
+                            <a class="nui-btn  nui-btn-default">右</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="nui-inline nui-w80">横排组</div>
+                    <div class="nui-inline">
+                        <div class="nui-btn-group" data-tab="a|nui-btn-blue">
+                            <a class="nui-btn  nui-btn-default nui-btn-blue">左</a>
+                            <a class="nui-btn  nui-btn-default">中</a>
+                            <a class="nui-btn    nui-btn-default">右</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="nui-inline nui-w80">竖排组</div>
+                    <div class="nui-inline nui-w320">
+                        <div class="nui-btn-group nui-btn-group--middle" data-tab="a|nui-btn-blue">
+                            <a class="nui-btn nui-block nui-btn-default nui-btn-blue">上</a>
+                            <a class="nui-btn nui-block nui-btn-default">中</a>
+                            <a class="nui-btn nui-block nui-btn-default">下</a>
+                        </div>
+                    </div>
+                    <pre class="">
+.nui-btn-group 横排
+.nui-btn-group--middle 竖排
+        </pre>
+                </div>
+
+        </div>
+     </div>
+        <!-- floor 2 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">表单
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <div>表单组件</div>
+                <div>
+                    <div class="nui-form" >
+                        <div class="nui-form-g">
+                            <div class="nui-inline">
+                                <div class="nui-form-label">文本框</div>
+                                <div class="nui-form-block">
+                                    <input data-check="required" name="text" class="nui-input nui-input-medium">
+                                </div>
+                            </div>
+                            <div class="nui-inline">
+                                <div class="nui-form-label">选择日期</div>
+                                <div class="nui-form-block">
+                                    <input class="nui-input nui-input-medium" name="date" data-check="date" data-date="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">性别[单选]</div>
+                            <div class="nui-form-block nui-lh30">
+                               <label class="nui-mr"><input name="radio" value="未知" checked type="radio">未知</label>
+                               <label class="nui-mr"><input name="radio" value="男" type="radio">男</label>
+                               <label class="nui-mr"><input name="radio" value="女" type="radio">女</label>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">爱好[多选]</div>
+                            <div class="nui-form-block nui-lh30">
+                                <label class="nui-block "><input name="checkbox" value="吃饭" checked type="checkbox">吃饭</label>
+                                <label class="nui-block "><input name="checkbox" value="睡觉" type="checkbox">睡觉</label>
+                                <label class="nui-block "><input name="checkbox" value="打豆豆"  type="checkbox">打豆豆</label>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">文本框</div>
+                            <div class="nui-form-block">
+                                <textarea class="nui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-block">
+                                <button class="nui-btn nui-btn-width">提交表单</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre class="js-pre">
+                    nui.form({
+                        "form": ".nui-form", //必填，要渲染的UI
+                        "url": 'doc/success.json', //请求地址，非form必填
+                        "message": function (name, that) {
+                            nui.toast("请输入");
+                        },
+                        "btn": ".nui-btn-width" //触发form的submit  非form必填
+                    }, function (e) {   // 渲染UI，渲染事件
+                        nui.alert(e.msg)
+                    },{type:'get'});
+                </pre>
+            </div>
+        </div>
+        <!-- floor 3 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">辅助
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <div>
+                    <strong class="nui-mt nui-block">文字处理</strong>
+                    <hr>
+                    <div class="nui-inline nui-fc1"> .nui-fc1</div>
+                    <div class="nui-inline nui-fc2"> .nui-fc2</div>
+                    <div class="nui-inline nui-fc3"> .nui-fc3</div>
+                    <div class="nui-inline nui-fc4"> .nui-fc4</div>
+                    <div class="nui-inline nui-fc5"> .nui-fc5</div>
+                    <div class="nui-inline nui-fcf"> .nui-fcf</div>
+                    <del class="nui-inline "> 左边白色（.nui-fcf）</del>
+                    <div class="nui-inline nui-fcb"> .nui-fcb</div>
+                    <div class="nui-inline nui-fcr"> .nui-fcr</div>
+                    <div class="nui-inline nui-fcg"> .nui-fcg</div>
+                    <div class="nui-inline nui-fco"> .nui-fco</div>
+                    <div class="nui-inline nui-fw"> nui-fw</div>
+                    <strong class="nui-mt nui-block">超链接</strong>
+                    <hr>
+                    <a class="nui-inline nui-hand"> nui-hand </a>
+                    <a class="nui-inline nui-tdu"> nui-tdu </a>
+                    <a class="nui-inline nui-tdn"> nui-tdn </a>
+                    <strong class="nui-mt nui-block">边距</strong>
+                    <hr>
+                    <div class="nui-inline nui-mt"> nui-mt</div>
+                    <div class="nui-inline nui-mb"> nui-mb</div>
+                    <a class="nui-inline nui-mr"> nui-mr </a>
+                    <div class="nui-inline nui-ml"> nui-ml</div>
+                    <strong class="nui-mt nui-block">行高</strong>
+                    <hr>
+                    <div class="nui-inline nui-mr nui-lh24" style="background-color: rgba(255,255,0,.5)">nui-lh24</div>
+                    <div class="nui-inline nui-mr nui-lh30" style="background-color: rgba(255,255,0,.5)">nui-lh30</div>
+                    <div class="nui-inline nui-mr nui-lh44" style="background-color: rgba(255,255,0,.5)">nui-lh44</div>
+                    <strong class="nui-mt nui-block">进度条</strong>
+                    <hr>
+                    <div>
+                        <div class="nui-progress nui-progress-orange"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
+                        <div class="nui-progress nui-progress-black nui-mt"><div class="progress-bar" style="width: 70%"><i class="progress-ing"></i></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- floor 3 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">表格
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <div class="nui-table">
+                    <table id="js_table">
+                        <thead>
+                        <tr class="thead"><td width="100">姓名</td><td width="60">性别</td><td>备注</td><td width="100">操作</td></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>张三</td><td>男</td><td></td><td><div class="center"><button class="nui-btn nui-btn-small">编辑</button><button class="nui-btn nui-btn-red nui-btn-small">删除</button></div></td></tr>
+                        <tr><td>李四</td><td>男</td><td></td><td><div class="center"><button class="nui-btn nui-btn-small">编辑</button><button class="nui-btn nui-btn-red nui-btn-small">删除</button></div></td></tr>
+                        <tr><td>王五</td><td>男</td><td></td><td><div class="center"><button class="nui-btn nui-btn-small">编辑</button><button class="nui-btn nui-btn-red nui-btn-small">删除</button></div></td></tr>
+                        <tr><td>翠花</td><td>女</td><td></td><td><div class="center"><button class="nui-btn nui-btn-small">编辑</button><button class="nui-btn nui-btn-red nui-btn-small">删除</button></div></td></tr>
+                        <tr><td>小方</td><td>女</td><td></td><td><div class="center"><button class="nui-btn nui-btn-small">编辑</button><button class="nui-btn nui-btn-red nui-btn-small">删除</button></div></td></tr>
+                        </tbody>
+                    </table>
+                    <div id="js_page"></div>
+<pre class="js-pre">
+    var arr =[];
+    var tbody = $("#js_table").find("tbody");
+    $("tr",tbody).each(function () {
+        arr.push(this.outerHTML)
+    });
+    nui.page({
+        elem: "#js_page",
+        pages: 10,
+        curr: 1,
+        skin: '#1780fb',
+        prev: '« 前一页',
+        next: '后一页 »'
+    }, function (e, first) {
+        tbody.html(
+            arr.sort(function (a,b) {
+                return 0.5 - Math.random()
+            }).join('')
+        )
+    })
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="nui-mt"></div>
+    </div>
+</div>
+<div id="J_food"></div>
+<div id="J_script">
+    <script src="resource/jquery.min.js"></script>
+    <script src="resource/nui.min.js"></script>
+    <script src="doc/index.min.js"></script>
+</div>
+</body>
+</html>

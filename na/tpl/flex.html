@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box nui-box-large">
+        <div class="nui-box-hd"><span class="nui-box-title">flex栅格</span></div>
+        <div class="nui-box-bd">
+            <table class="nui-table">
+                <tr class="thead"><th>class名称</th><th>文字描述</th></tr>
+                <tr><td><code>ul.nui-flex</code></td><td>父元素</td></tr>
+                <tr><td><code>nui-flex>li</code></td><td>自适应的子元素</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="nui-box nui-box-large nui-mt">
+        <div class="nui-box-hd"><span class="nui-box-title">flex栅格（举个栗子）</span></div>
+        <div class="nui-box-bd">
+            <ul class="nui-flex center">
+                <li><div style="padding: 10px 0 12px; background-color: rgba(21,21,21,.6);  ">auto</div></li>
+                <li><div style="padding: 10px 0 12px; background-color: rgba(21,21,21,.4);">auto</div></li>
+                <li><div style="padding: 10px 0 12px; background-color: rgba(21,21,21,.2);">auto</div></li>
+            </ul>
+            <ul class="nui-flex center nui-mt">
+                <li><div style="padding: 10px 0 12px;background-color: rgba(21,21,21,.6);">auto</div></li>
+                <li class="nui-w80"><div style="padding: 10px 0 12px;background-color: rgba(21,21,21,.4);">80px</div></li>
+                <li><div style="padding: 10px 0 12px; background-color: rgba(21,21,21,.2);">auto</div></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

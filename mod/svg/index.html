@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+
+        svg{-webkit-user-select: none}
+        svg text{pointer-events:none}
+        svg line{transition: .3s}
+        svg g.this line{stroke: #bbb}
+        [data-svg-uid]:hover{cursor: pointer}
+        [data-svg-uid].this{ fill: #5bc0de}
+        [data-svg-uid].this + text{ fill: #fff}
+        .svg_ellipse { stroke-dasharray: 4; stroke-dashoffset: 4; -webkit-animation: svg__ellipse 1s linear infinite; animation: svg__ellipse 1s linear infinite;}
+        @-webkit-keyframes svg__ellipse { to { stroke-dashoffset: -4; } }
+        @keyframes svg__ellipse { to { stroke-dashoffset: -4; } }
+
+        #SVG_title{
+            position: absolute;
+            top: 114px;
+            left: 255px;
+            line-height: 20px;
+            padding: 6px 10px;
+            background-color: #000;
+            background-color: rgba(0,0,0,0.68);
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+            max-width: 350px;
+            visibility: hidden;
+            opacity: 0;
+            transition: .2s;
+        }
+    </style>
+    <script src="js/svg.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 100%;height: 600px;position: relative" class="ani--300ms ani--scale--spring"></div>
+<script>
+
+    /**
+     * 布局 =>
+     *          *
+     *        * * *
+     *          *
+     * 圆的角度：2*Math.PI/点的个数
+     * 圆的轨迹方程式为：(x-a)²+(y-b)²=r²
+     * 因此，已知x, 则y = Math.sqrt(r² - (x-a)²) + b;
+     * 其中，圆心是(a, b)
+     * 圆心坐标是(g.width/2, g.height)
+     * 则y = Math.sqrt(r² - (x-a)²) + b;
+     * ================================
+     * 椭圆的坐标  ;
+     * y = b*Math.sin(o)
+     * x = a*Math.cos(o)
+     * 已知：a = 50 ,b = 30
+     * y = 30*Math.sin(o)
+     * x = 50*Math.cos(o)
+     *
+     *
+     */
+
+    /**
+     * svg文字居中
+     * text-anchor="middle" 表示以文本的中点为基准定位
+     * x="50%" 表示定位到图片宽度的50%处，也就是居中
+     * y="50%" 表示文本底部在图片的中央
+     * dy=".3em" 让文本的底部从图片的中央继续往下移0.3行，从而达到垂直居中
+     *
+     */
+
+    var data = {
+        "name": "query",
+        "children": [
+            {"name": "a", "size": "你是谁，经理"},
+            {"name": "b", "size": "你是谁，经理"},
+            {"name": "c", "size": "你是谁，经理"},
+            {"name": "d", "size": "你是谁，经理"},
+            {"name": "e", "size": "你是谁，经理"},
+            {"name": "f", "size": "你是谁，经理"},
+            {"name": "f", "size": "你是谁，经理"},
+            {"name": "f", "size": "你是谁，经理"},
+            {"name": "g", "size": "你是谁，经理"},
+            {"name": "g", "size": "你是谁，经理"},
+            {"name": "g", "size": "你是谁，经理"},
+            {"name": "h", "size": "你是谁，经理"}
+        ]
+    };
+
+var init = function (el) {
+    if (!SVG.supported) {
+        var __i =(navigator.userAgent.match(/MSIE\s([\d.]+)/) || navigator.userAgent.match(/Trident\/[\d](?=[^\?]+).*rv:([0-9.].)/));
+        var __t = __i?"无法支持浏览器 IE"+(__i[1]||''):"无法显示";
+        document.getElementById(el).innerHTML="<div style='position: absolute; left: 50%; top: 50%; margin-top: -50px; margin-left: -100px; width: 200px; height: 100px; line-height: 100px; text-align: center; white-space: nowrap; overflow: hidden; border: 1px solid #ddd;'>"+__t+"</div>";
+        throw new Error("浏览器不支持SVG");
+    }
+    var w = $(document.getElementById(el)).width()||1000,h=600;
+    var svg = SVG(el).viewbox(0, 0, w, h).attr({preserveAspectRatio: "xMinYMin meet"});
+    var group = svg.group();
+    //中心圆( w/2,h/2) (120)
+    group.circle(120).attr({ cx: w/2, cy: h/2 }).attr({fill: '#5bc0de'});
+    var ellipse_w = 400,ellipse_y= 170;
+    //虚线椭圆(500,300) (ellipse_w,ellipse_y)
+    group.ellipse().attr({ cx: w/2, cy: h/2 }).radius(ellipse_w, ellipse_y).attr({'fill-opacity': 0, stroke: '#bbb', 'stroke-width': 1}).addClass("svg_ellipse");
+    group.text(function (add) {
+        add.tspan('苏州麦卡软件').newLine();
+        add.tspan('有限公司').newLine()
+    }).font({ size: 14, family: '' ,fill:"#fff","text-anchor":"middle"}).move(w/2,h/2).dy(-15);
+    for(var i = 0,children = data.children;i<children.length;i++){
+        var r = 65;
+        var o = 2*Math.PI/children.length*i,g = svg.group();
+        var x0 = w/2-ellipse_w*Math.cos(o),y0=h/2-ellipse_y*Math.sin(o);
+        var x = w/2-r*Math.cos(o),y=h/2-r*Math.sin(o);
+        //卫星的卫星圆  QVQ (b*Math.sin(o),50*Math.cos(o)) (25)
+        for(var ii = 0;ii<4;ii++){
+            var _r = 40,_c=40;//半径 线条半径
+            (ii%2)&&( _c +=28);
+            var _o = Math.PI +o -45/180*Math.PI +(0.5*Math.PI/4)*ii;
+            var _x = (_r+_c)*Math.cos(_o), _y=  (_r+_c)*Math.sin(_o);
+            g.line(x0,y0, x0+_x,y0+_y).stroke({ color: '#eee',width: 1 }).attr('stroke-dasharray', "0 500").animate(300, '>',300).attr('stroke-dasharray', "500 500");
+            g.circle(_r).attr({cx:x0+_x,cy: y0+_y,fill: '#fff', stroke: '#ddd', 'stroke-width': 1}).data('svg-uid',100,true).attr('opacity', 0).animate(300, '>',800).attr('opacity', 1);
+            g.text(("张三")).font({ size: 12, family: '' ,"text-anchor":"middle"}).move(x0+_x,y0+_y).dy(-5).attr('opacity', 0).animate(300, '>',800).attr('opacity', 1);
+        }
+        //卫星圆和主圆之间的连接线 (x,y , x0,y0)
+        g.line(x,y, x0,y0).stroke({ color: '#eee',width: 1 }).attr('stroke-dasharray', "0 500").animate(300, '>').attr('stroke-dasharray', "500 500");
+        g.text((""+children[i].size)).font({ size: 13, family: '' ,fill:"#444","text-anchor":"middle"}).move((x+x0)/2,(y+y0)/2).attr('opacity', 0).animate(300, '>',500).attr('opacity', 1);
+        //卫星圆 (x,y) (r)
+        g.circle(r).data("svg-title","你是打算",true).attr({cx:x0,cy: y0,fill: '#00c4a6'}).fill(g.image('images/eb8fce65jw1f8l6l7mjm5j21ev1sdts0.jpg', 65, 65)).attr('opacity', 0).animate(300, '>',500).attr('opacity', 1);
+
+    }
+    //事件
+    (function (a) {
+        a('<div>').html("麦卡软件").css({position: "absolute", right: '0px', bottom: '0px', color: '#ccc', width: '100px', 'font-size': '12px', 'text-align':'center', 'line-height': '30px'}).appendTo(document.getElementById("main"));
+        a("svg pattern").each(function () {
+            this.instance.attr({"patternUnits": "objectBoundingBox", width: 1, height: 1});
+        });
+        a("[data-svg-uid]").on("click", function () {
+            var c =this.instance.data("svg-uid");
+            a("#SVG_warp").length||a('<div id="SVG_warp" class=" ani--300ms ani--left--30px">').appendTo(document.getElementById(el));
+            var x0 = this.instance.attr("cx"),y0=this.instance.attr("cy");
+            var x1 = 200,y1=10;
+            if(typeof g === "undefined"){
+                var _g = SVG.get('SvgjsGDiy01');
+                _g&&_g.remove();
+                var g = svg.group();
+                g.attr({id:"SvgjsGDiy01"});
+                var o = a("#SVG_warp");o.html('<i class="close"><img style=" position: absolute; right: 10px; top: 10px; width: 24px;    cursor: pointer;"  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWwpAZm9udC1mYWNlIHsgZm9udC1mYW1pbHk6IGlmb250OyBzcmM6IHVybCgiLy9hdC5hbGljZG4uY29tL3QvZm9udF8xNDQyMzczODk2XzQ3NTQ0NTUuZW90PyNpZWZpeCIpIGZvcm1hdCgiZW1iZWRkZWQtb3BlbnR5cGUiKSwgdXJsKCIvL2F0LmFsaWNkbi5jb20vdC9mb250XzE0NDIzNzM4OTZfNDc1NDQ1NS53b2ZmIikgZm9ybWF0KCJ3b2ZmIiksIHVybCgiLy9hdC5hbGljZG4uY29tL3QvZm9udF8xNDQyMzczODk2XzQ3NTQ0NTUudHRmIikgZm9ybWF0KCJ0cnVldHlwZSIpLCB1cmwoIi8vYXQuYWxpY2RuLmNvbS90L2ZvbnRfMTQ0MjM3Mzg5Nl80NzU0NDU1LnN2ZyNpZm9udCIpIGZvcm1hdCgic3ZnIik7IH0KCl1dPjwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJ0cmFuc2Zvcm0tZ3JvdXAiPjxnIHRyYW5zZm9ybT0ic2NhbGUoMC4wMzEyNSwgMC4wMzEyNSkiPjxwYXRoIGQ9Ik04NzQuMSAxNTAgODc0LjEgMTUwYy0xMi41LTEyLjUtMzIuOC0xMi41LTQ1LjMgMEw1MTIgNDY2LjcgMTk1LjIgMTQ5LjljLTEyLjUtMTIuNS0zMi44LTEyLjUtNDUuMyAwbDAgMGMtMTIuNSAxMi41LTEyLjUgMzIuOCAwIDQ1LjNMNDY2LjcgNTEyIDE0OS45IDgyOC44Yy0xMi41IDEyLjUtMTIuNSAzMi44IDAgNDUuM2wwIDBjMTIuNSAxMi41IDMyLjggMTIuNSA0NS4zIDBMNTEyIDU1Ny4zbDMxNi44IDMxNi44YzEyLjUgMTIuNSAzMi44IDEyLjUgNDUuMyAwbDAgMGMxMi41LTEyLjUgMTIuNS0zMi44IDAtNDUuM0w1NTcuMyA1MTIgODc0LjEgMTk1LjJDODg2LjYgMTgyLjcgODg2LjYgMTYyLjUgODc0LjEgMTUweiIgZmlsbD0iIzI3MjYzNiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+"></i>'+c).css({position: "absolute",left:0,top:0,width:x1,height:500, visibility: "visible",opacity: 1,'background-color':'rgba(255,255,255,.9)','border':' 1px solid #f4f4f4'}); var array = new SVG.PointArray([[['M', x1+10, y1], ['Q', x0 , y1], [x0 , y0 - 26]]]).toString();
+                var path = g.path(array);
+                path.fill('none').stroke({ width: 1,color:"#5bc0de" });
+                path.marker('start', 8, 8, function(add) {
+                    add.circle(8).fill('#5bc0de')
+                });
+                path.marker('end', 8, 8, function(add) {
+                    add.circle(8).fill('#5bc0de')
+                });
+            }
+            o.on("click",".close",function () {
+                o.remove();
+                g.remove();
+            })
+        }).on("mouseover",function () {
+            this.instance.addClass("this");
+            this.instance.parent().addClass("this");
+        }).on("mouseout",function () {
+            this.instance.removeClass("this");
+            this.instance.parent().removeClass("this");
+        });
+        a("[data-svg-title]").on("mousemove", function (e) {//mouseover
+            var text =this.instance.data("svg-title");
+            a("#SVG_title").length||a('<div id="SVG_title">').appendTo(document.getElementById(el));
+            var o = a("#SVG_title"); o.html(text).css({position: "absolute",left:e.clientX-o.width()/2,top:e.clientY+30, visibility: "visible",opacity: 1})
+        }).on("mouseout",function () {
+            a("#SVG_title").css({  visibility: "hidden",opacity: 0});
+        })
+    }($))
+};
+    init("main");
+    $(window).on("resize",function () {
+       $("#main").html("");
+        init("main");
+    })
+</script>
+</body>
+</html>
+
+
+

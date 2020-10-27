@@ -1,0 +1,367 @@
+<!--
+    @desc:view-source:https://www.qlippie.com/m/
+    @info:动画
+    @date:2017/09/15
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>保持手机端有流畅的动画</title>
+    <style>
+        *{-webkit-tap-highlight-color: transparent;outline: 0;margin: 0;padding: 0;vertical-align: baseline;}
+        body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td{margin: 0;padding: 0;vertical-align: baseline;}
+        img{border: 0 none;vertical-align: top;}
+        i, em{font-style: normal;}
+        ol, ul{list-style: none;}
+        input, select, button, h1, h2, h3, h4, h5, h6{font-size: 100%;font-family: inherit;}
+        table{border-collapse: collapse;border-spacing: 0;}
+        a{text-decoration: none;color: #666;}
+        body{margin: 0 auto;min-width: 320px;max-width: 640px;height: 100%;font-size: 14px;fon-family: -apple-system, Helvetica, sans-serif;line-height: 1.5;color: #666;-webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;}
+        input[type="text"], textarea{-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+        ::-moz-selection{background: #ddd;color: #000;text-shadow: none;}
+        ::selection{background: #ddd;color: #000;text-shadow: none;}
+
+        @font-face {
+            font-family: 'HelveticaNeueW01-47LtCnt';
+            src: url('https://cdn.qlippie.com/fonts/37.eot');
+            src: url('https://cdn.qlippie.com/fonts/37.eot?#iefix') format('embedded-opentype'), url('https://cdn.qlippie.com/fonts/37.woff2?i1o41g') format('woff2'), url('https://cdn.qlippie.com/fonts/37.woff') format('woff'), url('https://cdn.qlippie.com/fonts/37.ttf') format('truetype'), url('https://cdn.qlippie.com/fonts/37.svg#webfont') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body{font-family: "HelveticaNeueW01-47LtCnt", "\5FAE\8F6F\96C5\9ED1", Tahoma, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;-webkit-font-smoothing: subpixel-antialiased;-webkit-text-size-adjust: 100%;}
+        html, body{height: 100%}
+        /* banner的遮罩效果处理
+        ---------------------------------------------------------------- */
+        .topMask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #000;
+            z-index: 1;
+            -webkit-animation: moveUp .8s 2.5s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+            animation: moveUp .8s 2.5s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        @-webkit-keyframes moveUp {
+            0% {
+                -webkit-transform: translateY(0);
+            }
+            99% {
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: translateY(-100%);
+                opacity: 0;
+                display: none;
+            }
+        }
+        @keyframes moveUp {
+            0% {
+                transform: translateY(0);
+            }
+            99% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+                display: none;
+            }
+        }
+        .bottomMask {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #000;
+            z-index: 1;
+            -webkit-animation: moveDown .8s 2.5s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+            animation: moveDown .8s 2.5s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        @-webkit-keyframes moveDown {
+            0% {
+                -webkit-transform: translateY(0);
+            }
+            99% {
+                -webkit-transform: translateY(100%);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: translateY(-200%);
+                opacity: 0;
+            }
+        }
+        @keyframes moveDown {
+            0% {
+                transform: translateY(0);
+            }
+            99% {
+                transform: translateY(100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200%);
+                opacity: 0;
+            }
+        }
+        .loading-gif {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 48px;
+            height: 48px;
+            margin-left: -24px;
+            margin-top: -24px;
+            background: url(https://cdn.qlippie.com/images/m/loading.gif?max_age=19850823) 50% 50% no-repeat;
+            background-size: 48px 48px;
+            z-index: 3;
+            -webkit-animation: loadinghide .5s 2s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+            animation: loadinghide .5s 2s forwards cubic-bezier(0.6, 0.08, 0.36, 0.96);
+        }
+        @-webkit-keyframes loadinghide {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes loadinghide {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        /* 导航部分
+        ---------------------------------------------------------------- */
+        .mod-nav{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width:100%;
+            min-height:70px;
+            z-index: 5;
+            -webkit-transition:color,background .3s ease;
+            transition:color,background .3s ease;
+        }
+        .mod-nav .logo{
+            position:absolute;
+            top:20px;
+            left:20px;
+            display:block;
+            width:80px;
+            height:30px;
+            overflow:hidden;
+            background: url(https://cdn.qlippie.com/images/m/spr@2x.png?max_age=2592000) 0 0 no-repeat;
+            background-size:250px auto;
+        }
+        .mod-nav .logo img{display:block;opacity:0;filter:alpha(opacity=0);}
+        .mod-nav .logo a{ text-indent: -9999px; display: block; }
+        .show-nav-btn{ position: absolute; top: 0; right: 0; width: 70px; height: 70px; background:url(https://cdn.qlippie.com/images/m/spr@2x.png?max_age=2592000) -71px -35px no-repeat; background-size:250px auto; }
+        .mod-nav .nav{ border-bottom:1px solid #000; }
+        .black-mode{ background: #fff; color: #000; box-shadow:0 1px 0 rgba(224,224,224,.7); }
+        .black-mode .logo{ background-position:-90px 0; }
+        .black-mode .show-nav-btn{ background-position:0 -35px; }
+        /* 大图图片部分
+         ---------------------------------------------------------------- */
+        .cover{height: 100%;position: relative}
+        .cover .item{backface-visibility: hidden;position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;opacity: 0;-webkit-transition: opacity 2s ease;transition: opacity 2s ease;background-size: cover;}
+        .cover .item.is-show{opacity: 1;}
+        .cover .item .txt{display: block;position: absolute;left: 50%;top: 50%;width: 150px;height: 150px;margin: -75px 0 0 -75px;background-repeat: no-repeat;background-position: 0 0;background-size: 150px auto;z-index: 1;text-indent: -9999px;}
+    </style>
+    <script>
+        // 分享内容
+        window.sns = {
+            title: '见到你很高兴',
+            desc: '见到你很高兴',
+            url: location.href,
+            img: 'https://avatars1.githubusercontent.com/u/13426731?v=4&s=460'
+        };
+    </script>
+</head>
+<body>
+<!-- S 头部内容 -->
+<header class="mod-nav" id="header">
+    <div class="navigation nav-notap">
+        <h1 class="logo"><a href="/m/"><span class="aria-text">Qlippie</span><img src="https://cdn.qlippie.com/images/logo-121x75.png?max_age=31536000" alt="Qlippie（Q立派）官网"></a></h1>
+    </div>
+    <span class="show-nav-btn js-toggle" data-cssclass="mod-nav-on" data-selector="#header" aria-hidden="true"></span>
+</header>
+<!-- E 头部内容 -->
+
+<!-- S 头像部分 -->
+<article class="cover" id="cover" role="article">
+    <ul class="slide js-slide-cover">
+        <li class="item"
+            style="background-image: url(https://cdn.qlippie.com/images/m/banner-1-750.jpg?t=1699&max_age=2592000)">
+            <span class="txt"
+                  style="background-image: url(https://cdn.qlippie.com/images/m/record.png?max_age=2592000)">时尚记录</span>
+        </li>
+        <li class="item"
+            style="background-image: url(https://cdn.qlippie.com/images/m/banner-2-750.jpg?t=1699&max_age=2592000)">
+            <span class="txt"
+                  style="background-image: url(https://cdn.qlippie.com/images/m/discover.png?max_age=2592000)">精细发现</span>
+        </li>
+        <li class="item"
+            style="background-image: url(https://cdn.qlippie.com/images/m/banner-4-750.jpg?t=1699&max_age=2592000)">
+            <span class="txt" style="background-image: url(https://cdn.qlippie.com/images/m/share.png?max_age=2592000)">瞬间分享</span>
+        </li>
+    </ul>
+</article>
+<!-- E 头像部分 -->
+
+<!-- S 凑内容 -->
+    <div style="background: url(https://cdn.qlippie.com/images/m/micro.jpg?t=20160819&max_age=2592000) center;background-size: cover;height: 315px;margin-top: 30px;"></div>
+    <div style="height: 150px"></div>
+    <!-- /..  -->
+    <div style="background: url(https://cdn.qlippie.com/images/m/live.jpg?max_age=2592000) center;background-size: cover;height: 315px;margin-top: 30px;"></div>
+    <div style="height: 150px"></div>
+    <!-- /..  -->
+    <div style="background: url(https://cdn.qlippie.com/images/m/micro.jpg?t=20160819&max_age=2592000) center;background-size: cover;height: 315px;margin-top: 30px;"></div>
+    <div style="height: 150px"></div>
+    <!-- /..  -->
+    <div style="background: url(https://cdn.qlippie.com/images/m/live.jpg?max_age=2592000) center;background-size: cover;height: 315px;margin-top: 30px;"></div>
+    <div style="height: 150px"></div>
+<!-- E 凑内容 -->
+
+<!-- S loading -->
+<div class="mask">
+    <div class="topMask"></div>
+    <div class="bottomMask"></div>
+    <span class="loading-gif"></span>
+</div>
+<!-- E loading -->
+
+<!-- footer -->
+<div style="height: 230px; background: #000; color: #fff; text-align: center;"></div>
+</body>
+<script src="https://cdn.bootcss.com/waypoints/4.0.1/noframework.waypoints.js"></script>
+<script src="https://cdn.bootcss.com/velocity/1.5.0/velocity.min.js"></script>
+<script>
+    !function () {
+        // base.js
+        window.on = Node.prototype.on = function (event, callback) {
+            if (event === "touch") {
+                // document 不存在 ontouchend 事件,使用 click 代替 touch 事件
+                // 定义 touch, touchstart touchstart 触发间隔小于 300ms
+                if (!("ontouchend" in document)) {
+                    this.addEventListener("click", callback, false);
+                } else {
+                    var timeStamp = 0;
+                    this.addEventListener("touchstart", function (ev) {
+                        timeStamp = +new Date
+                    }, false);
+                    this.addEventListener("touchend", function (ev) {
+                        if (new Date - timeStamp < 300) {
+                            callback.call(this, ev)
+                        }
+                    }, false)
+                }
+            } else {
+                this.addEventListener(event, callback, false);
+            }
+            return this;
+        };
+        NodeList.prototype.on = function (event, callback) {
+            this.forEach(function (el) {
+                el.on(event, callback);
+            });
+            return this;
+        };
+        NodeList.prototype.each = function (callback) {
+            this.forEach(callback);
+            return this
+        };
+        // mask
+        var loadMask = document.querySelector(".topMask");
+        var animationed = function () {
+            var preFixer = ['webkitAnimationEnd', 'animationed'];
+            for (var index in preFixer) {
+                var _ = preFixer[index].replace(/end/i, '');
+                if (typeof document.body.style[_] === "string") {
+                    return preFixer[index]
+                }
+            }
+        }();
+        loadMask.addEventListener(animationed, function () {
+            loadMask.style.display = "none";
+            sideAni();
+        }, false);
+        var sideAni = function () {
+            var activeIndex = 0, items = document.querySelectorAll(".slide .item");
+            return function () {
+                items.each(function (item) {
+                    item.className = "item";
+                });
+                items[activeIndex % items.length].className += " is-show";
+                activeIndex++;
+                setTimeout(sideAni, 3e3)
+            }
+        }();
+        var cover = document.getElementById('cover');
+        // waypoint.js
+        // cover 是否在可视区，已经提供在可视区域的方向
+
+        // 手机端按住屏幕 bug
+        (function () {
+            var isTouch;
+            window.on("touchstart", function () {
+                isTouch = true
+            }).on("touchend", function () {
+                isTouch = false
+            });
+            new Waypoint({
+                element: cover,
+                handler: function (direction) {
+                    if (!isTouch && direction === "up") {
+                        gotoScroll(300)
+                    }
+                },
+                offset: '-100%'
+            });
+            new Waypoint({
+                element: cover,
+                handler: function (direction) {
+                    var a =document.querySelector(".mod-nav");
+                    a.className = direction === "up" ?"mod-nav":"mod-nav black-mode"
+                },
+                offset: '-65%'
+            });
+        }());
+        // velocity.js
+        // 控制 body 的滚动动画
+        // document.documentElement.scrollTop || document.body.scrollTop;
+        // api:https://segmentfault.com/a/1190000009151459
+        var gotoScroll = function (callback, duration, scrollTop) {
+            if (typeof callback !== "function") {
+                var _ = duration;
+                duration = callback;
+                scrollTop = _;
+                callback = _ = null;
+            }
+            Velocity(document.body, 'stop');
+            Velocity(document.body, 'scroll', {
+                duration: duration || 800,
+                offset: scrollTop || 0,
+                easing: 'ease-out',
+                complete: callback
+            });
+        };
+        cover.on('touch', function (e) {
+            gotoScroll(500, window.innerHeight)
+        })
+    }()
+</script>
+</html>

@@ -1,0 +1,87 @@
+@import "let";
+
+.nui-btn,
+.nui-inline,
+.nui-input,
+.nui-textarea{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;}
+
+.nui-btn{/* .nui-inline */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* nui-input */
+/* 内联处理 */
+.nui-inline{position: relative;display: inline-block;vertical-align: middle;}
+.nui-inlines{font-size: 0}
+.nui-inlines .nui-inline{font-size: 14px;}
+.nui-inlines-row .nui-inline + .nui-inline{margin-left: 20px}
+.nui-inlines--middle .nui-inline { float: left; margin-right: 20px; margin-bottom: 15px; }
+
+
+/*btn*/
+.nui-btn {
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 12px;
+  height: 30px;
+  line-height: 30px;
+  overflow: visible;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: @blue;
+  -webkit-transition: cubic-bezier(.22,.58,.12,.98) .3s;
+  transition: cubic-bezier(.22,.58,.12,.98) .3s;
+  -webkit-user-select: none;
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.nui-btn-width{min-width: 80px}
+.nui-btn:active{.opacity(.9)}
+.nui-btn + .nui-btn{margin-left: 10px}
+.nui-btn-min + .nui-btn-min{margin-left: 5px}
+.nui-btn-radius{border-radius: 100px}
+.nui-btn:hover{background-color:@dark-blue ;color: #fff}
+.nui-btn-default{color: #424e67;border:1px solid #e6e6e6;background-color: #fff;}
+.nui-btn-default:hover{background-color: #fff;color:@blue;}
+
+.nui-btn-green{background-color: @green}
+.nui-btn.nui-btn-green:hover{background-color: @dark-green}
+.nui-btn-red{background-color: @red}
+.nui-btn.nui-btn-red:hover{background-color: @dark-red}
+.nui-btn-orange{background-color: @orange}
+.nui-btn.nui-btn-orange:hover{background-color: @dark-orange}
+.nui-btn-black{background-color: @black}
+.nui-btn.nui-btn-black:hover{background-color: @dark-black}
+.nui-btn-blue{color: #fff;background-color: @blue;border-color: @blue ;}
+.nui-btn.nui-btn-blue:hover{color: #fff;background-color:@dark-blue ;border-color:@dark-blue ;}
+
+.nui-btn.is-disabled, .nui-btn.is-disabled:active, .nui-btn.is-disabled:hover{border: 1px solid #e6e6e6;background-color: #f9f9f9;color: #c9c9c9;cursor: not-allowed;opacity: 1}
+.nui-btn-large{height: 44px;line-height: 44px;padding: 0 25px;font-size: 16px}
+.nui-btn-large.nui-btn-width{min-width: 108px;}
+.nui-btn-small{height: 24px;line-height: 22px;padding: 0 9px;font-size: 12px}
+.nui-btn-min{height: 18px;line-height: 16px;padding: 0 5px;font-size: 12px;opacity: .7;filter: alpha(opacity=70);}
+
+
+
+.nui-btn-group { font-size: 0; }
+.nui-btn-group .nui-btn{ border-radius: 0; margin-left: 0; }
+.nui-btn-group .nui-btn+.nui-btn{ border-left-width: 0; }
+.nui-btn-group  .nui-input {border-radius: 0  2px 2px 0;margin-left: -1px}
+.nui-btn-group .nui-btn:first-child {border-radius: 4px 0 0 4px }
+.nui-btn-group .nui-btn:last-child {border-radius:  0 4px 4px 0 }
+.nui-btn-group--middle .nui-btn+.nui-btn{ border-top-width:0;border-left-width: 1px; margin-left:0 }
+.nui-btn-group--middle .nui-btn:first-child {border-radius: 4px 4px 0 0 }
+.nui-btn-group--middle .nui-btn:last-child {border-radius:  0 0 4px 4px }
+
+
+
+.nui-btn-medium{height: 36px;line-height: 34px;}

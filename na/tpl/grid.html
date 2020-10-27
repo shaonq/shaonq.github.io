@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box nui-box-large">
+        <div class="nui-box-hd"><span class="nui-box-title">grid栅格</span></div>
+        <div class="nui-box-bd">
+            <table class="nui-table">
+                <tr class="thead"><th>class名称</th><th>文字描述</th></tr>
+                <tr><td><code>.nui-grid-5</code></td><td>父元素长度的5%</td></tr>
+                <tr><td><code>.nui-grid-10</code></td><td>父元素长度的10%</td></tr>
+                <tr><td><code>.nui-grid-15</code></td><td>父元素长度的15%</td></tr>
+                <tr><td><code>.nui-grid-20</code></td><td>父元素长度的20%</td></tr>
+                <tr><td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td><td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td></tr>
+                <tr><td><code>.nui-grid-90</code></td><td>父元素长度的90%</td></tr>
+                <tr><td><code>.nui-grid-95</code></td><td>父元素长度的95%</td></tr>
+                <tr><td><code>.nui-grid-100</code></td><td>父元素长度的100%</td></tr>
+                <tr><td><code>.nui-grid-33</code></td><td>父元素长度的33%</td></tr>
+                <tr><td><code>.nui-grid-66</code></td><td>父元素长度的66%</td></tr>
+            </table>
+        </div>
+        <div class="nui-box-bd">
+            <table class="nui-table">
+                <tr class="nui-btn-blue nui-fcf"><td colspan="2">移动设备生效,优先级高</td></tr>
+                <tr><td><code>.nui-grid-m-5</code></td><td>父元素长度的5%</td></tr>
+                <tr><td><code>.nui-grid-m-10</code></td><td>父元素长度的10%</td></tr>
+                <tr><td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td><td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td></tr>
+                <tr><td><code>.nui-grid-m-95</code></td><td>父元素长度的95%</td></tr>
+                <tr><td><code>.nui-grid-m-100</code></td><td>父元素长度的100%</td></tr>
+                <tr><td><code>.nui-grid-m-33</code></td><td>父元素长度的33%</td></tr>
+                <tr><td><code>.nui-grid-m-66</code></td><td>父元素长度的66%</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="nui-box nui-box-large nui-mt">
+        <div class="nui-box-hd"><span class="nui-box-title">grid栅格（举个栗子）</span></div>
+        <div class="nui-box-bd">
+            <div class="nui-w960 nui-auto">
+                <div class="nui-grid center" id="demo_grid">
+                    <div class="nui-mt nui-grid-100 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-45 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-55 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-20 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-80 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-35 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-65 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-50 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                    <div class="nui-mt nui-grid-50 "><div style="padding: 10px 0 12px; background-color: #ddd; border-radius: 0;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

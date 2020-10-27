@@ -1,0 +1,65 @@
+{{ include ../header }}
+<div class="app-h">
+    <div class="app-w">
+        <ul class="nui-w240 right fr app-h_icons">
+            <li class="nui-inlines">
+                <a class="nui-inline" href="/user/"><i class="iconfont icon-user"></i></a>
+                <a class="nui-inline" href="/"><i class="iconfont icon-home"></i></a>
+            </li>
+        </ul>
+        <i class="app-h_title">用户注册</i>
+    </div>
+</div>
+<div class="app-b app-b_padding">
+    <div class="app-w">
+        <div class="nui-w320 fr">
+            <div class="nui-box nui-box-large">
+                <div class="box-hd">友情提示</div>
+                <div class="box-bd">
+                    <ul class="nui-lh24 nui-fc3">
+                        <li>填写正确的邮箱，点击获取验证码</li>
+                        <li>密码会随邮件明文发送</li>
+                        <li> ! # % & *</li>
+                        <li>注册成功可以到个人中心修改头像哟</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nui-w480">
+            <form class="nui-form_redirect">
+                <div class="nui-form-group">
+                    <div class="nui-form-label">邮箱</div>
+                    <label class="nui-input-inline  nui-w240">
+                        <input class="nui-input" name="email" data-check="email" placeholder="请输入您的邮箱">
+                    </label>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">昵称</div>
+                    <label class="nui-input-inline  nui-w240">
+                        <input class="nui-input" name="name" data-check="昵称可以输入中文" placeholder="请设置您的昵称">
+                    </label>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">密码</div>
+                    <label class="nui-input-inline  nui-w240">
+                        <input class="nui-input" type="password" name="pass" data-check="pass" placeholder="请设置您的密码">
+                    </label>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">验证码</div>
+                    <label class="nui-input-inline" style=" width: 125px; ">
+                        <input class="nui-input" name="code" placeholder="">
+                    </label>
+                    <div class="nui-inline"><a class="nui-btn nui-btn-green">获取验证码</a></div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label"></div>
+                    <div class="nui-inline nui-w240 ">
+                        <button class="nui-btn nui-block ">注 册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{ include ../footer }}

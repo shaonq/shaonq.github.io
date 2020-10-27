@@ -1,0 +1,33 @@
+.main{position: relative;width: 1000px;margin:  0 auto;}
+.layout-main{font-size: 0;background-color: #fff;}
+.layout-main .layout-side,.layout-main .layout-warp{display: inline-block;font-size: 14px;vertical-align: top;min-height: 800px;}
+.layout-main .layout-side{width: 199px;border-right: 1px solid #eee;padding: 20px 0;}
+.layout-main .layout-warp{width: 750px;padding: 20px 0 50px 30px;}
+.layout-fix .layout-side{position: fixed;top:0;}
+.layout-fix .layout-warp{margin-left: 200px;}
+.layout-main .layout-warp .h2{margin-bottom: 20px; line-height: 30px; color: #555;}
+.layout-main .layout-warp .h1{ margin-bottom: 30px ;line-height: 60px;color: #333;  font-size: 22px;font-weight: 300;}
+.layout-main .layout-warp .h1{margin: 100px 0}
+.layout-main .layout-warp fieldset.h1{ display: block;border: none; border-top: 1px solid #ddd;width: 300px;margin:  30px auto;}
+.layout-main .layout-warp fieldset.h1 legend{display: block;text-align: center;color: #666; width: 200px;margin: 0  auto; }
+.layout-main .layout-warp fieldset.h2{    border: none; border-top: 1px solid #ddd;}
+.layout-main .layout-warp fieldset.h2 legend{     padding: 0 20px; margin-left: 20px; font-weight: 300;}
+.layout-main input[type=text]{color: #888;border: 1px solid #ddd;height: 22px;line-height: 22px;padding: 4px;}
+.layout-main input[type=text][readonly]{background-color: #f4f4f4}
+
+/*header*/
+.header{padding: 12px 0;height: 30px;background-color: #333;color: #c8c9ca;}
+.header .logo{position: absolute;top:16px;left: 0;}
+.header .menu{display: block ;float: right}
+.header .menu a{display: inline-block;padding:5px 12px;color: #c8c9ca;}
+.header .menu a:hover{color:#fff}
+.header .menu a.this{color: #2196f3}
+
+/*tree*/
+.tree li{margin-left: 21px;}
+.tree li > ul{display: none;max-height: 800px;-webkit-animation: maxHeight 3s}
+.tree li a{display: block;background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowNUM2M0I0RjM3N0ExMUU2OUE0N0Y4QzlBOURDMUFGRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowNUM2M0I1MDM3N0ExMUU2OUE0N0Y4QzlBOURDMUFGRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjA1QzYzQjREMzc3QTExRTY5QTQ3RjhDOUE5REMxQUZFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjA1QzYzQjRFMzc3QTExRTY5QTQ3RjhDOUE5REMxQUZFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jvJnkAAAApdJREFUeNqslMtvElEUxufeuQyvYI2miRCpC900ujN0Iyy1j027oamxXWlCYmM0pgsb07gwjZD4SF20XVmjMbF1UWLctFEX8A+4oQYaLJNRFhoH5FEGZi7jGaDNIAyC8W6YuXP53XO+c76DVFVl/vciBw+UVtlUShjhOLOTZVnDP1RhyXLlpyiK73Z3dyjL1hFOp5Pxer3N0EpFPra1FQ2sr78Ip9NCxQja33/i5PT01QeSJK0tLt69I4rfa/s+n4+JRCLNUIQYYrPZ4jyffMbzXwwjLRRypwnB5kzmR3lqamZuefnRQ23f4XAcnsG68yCuSiB9aye9zGazA2MWLy0FQ5oUgcCtm3X5aFtotwtpUFmW1dXVJ48pVVS/f+Y6/LYWqmsiwhLINDg/f/+GosgUY1zxeC5c47jqPnx+/k/QbDaT2tx8vQIwO0JIBQWUYrH0anT00lnDSP/Wt9msWNrYePlBvzcxcfkbxiP+tlC4VbVarXRsbHyIENN5uEDu2OTEhARh7y2cI/pgSLNeCCmKguPxz18hPU152rlgmMnlsoWBgTO4raMaUAaqipLJRBpe093qDA40hmopEEJUt/uUC6JwwmunSBk4g4rFfILqm7RVUwrOOEJnZ+fO2e22i3CJ1Cl9i8WGotGPK4LAVw2h2nDI5X6RhYXb2xDEdhsO86dc5bLEDA+POw2hjQ7Q2ga1EGo2ZtT2hkCMIVSzWl/fURoMPvVYLPYhYNSmFcdxhOf3EqHQvfc9zdOG8EypVMLh8JsdKJhwEJm2D9Op1POQrmeBKdhQisU+1aZctxBow4JeLj10X1Wrg5OTV9by+RztZR64XO7jMFxih9Hp7QXTv4/jTI42Req4wN1aq4omE6m14G8BBgDyOyL+/DZCUgAAAABJRU5ErkJggg==") 0 4px no-repeat;     background-size: 21px;padding:4px 0 5px 25px;}
+.tree li a:hover{background-color: #eee;}
+.tree li.this > a{background-color: #f2f2f2;}
+.tree li.this > ul{display: block;}
+@-webkit-keyframes maxHeight { 0% {max-height: 0;overflow: hidden;} }

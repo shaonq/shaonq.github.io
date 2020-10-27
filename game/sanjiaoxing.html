@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画布集合</title>
+    <script src="js/nui.canvas.js"></script>
+    <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
+    <script src="http://www.jq22.com/demo/sideshow20151016/js/TweenLite.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <style> html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: url(https://ss1.bdstatic.com/lvoZeXSm1A5BphGlnYG/skin/124.jpg?2) center no-repeat;
+    } </style>
+</head>
+<body>
+<canvas id="hb"></canvas>
+<script>
+    (function () {
+        var hb = new nui.canvas({el: "#hb"});
+        // Canvas manipulation
+
+        var Triangle = function () {
+            var _this = this;
+            var ctx = hb.context;
+            _this.pos = {};
+
+            var animate = function () {  // 动画处理
+                var t = Math.random() * (2 * Math.PI);
+                var x = (200 + Math.random() * 100) * Math.cos(t) + hb.width * 0.5;
+                var y = (200 + Math.random() * 100) * Math.sin(t) + hb.height * 0.5 - 20;
+                var time = (4 + 3 * Math.random()) * 1e3;
+                new TWEEN.Tween(_this.pos).to({x: x, y: y}, time).easing(TWEEN.Easing.Quadratic.Out).start();
+            };
+            var init = function () {    // 初始化
+                _this.pos.x = hb.width * 0.5;
+                _this.pos.y = hb.height * 0.5 - 20;
+                _this.scale = 1 + Math.random() * 0.3;
+                _this.color = ['72,35,68', '43,81,102', '66,152,103', '250,178,67', '224,33,48'][Math.floor(Math.random() * 5)];
+                _this.alpha = 0.8;
+                animate();
+            };
+            init();
+            this.draw = function () {   // 动作处理
+                if (_this.alpha <= 0) init();
+                _this.alpha -= 0.005;
+                hb.fillTriangle({
+                    x: _this.pos.x,
+                    y: _this.pos.y,
+                    width: _this.scale * 30,
+                    height: _this.scale * 30,
+                    fillStyle: 'rgba(' + _this.color + ',' + _this.alpha + ')'
+                });
+            };
+
+        };
+
+        var circles = [];
+        for (var x = 0; x < 40; x++) {
+            setTimeout(function () {
+                var t = new Triangle();
+                circles.push(t);
+            }, x * 20);
+
+        }
+        var update = function (time) {
+            hb.clear();
+            for (var i in circles) {
+                circles[i].draw();
+            }
+            requestAnimationFrame(update);
+            TWEEN.update(time)
+        };
+        update();
+    }())
+</script>
+</body>
+</html>

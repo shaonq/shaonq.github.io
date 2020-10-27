@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>个人中心 - 烟雨江南后台管理系统</title>
+</head>
+<body><!-- 按钮 -->
+<div class="na-page">
+    <div class="nui-box nui-box-large">
+        <div class="nui-box-hd">简单表单</div>
+        <div class="nui-box-bd">
+            <div class="nui-form" >
+                <div class="nui-form-group">
+                    <div class="nui-form-label"><i class="nui-fcr">*</i> 用户名</div>
+                    <div class="nui-input-inline">
+                        <input data-check="required" name="name" class="nui-input">
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label"><i class="nui-fcr">*</i> 选择日期</div>
+                    <div class="nui-input-inline">
+                        <input class="nui-input" name="date" data-check="date" data-date="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label"><i class="nui-fcr">*</i> 上传图像</div>
+                    <div class="nui-form-block">
+                        <div class="nui-inline nui-btn-group">
+                            <div class="nui-inline nui-upload">
+                                <a class="nui-btn" id="upload"><i class="fa fa-cloud-upload"></i></a>
+                                <input type="file" id="elem">
+                            </div>
+                            <label class="nui-inline "> <input readonly class="nui-input"  name="photo"  data-check="required" id="photo"></label>
+                        </div>
+                        <a class="nui-btn nui-btn-black nui-ml">查看图片</a>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">性别[单选]</div>
+                    <div class="nui-form-block nui-lh30">
+                        <label class="nui-mr"><input name="radio" value="未知" checked type="radio">未知</label>
+                        <label class="nui-mr"><input name="radio" value="男" type="radio">男</label>
+                        <label class="nui-mr"><input name="radio" value="女" type="radio">女</label>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">爱好[多选]</div>
+                    <div class="nui-form-block nui-lh30">
+                        <label class="nui-block "><input name="checkbox" value="吃饭" checked type="checkbox">吃饭</label>
+                        <label class="nui-block "><input name="checkbox" value="睡觉" type="checkbox">睡觉</label>
+                        <label class="nui-block "><input name="checkbox" value="打豆豆"  type="checkbox">打豆豆</label>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-label">文本框</div>
+                    <div class="nui-form-block">
+                        <textarea class="nui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-form-block">
+                        <button class="nui-btn nui-btn-width">提交表单</button>
+                    </div>
+                </div>
+            </div>
+            <pre class="ing-pre">
+// 上传
+nui.upload({
+        elem: "#elem",
+        url: '../../nui/doc/success.json',
+        ext: 'jpg',
+        method: "get",
+        error: function (res) {
+            nui.toast('上传失败')
+        },
+        before: function (t) {
+           nui.showLoading('上传中')
+        },
+        success: function (res, t) {
+           nui.showSuccess('上传成功');
+           $("#photo").val(res.msg);
+        }
+});
+// 表单
+nui.form({
+        "form": ".nui-form", //必填，要渲染的UI
+        "url":  '../../nui/doc/success.json', //请求地址，非form必填
+        "btn": ".nui-btn-width", //触发form的submit  非form必填
+        "message": function (name, that) {
+                if(name === "photo"){
+                nui.toast("请上传图片");
+                }else{
+                nui.toast("请输入");
+                }
+        },
+    }, function (e) {   // 渲染UI，渲染事件
+        nui.showSuccess(e.msg)
+    },{type:'get'});
+            </pre>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+
+
+</script>
+</body>
+</html>

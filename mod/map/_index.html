@@ -1,0 +1,326 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="renderer" content="webkit">
+    <title>太仓地图-测试</title>
+    <link rel="stylesheet" href="//shaonq.github.io/nui/resource/nui.min.css">
+    <script src="https://webapi.amap.com/maps?v=1.3&key=0c5d1ec493c1681b8da91b3beb28478a"></script>
+    <style>
+        html, body, #container { width: 100%; height: 100%; }
+        .log {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 100;
+            width: 320px;
+            padding:10px 30px;
+            background-color: rgba(255,255,255,0.9);
+        }
+        .log p{margin: 20px 0}
+        @media screen and (max-width: 979px)  {.log{width: 100%;    left: 0;}.log .log-bd{ display: none; }}
+
+
+
+
+        /**
+         * AMap skin
+         *
+         */
+        .nk-Amap-marker{
+            position: relative;
+        }
+        .nk-Amap-marker span{
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -50%;
+            margin-left: 50%;
+            white-space: nowrap;
+            border-radius: 3px;
+            padding: 1px 3px;
+            background-color: rgba(255, 255, 255, .7);
+            -webkit-animation: fadeIn .35s;
+            animation: fadeIn .35s;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        .nk-Amap-marker:hover span{display: block}
+        .nk-Amap-popup{
+            position: relative;
+            padding: 10px 10px 15px;
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 3px;
+            box-shadow: 1px 2px 1px rgba(0,0,0,.15);
+            font-size: 12px;
+            -webkit-animation:fadeInTop .35s;
+            animation:fadeInTop .35s;
+        }
+        .nk-Amap-popup:after{
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border: 10px solid transparent;
+            border-top-color: #fff;
+            border-top-color: rgba(255, 255, 255, 0.9);
+            box-shadow: none;
+        }
+        .nk-Amap-popup a{
+            color: blue;
+        }
+        .nk-Amap-popup{
+            position: relative;
+        }
+        .nk-Amap-popup .nk-Amap-popup-hd{
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 5px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .nk-Amap-popup .nk-Amap-popup-bd{padding-top: 10px}
+        .nk-Amap-popup .nk-Amap-popup-img img{
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+            margin-bottom: 5px;
+        }
+        .nk-Amap-popup .nk-Amap-popup-img span{
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+        }
+        .nk-Amap-popup .nk-Amap-popup-img img+span{
+            margin-left: 5%;
+            width: 45%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div class="log" id="log">
+    <h4 class="log-hd"> 说明 </h4>
+    <div class="log-bd">
+        <p> 该做些什么功能好呢  _(:зゝ∠)_</p>
+        <p class="nk-btn-group right">
+            <a class="nk-btn" href="http://lbs.amap.com/api/javascript-api/reference/cloudlayer/#CloudDataSearch" target="_blank">API</a>
+            <a class="nk-btn" href="http://yuntu.amap.com/datamanager/table.html?action=update&tableid=57ad207f7bbf19730e00b31d" target="_blank">Edit</a>
+        </p>
+    </div>
+</div>
+<script>
+    /**
+     * 云图插件（AMap.CloudDataLayer）
+     * 云图插件数据检索（AMap.CloudDataSearch）
+     * 公交换乘插件（AMap.Transfer）
+     * 驾车（AMap.Driving）
+     * 步行（AMap.Walking）
+     * ...
+     * */
+            // 初始化
+    var global={center:[121.097571,31.472461]};
+    global.autoPlugin = function () {
+        AMap.plugin(["AMap.Scale"], function () { global.map.addControl(new AMap.Scale()) });  // 加载比例尺
+    };
+    global.createMarker = function (key) {
+        //自定义点标记内容
+        var box = document.createElement("div");
+        box.className = "nk-Amap-marker";
+
+        //点标记中的图标
+        var markerImg = document.createElement("img");
+        markerImg.className = "markerlnglat";
+        markerImg.src = "http://webapi.amap.com/images/marker_sprite.png";
+        markerImg.height = "35";
+        markerImg.width = "27";
+        box.appendChild(markerImg);
+
+        //点标记中的文本
+        var markerSpan = document.createElement("span");
+        markerSpan.innerHTML = key._name;
+        box.appendChild(markerSpan);
+
+        return new AMap.Marker({
+            map:global.map,
+            visible:true,//可见
+            position:new AMap.LngLat(key._location.lng, key._location.lat),//基点位置
+            extData:key,//间接赋值，可少写一个方法
+            autoRotation:false,
+            content: box //自定义点标记覆盖物内容
+
+        });
+    };
+    global.removeMarker=function () {
+        global.map.clearMap()
+    };
+    global.createMarkerEvent =function (e) {
+        // console.log(e,this.getExtData())
+        global.infoWindowMarker(this.getExtData())
+    };
+    //关闭自定义信息窗体
+    global.closeInfoWindow = function(){
+        global.map.clearInfoWindow();
+    };
+    //构建自定义信息窗体 (内容,标题,图片)
+    global.createInfoWindow = function(content,title,imgInfo){
+        var box = document.createElement("div"),hd = document.createElement("div"),bd = document.createElement("div");
+        box.className = "nk-Amap-popup";
+        hd.className = "nk-Amap-popup-hd";
+        bd.className = "nk-Amap-popup-bd";
+        hd.innerHTML = title;
+        bd.innerHTML= imgInfo? '<div class="nk-Amap-popup-img">'+imgInfo+'</div>'+content:content;
+        return title&&box.appendChild(hd),content&&box.appendChild(bd),box
+    };
+    global.infoWindowMarker=function (item) {
+        /**
+         * _id	String	数据id，id为数据唯一标识
+         * _name	String	名称
+         * _location	LngLat	坐标
+         * _address	String	地址
+         * _address	String	地址
+         * _image	Array.<Image>	图片信息
+         * _updatetime	String	数据更新时间
+         * _distance	Number	距离中心点距离(仅周边查询时返回)
+         * custom_field1		用户自定义字段1
+         * custom_field...		用户自定义字段...             *
+         **/
+        new AMap.InfoWindow({
+            isCustom:true,
+            content:global.createInfoWindow('<p><b>更新时间：</b><a>'+item._updatetime+'</a></p><p><b>位置：</b><a target="_blank" href="http://m.amap.com/navigation/index/daddr='+item._location.lat+','+item._location.lng+','+item._name+'">导航</a></p>',item._name,(item._image.length?'<img src=\"'+item._image[0]._url+'\">':"")+'<span><b>地址：</b>'+item._address+'</span>'),
+            size: new AMap.Size(300, 0),
+            autoMove: true,
+            offset: new AMap.Pixel(0, -25)
+        }).open(global.map, item._location);
+        AMap.event.addListener(global.map,"click",function(){
+            global.map.clearInfoWindow();
+        });
+    };
+    global.CloudDataSearch = function (lnglat,key) {
+        return AMap.plugin(['AMap.CloudDataSearch'], function () {
+            /**
+             * AMap.CloudDataSearch
+             * 加map参数 会自己创建Marker，怎么修改默认外观？
+             * 不可再创建会自己创建Marker，会重复显示
+             * 结果：只把云图当作数据库使用
+             * API:http://lbs.amap.com/api/javascript-api/reference/cloudlayer/#CloudDataSearch
+             *     http://www.cnblogs.com/milkmap/p/3727842.html#MySignature
+             *     http://lbs.amap.com/api/uri-api/web-uri-explain/#id006  高德手机浏览器URI API
+             * Edit:http://yuntu.amap.com/datamanager/table.html?action=update&tableid=57ad207f7bbf19730e00b31d
+             */
+            global.removeMarker();
+            new AMap.CloudDataSearch('57ad207f7bbf19730e00b31d',{keywords:(key||'')}).searchByDistrict("太仓",function (a, b) {//这个过滤是加载太仓所有数据
+                if ( b && a === "complete") {
+                    for (var k in b.datas){
+                        AMap.event.addListener(global.createMarker(b.datas[k]), 'click', function (ev) {
+                            global.createMarkerEvent.call(this,ev)
+                        })
+                    }
+                } else console.log("AMap.CloudDataSearch.info", b)
+            });
+        }),this.map
+    };
+    global.geolocation = function (fn) {
+        AMap.plugin('AMap.Geolocation', function () {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+                maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                showButton: true,        //显示定位按钮，默认：true
+                buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+                buttonOffset: new AMap.Pixel(15, 55),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+                showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+                panToLocation: false,     //定位成功后将定位到的位置作为地图中心点，默认：true
+                zoomToAccuracy: false      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            });
+            global.map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+            AMap.event.addListener(geolocation, 'complete', function (e) {
+                if(e.accuracy){//高精度
+                    global.CloudDataSearch(e.position);
+                    fn&&fn(e.position);
+                    new AMap.Circle({
+                        center:new AMap.LngLat(e.position.lng,e.position.lat),// 圆心位置
+                        radius:500, //半径
+                        strokeColor: "#F33", //线颜色
+                        strokeOpacity: 1, //线透明度
+                        strokeWeight: 1, //线粗细度
+                        fillColor: "#ee2200", //填充颜色
+                        fillOpacity: 0.1//填充透明度
+                    }).setMap(global.map);
+                }else {//ip定位
+                    AMap.plugin('AMap.CitySearch',function () {
+                        var _ =new AMap.CitySearch();
+                        _.getLocalCity();
+                        AMap.event.addListener(_, "complete", function(e){
+                            fn&&fn(e.city);
+                        });
+                        AMap.event.addListener(_, "error", function(e){
+                            // console.log(e)
+                        });
+                    })
+                }
+            });
+            AMap.event.addListener(geolocation, 'error', function (e) {
+                console.log("AMap.Geolocation.info", e)
+            });
+        });
+    };
+    global.init = function () {
+        global.map = new AMap.Map('container', {
+            level: 12,
+            zooms: [10, 18],
+            // mapStyle: 'fresh',
+            features: ['bg', 'building', 'road'],//, ,'point' 热点
+            center: global.center
+        });
+
+        global.autoPlugin();
+
+        AMap.event.addListener(global.CloudDataSearch(global.center), 'click', function(ev) {
+            // global.CloudDataSearch(ev.lnglat);//刷新搜索结果
+            // console.log(ev)
+        });
+
+        global.geolocation(function (e) {
+            (typeof e === typeof 'a')?(!global.__)&&AMap.service('AMap.Weather', function() {
+                global.__ = true;
+                var weather = new AMap.Weather();
+                weather.getLive(e, function(err, data) {
+                    if(!err){
+                        var _ =document.createElement("p"),str=[];
+                        str.push('<div style="color: #3366FF;">实时天气' + '</div>');
+                        str.push(data.city+',' + data.weather);
+                        str.push('，' + data.temperature + '℃，');
+                        str.push(data.windDirection + '风');
+                        str.push(data.windPower + ' 级');
+                        str.push('，湿度' + data.humidity + '</div>');
+                        str.push('<small style="display: block;color: #888;">发布时间：' + data.reportTime + '</small>');
+                        _.innerHTML =str.join('');
+                        document.getElementById("log").appendChild(_)
+                    }
+                })
+            }): console.log(''+e);
+        });
+        window.f=global
+
+    }();
+
+
+
+</script>
+
+<script src="//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js"></script>
+<script> geoip2.insights(function(location){ console.log(location.traits.ip_address) })</script>
+</body>
+</html>
+
+
+

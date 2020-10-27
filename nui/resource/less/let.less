@@ -1,0 +1,47 @@
+/*! nui.css | MIT License | shaonq@qq.com */
+
+@blue: #1780fb;
+@dark-blue: darken(@blue,10%);
+@light-blue: lighten(@blue,15%);
+
+@green: #09bb07;
+@dark-green: darken(@green,10%);
+@light-green: lighten(@green,15%);
+
+@orange: #F7B824;
+@dark-orange:darken(@orange,10%);
+@light-orange:lighten(@orange,15%);
+
+@red: #f75b43;
+@dark-red: darken(@red,10%);
+@light-red: lighten(@red,15%);
+
+@black:#504d47;
+@dark-black: darken(@black,10%);
+@light-black: lighten(@black,15%);
+
+@666:#666;
+@eee:#eaecef;
+@e2e2e2:#e1e4e8; /* 线条颜色 */
+@f8f8f8:#f6f8fa; /* 浅背景色 */
+@ddd:#d1d5da;
+@999:#999;
+
+@minMargin:10;
+
+.opacity(@val:.8){
+  opacity: @val;
+  filter: ~`"alpha(opacity=" + "@{val}" * 100 + ")"`;
+}
+.isDisabled(){
+  border: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  color: #c9c9c9;
+}
+.linear-gradient(@color,@val:2%){
+  @a:darken(@color,@val);
+  background-color: @color;
+  background-image: -webkit-linear-gradient(top, @color,@a);
+  background-image: -ms-linear-gradient(to bottom, @color, @a);
+  background-image: linear-gradient(to bottom, @color, @a);
+}

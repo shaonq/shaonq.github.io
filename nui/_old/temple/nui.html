@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <script>window._time_ = +new Date();</script>
+    <link rel="stylesheet" href="../../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../css/ing.min.css">
+    <title> 欢迎您！ 一 NUI</title>
+</head>
+<body>
+<script src="header.min.js"></script>
+<div class="ing-content nui-w960 nui-auto ">
+    <!-- nui.form -->
+    <div class="nui-box nui-box-large" id="form">
+        <div class="nui-box-hd">
+            <div>nui.form</div>
+        </div>
+        <div class="nui-box-bd">
+            <form class="nui-form" action="success.json">
+                <!-- 一堆资料  -->
+                <div class="nui-form-g">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label" for="user" data-anchor="#tab">账号</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="user" id="user" data-check="请填写账号" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label" for="company">公司名</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="company" id="company" data-check="请填写公司名" placeholder="必填">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-g">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">密码</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="pass" type="password" data-check="pass" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">确认密码</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="repass" type="password" data-check="repass" placeholder="必填">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-g">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">地址</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="address" placeholder="">
+                        </div>
+                    </div>
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">经营地址</label>
+                        <div class="nui-input-inline ">
+                            <input class="nui-input " name="jy_address" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nui-form-g">
+                    <div class="nui-inline ">
+                        <label class="nui-form-label">手机号</label>
+                        <div class="nui-input-inline">
+                            <input class="nui-input " name="phone" data-check="phone" placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline right">
+                        <label class="nui-form-label">短信验证码</label>
+                        <div class="nui-input-inline nui-w240 left">
+                            <input class="nui-input " name="code" placeholder="必填" data-check="请填写短信验证码">
+                            <a class="nui-fc3" href="javascript:;">获取验证码</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 用户协议  -->
+                <div class="nui-form-g  center nui-inlines">
+                    <div class=" nui-mb">
+                        <div class="nui-inline nui-mr">
+                            <input type="checkbox" name="agreement" id="agreement" data-check="checked" title="请先阅读用户协议">
+                        </div>
+                        <label class="nui-inline " for="agreement">
+                            <span>同意</span><a href="javascript:;" target="_blank" class="nui-fc1">《用户协议》</a>
+                        </label>
+                    </div>
+                    <div class="nui-inline center nui-w240 ">
+                        <button class="nui-btn   nui-btn-width  nui-btn-blue"> 注 册</button>
+                    </div>
+                </div>
+                <h4>UI对比</h4><hr>
+                <div class="nui-form-group nui-inlines nui-inlines-row">
+                    <div class="nui-inline">
+                        <div class="nui-form-label"> select</div>
+                        <div class="nui-inline">
+                            <select>
+                                <option>第一条</option>
+                                <option>第二条</option>
+                                <option>第三条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="nui-inline">
+                        <div class="nui-inline"> <input type="checkbox" id="_checkbox"></div>
+                        <label class="nui-inline" for="_checkbox"> checkbox</label>
+                    </div>
+                    <div class="nui-inline">
+                        <div class="nui-inline"> <input type="radio" name="radio" id="radio1"></div>
+                        <label class="nui-inline" for="radio1"> radio</label>
+                    </div>
+                    <div class="nui-inline">
+                        <div class="nui-inline"> <input type="radio" name="radio" id="radio2"></div>
+                        <label class="nui-inline" for="radio2"> radio</label>
+                    </div>
+                </div>
+                <pre> # 只需在任意父元素上添加 .nui-form,就会自动渲染UI </pre>
+            </form>
+            <div class="nui-form-group nui-inlines nui-inlines-row">
+                <div class="nui-inline">
+                    <div class="nui-form-label"> select</div>
+                    <div class="nui-inline">
+                        <select class="nui-input">
+                            <option>第一条</option>
+                            <option>第二条</option>
+                            <option>第三条</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="nui-inline"> <input type="checkbox"> checkbox </div>
+                <div class="nui-inline"> <input type="radio"> radio</div>
+            </div>
+            <hr>
+            <div class="nui-form-group"></div>
+            <p class="nui-fc3">验证：<code>data-check=</code>"属性"</p>
+            <table>
+                <tr class="thead"> <th>属性</th> <th>描述</th> </tr>
+                <tr> <td> phone</td> <td>手机格式不合法</td> </tr>
+                <tr> <td> pass</td> <td>密码太过简单</td> </tr>
+                <tr> <td> repass</td> <td>两次密码不一致</td> </tr>
+                <tr> <td> email</td> <td>邮箱格式不正确</td> </tr>
+                <tr> <td> url</td> <td>链接格式不正确</td> </tr>
+                <tr> <td> date</td> <td>日期格式不正确</td> </tr>
+                <tr> <td> number</td> <td>必须为数字</td> </tr>
+                <tr> <td> identity</td> <td>请输入正确的身份证号</td> </tr>
+                <tr> <td> checked</td> <td>验证用户必须同意某些协议，提示内容为input的title</td> </tr>
+                <tr> <td> required</td> <td>此项不能为空</td> </tr>
+                <tr> <td> *</td> <td>*(必填项，填什么提示什么)</td> </tr>
+            </table>
+            <pre class="ing-pre">
+    nui.form({
+        "form": ".nui-form", //必填，要渲染的UI
+        "message": function (name, that) {
+            nui.alert("$('[name=\""+name+"\"]'),不通过");
+            // 自定义提示弹窗
+            //name input的[name] that:input的jQ对象
+        },
+        "btn": ".nui-form-label" //非必填，触发form的submit
+    }, function (e) {   // function存在就绑定事件，没有只绑定UI
+                        //e 异步回掉的数据
+        if(e.status) nui.alert(e.msg)
+    });
+    // Ps: 网页加载不想绑定UI请不要使用.nui-form，也无法使用此特性
+        </pre>
+
+        </div>
+    </div>
+    <!-- tab -->
+    <div class="nui-box nui-box-large" id="tab">
+        <div class="nui-box-hd">tab</div>
+        <div class="nui-box-bd" >
+            <div class="nui-tab nui-noborder" data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-tab nui-tab-green nui-mt "  data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-tab nui-tab-red nui-tab-wire nui-mt "  data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-mt" id="_tab_page">
+                <code id="page1" class="nui-fcb">page1</code>
+                <code id="page2" class="nui-fcg hide">page2</code>
+                <code id="page3" class="nui-fcr hide">page3</code>
+            </div>
+            <pre> Ps: nui-line-nav 已经移除了 nui-line-* 的行列 </pre>
+        </div>
+
+    </div>
+    <!-- upload -->
+    <div class="nui-box nui-box-large" id="_upload">
+        <div class="nui-box-hd">nui.upload</div>
+        <div class="nui-box-bd">
+            <div class="nui-inline nui-upload">
+                <a class="nui-btn">上传
+                    <input type="file"  id="upload">
+                </a>
+            </div>
+            <pre class="ing-pre">
+    nui.upload({
+        elem:"#upload",
+        url: 'demo/abc.json',
+        ext:'jpg,png',
+        method:"get",
+        error: function(res){
+            nui.toast(res);
+        },
+        before: function(t){
+            console.info('before',t)
+        },
+        success: function(res,t){
+            console.info(res,t);
+        }
+    });
+</pre>
+        </div>
+    </div>
+    <!-- open -->
+    <div class="nui-box nui-box-large" id="_open">
+        <div class="nui-box-hd">nui.open</div>
+        <div class="nui-box-bd">
+            <div>
+
+
+            </div>
+            <div class="">
+                <div class="nui-inline"> <a class="nui-btn nui-btn-black" onclick="window.click.toast()">toast</a></div>
+                <div class="nui-inline"> <a class="nui-btn nui-btn-default" onclick="window.click.dialog()">dialog</a></div>
+                <div class="nui-inline"> <a class="nui-btn nui-btn-red" onclick="window.click.alert()">alert</a></div>
+                <div class="nui-inline"><a class="nui-btn nui-btn-green" onclick="window.click.iframe()">iframe</a></div>
+                <div class="nui-inline "><input class="nui-input js-dropdown" placeholder="请输入日期"></div>
+                <a class="nui-btn nui-btn-orange"  onclick="window.click.message()">message</a>
+                <div class="nui-inline js-dropdown fr"><a class="nui-btn "> 请选择查询日期 </a></div>
+            </div>
+            <table class="nui-mt">
+                <tr class="thead"> <th>属性</th> <th>描述</th> </tr>
+                <tr> <td> options.type:int</td> <td>弹出层的类型，<code class="code">0:dialog,1:alert,2:iframe,3:toptip,4:message</code></td> </tr>
+                <tr> <td> options.shadow</td> <td><code class="code">false</code>:没有遮罩层,<code class="code">0.0-1.0</code> 有透明度对应的遮罩层</td> </tr>
+                <tr> <td> options.fixed:boolean</td> <td>定位</td> </tr>
+                <tr> <td> options.full:boolean</td> <td>是否可以全屏</td> </tr>
+                <tr> <td> options.content:string</td> <td>弹出层的内容</td> </tr>
+                <tr> <td> options.offset:string</td> <td>弹出层的位置</td> </tr>
+                <tr> <td> options.width:string</td> <td>弹出层的宽高 ,宽：<code class="code">"100px"</code>,高:<code class="code">["100px","80px"]</code></td> </tr>
+                <tr> <td> options.success:function(that,index)</td> <td><code class="code">that</code>:弹出层的jQ对象 <code class="code">index</code>:弹出层的索引</td> </tr>
+            </table>
+            <script type="text/html" id="_dropdown">
+                <div class="nui-dropdown">
+                    {{# for(var i=-2,j=2;i<=j;i++){ }}
+                        <a class="nui-dropdown-item {{ i==0?'this':'' }}"> {{ nui.util.date.now(i) }} </a>
+                    {{# } }}
+                </div>
+            </script>
+            <pre class="ing-pre">
+// 语法糖
+// nui.toast(text,time) text 文字
+// nui.alert(options:同options,{success:'点击确定按钮的方法',text:['确定的按钮文字','取消'],className:['nui-btn-red','nui-btn-default']})
+// nui.showLoading('加载中') / nui.hideLoading() 加载和关闭加载
+window.click = {
+        toast:function () {
+            nui.toast("你好啊");
+        },
+        dialog:function () {
+            nui.open({ content: "你好啊",shadow:!1, fixed: true, type: 0});
+        },
+        alert:function () {
+            nui.alert("你好啊",function(index){
+                    nui.toast('确定');
+                    nui.close(index);
+                });
+        },
+        iframe:function () {
+            nui.open({ content: 'https://www.yanyujiangnan.com.cn',shadow:.6 ,width: ["60%","60%"],full:true, offset:["10%"],fixed: true, type: 2,
+                success: function(that){ $("#user", this).val("父页传过来的内容").focus() }});
+        },
+        message:function () {
+            var skin = ",green,orange,blue,red".split(',')[(nui.util.randomSize(0,4))];
+            nui.open({ time: 0, skin:skin,content: "你好啊", fixed: true, type: 3});
+        }
+    };
+    $(".js-dropdown").on("click",function (e) {
+        var _this = this;
+        nui.open({
+                content: nui.createDropdown([1,2,3],2),
+                title:"请选择",type: 4,time: 0, elem: this,
+                success: function(that,index){
+                    $("a",this).on("click",function () {
+                        _this.tagName.toLowerCase() === "input"?
+                        _this.value = this.innerHTML:
+                        nui.alert("你选择了"+this.innerHTML);
+                        nui.close(index)
+                })
+        }});
+    });
+        </pre>
+        </div>
+    </div>
+    <!-- page -->
+    <div class="nui-box nui-box-large" id="_page">
+        <div class="nui-box-hd">nui.page</div>
+        <div class="nui-box-bd">
+            <div class="nui-inline">
+                <div id="qvq"></div>
+            </div>
+            <pre class="ing-pre">
+            /*
+             * elem:元素
+             * pages:number	必填，分页数。
+             * curr:number	当前页。
+             * groups:number 连续分页数。
+             * skin: '#c00'  皮肤颜色。
+             * first:string/boolean	首页。
+             * last:string/boolean	尾页。
+             * prev:string/boolean	上一页。
+             * next:string/boolean	下一页。
+             */
+            nui.is.android||nui.is.ios?
+            nui.page({elem:"#qvq",pages:20,curr:1,groups:0,skin:'#1780fb',prev:'« 上一页',next:'下一页 »'},function(e,b){ b||nui.alert(e.curr) }):
+            nui.page({elem:"#qvq",pages:20,curr:1,skin:'#1780fb',prev:'« 前一页',next:'后一页 »'},function(e,b){ b||nui.alert(e.curr) })
+        </pre>
+        </div>
+    </div>
+    <!-- date -->
+    <div class="nui-box nui-box-large" id="_date">
+        <div class="nui-box-hd">nui.date</div>
+        <div class="nui-box-bd" id="date">
+            <div class="nui-form-group">
+                <label class="nui-form-label">选择日期</label>
+                <div class="nui-input-inline "><input class="nui-input"></div>
+            </div>
+            <div class="nui-form-group">
+                <label class="nui-form-label">选择日期 时分</label>
+                <div class="nui-input-inline "><input class="nui-input"></div>
+            </div>
+            <div class="nui-form-group">
+                <label class="nui-form-label">选择日期 时分秒</label>
+                <div class="nui-input-inline "><input class="nui-input"></div>
+            </div>
+            <div class="nui-form-group">
+                <label class="nui-form-label">选择日期范围</label>
+                <div class="nui-input-inline "><input class="nui-input"></div>
+                <div class="nui-inline"> ~ </div>
+                <div class="nui-input-inline "><input class="nui-input"></div>
+            </div>
+            <div class="nui-form-group">
+                <pre class="ing-pre">
+                    // Ps:目前不支持 yyyy-MM-dd HH:mm:ss 格式选择,但是支持格式化
+                    // &lt;input data-date=""&gt; 支持 data-date 直接绑定
+                    ;!function(){
+                        var start,end;
+                        $("#date input").each(function (index) {
+                            switch (index) {
+                                case 0:
+                                    nui.date({elem:this});
+                                    break;
+                                case 1:
+                                    nui.date({elem:this,format:"yyyy-MM-dd HH:mm"});
+                                    break;
+                                case 2:
+                                    nui.date({elem:this,format:"yyyy-MM-dd HH:mm:ss"});
+                                    break;
+                                case 3:
+                                    start = {elem:this,callback:function(e){end.min = e.curr}};
+                                    nui.date(start);
+                                    break;
+                                case 4:
+                                    end  = {elem:this,callback:function(e){start.max = e.curr}};
+                                    nui.date(end);
+                                    break;
+                            }
+                        });
+                    }()
+                </pre>
+            </div>
+        </div>
+    </div>
+    <!-- animate -->
+    <div class="nui-box nui-box-large" id="animate">
+        <div class="nui-box-hd">nui.animate</div>
+        <div class="nui-box-bd">
+            <div class="nui-form-group">
+                <div class="nui-input-inline nui-w240"><input title="" id="animate_demo" class="nui-input"></div>
+                <div class="nui-inline nui-ml">
+                    <div class="nui-inline"> <a class="nui-btn">Linear</a></div>
+                    <div class="nui-inline"> <a class="nui-btn">easeIn</a></div>
+                    <div class="nui-inline"> <a class="nui-btn">easeOut</a></div>
+                    <div class="nui-inline"> <a class="nui-btn">easeInOut</a></div>
+                </div>
+            </div>
+            <div class="nui-form-group">
+    <pre class="ing-pre">
+    /* * * nui.animate(from, to,callback,easing,duration)
+     * from:number	必填，开始。
+     * to:number	必填，结束。
+     * callback:fn(val:number,end:boolean) val 实时值 / end 结束
+     * easing:string 曲线 "Linear"/"easeIn"/"easeOut"/"easeInOut"
+     * duration:number ms
+     */
+
+    $('#animate_demo').each(function(){
+        var that =$(this),btns =that.parent().next().find('a');
+        btns.on("click",function () {
+            var self =$(this),a ='is-disabled',b='readonly';
+            if(this.className === "nui-btn"){
+                btns.each(function (index,item) {
+                    item.className = "nui-btn"
+                }).addClass(a);
+                that.removeAttr(b);
+                this.className = "nui-btn nui-btn-green";
+                var data =[];
+                nui.animate(0, 10,function(value,end){
+                    that.val(value);
+                    data.push(value);
+                    if (end) {
+                        nui.open({
+                            title:self.html(),
+                            type:2,
+                            width:["450px","300px"],
+                            content:'../../mod/chart/?data='+JSON.stringify(data)
+                        });
+                        that.attr(b,b);
+                        btns.removeClass(a);
+                    }
+                },self.html(),1e3)
+            }
+        })
+    })
+    </pre>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="footer.min.js"></script>
+<script>
+
+</script>
+</html>

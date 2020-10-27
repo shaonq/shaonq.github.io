@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box">
+        <div class="nui-box-bd">
+            <div class="nui-inline">
+                <div id="qvq"></div>
+            </div>
+            <pre class="ing-pre nui-mt">
+            /*
+             * elem:元素
+             * pages:number	必填，分页数。
+             * curr:number	当前页。
+             * groups:number 连续分页数。
+             * skin: '#c00'  皮肤颜色。
+             * first:string/boolean	首页。
+             * last:string/boolean	尾页。
+             * prev:string/boolean	上一页。
+             * next:string/boolean	下一页。
+             */
+            nui.is.android||nui.is.ios?
+            nui.page({elem:"#qvq",pages:20,curr:1,groups:0,skin:'#1780fb',prev:'« 上一页',next:'下一页 »'},function(e,b){ b||nui.alert("当前 "+e.curr+" 页") }):
+            nui.page({elem:"#qvq",pages:20,curr:1,skin:'#1780fb',prev:'« 前一页',next:'后一页 »'},function(e,b){ b||nui.alert("当前 "+e.curr+" 页") })
+        </pre>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

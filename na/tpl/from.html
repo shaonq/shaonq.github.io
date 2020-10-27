@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box">
+        <div class="nui-box-bd">
+            <form class="nui-form" action="abc.json"> <!-- 一堆资料 -->
+                <div class="nui-form-group">
+                    <div class="nui-inline "><label class="nui-form-label" for="user">账号</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="user" id="user" data-check="请填写账号"
+                                                             placeholder="必填"></div>
+                    </div>
+                    <div class="nui-inline "><label class="nui-form-label" for="company">公司名</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="company" id="company"
+                                                             data-check="请填写公司名"
+                                                             placeholder="必填"></div>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-inline "><label class="nui-form-label">密码</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="pass" type="password"
+                                                             data-check="pass"
+                                                             placeholder="必填"></div>
+                    </div>
+                    <div class="nui-inline "><label class="nui-form-label">确认密码</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="repass" type="password"
+                                                             data-check="repass"
+                                                             placeholder="必填"></div>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-inline "><label class="nui-form-label">地址</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="address" placeholder=""></div>
+                    </div>
+                    <div class="nui-inline "><label class="nui-form-label">经营地址</label>
+                        <div class="nui-input-inline "><input class="nui-input " name="jy_address" placeholder=""></div>
+                    </div>
+                </div>
+                <div class="nui-form-group">
+                    <div class="nui-inline "><label class="nui-form-label">手机号</label>
+                        <div class="nui-input-inline"><input class="nui-input " name="phone" data-check="phone"
+                                                             placeholder="必填">
+                        </div>
+                    </div>
+                    <div class="nui-inline "><label class="nui-form-label">短信验证码</label>
+                        <div class="nui-input-inline nui-w240"><input class="nui-input " name="code" placeholder="必填"
+                                                                      data-check="请填写短信验证码"> <a class="nui-fc3"
+                                                                                                href="javascript:;">获取验证码</a>
+                        </div>
+                    </div>
+                </div> <!-- 用户协议 -->
+                <div class="nui-form-group center nui-inlines">
+                    <div class="nui-fcf nui-mb"><input type="checkbox" name="agreement" id="agreement" data-check="checked"
+                                                       title="请先阅读用户协议"> <label class="nui-inline" for="agreement">同意<a
+                            href="javascript:;" target="_blank" class="nui-fc1">《用户协议》</a></label></div>
+                    <div class="nui-inline center nui-w240 "><a class="nui-btn nui-btn-width nui-form-btn nui-btn-blue"> 注 册</a></div>
+                </div>
+            </form>
+        </div>
+        <div class="nui-box-bd">
+            <table class="nui-table">
+                <tbody><tr class="thead"> <th>属性</th> <th>描述</th> </tr>
+                <tr> <td> phone</td> <td>手机格式不合法</td> </tr>
+                <tr> <td> pass</td> <td>密码太过简单</td> </tr>
+                <tr> <td> repass</td> <td>两次密码不一致</td> </tr>
+                <tr> <td> email</td> <td>邮箱格式不正确</td> </tr>
+                <tr> <td> url</td> <td>链接格式不正确</td> </tr>
+                <tr> <td> date</td> <td>日期格式不正确</td> </tr>
+                <tr> <td> number</td> <td>必须为数字</td> </tr>
+                <tr> <td> identity</td> <td>请输入正确的身份证号</td> </tr>
+                <tr> <td> checked</td> <td>验证用户必须同意某些协议，提示内容为input的title</td> </tr>
+                <tr> <td> required</td> <td>此项不能为空</td> </tr>
+                <tr> <td> *</td> <td>*(必填项，填什么提示什么)</td> </tr>
+                </tbody></table>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

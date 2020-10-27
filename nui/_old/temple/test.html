@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <script>window._time_ = +new Date();</script>
+    <script src="../js/rem.js" data-width="1920"></script>
+    <title> 欢迎您！ 一 NUI</title>
+    <style> * { margin: 0; padding: 0 } body { font-size: 0.14rem } .inlines { margin: 0.2rem; font-size: 0; } .inline { display: inline-block; vertical-align: middle; } .inlines .inline { font-size: 0.14rem } </style>
+</head>
+<body>
+<div class="inlines" id="init"></div>
+</body>
+<script src="//cdn.bootcss.com/jquery/1.8.1/jquery.min.js"></script>
+<script src="../resource/nui.min.js"></script>
+<script>
+    var init =function (data) {
+        var that =$(this);
+        var width  = that.outerWidth();
+        var height =that.outerWidth()/16*9;
+        that.height(height);
+        /** 自动计算
+         var col = function () { var i = 1,j = data.length; while (!0)if( (i * i) > j){ return i } else i++ }(),row = col;
+         */
+        /* 固定算法 */
+        var col =12 ,row =11;
+        var colWidth = width/col;
+        var rowWidth = height/col;
+
+        var render = function () {
+            var tpl ='\
+                {{# for(var key in d) { var l =d[key]; }}\
+                   <div class="inline" style="width:'+colWidth+'px;height:'+rowWidth+'px;">{{l}}</div> \
+                {{# } }}\
+            ';
+            that.html(nui.tpl(tpl,data))
+        };
+        render();
+    };
+    var data = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1]];
+    init.call(document.getElementById("init"),data)
+</script>
+</html>

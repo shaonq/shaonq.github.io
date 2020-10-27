@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>编码本是一种自由</title>
+    <link rel="stylesheet" href="resource/nui.min.css">
+    <link rel="stylesheet" href="doc/index.min.css">
+</head>
+<body>
+<div id="J_head">
+    <div class="g-head-banner" style="/*filter: grayscale(100%);*/background-image: url(img/2k/20180716.jpg)">
+        <div class="g-head">
+            <div class="g-head-main__bg" style="background-image: url(img/2k/20180716.jpg)"></div>
+            <div class="nui-main g-head-main">
+                <div class="nui-inlines nui-inlines-row">
+                    <div class="nui-inline">
+                        <a href="/" class="g-head__logo"><img src="./../favicon.png" width="32"></a>
+                    </div>
+                    <div class="nui-inline">
+                        <form class="g-head__form">
+                            <input class="g-head__input">
+                            <button class="g-head__button"></button>
+                        </form>
+                    </div>
+                    <a href="/nui" class="nui-inline  g-head__nav-link">UI</a>
+                    <a href="/nui/api" class="nui-inline  g-head__nav-link">API</a>
+                    <a href="/nui/component" class="nui-inline  g-head__nav-link">组件</a>
+                    <a href="/nui/_old/temple/" target="_blank" class="nui-inline  g-head__nav-link">其他</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="g-head-line">
+        <i class="nui-btn-green nui-grid-100"></i>
+        <i class="nui-btn-blue nui-grid-80"></i>
+        <i class="nui-btn-orange nui-grid-60"></i>
+        <i class="nui-btn-red nui-grid-40"></i>
+        <i class="nui-btn-black nui-grid-20"></i>
+    </div>
+</div>
+<div id="J_body">
+    <div class="nui-main">
+        <!-- floor 0 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">表单
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <div>表单组件</div>
+                <div>
+                    <div class="nui-form">
+                        <div class="nui-form-g">
+                            <div class="nui-inline">
+                                <div class="nui-form-label">文本框</div>
+                                <div class="nui-form-block">
+                                    <input data-check="required" name="text" class="nui-input">
+                                </div>
+                            </div>
+                            <div class="nui-inline">
+                                <div class="nui-form-label">选择日期</div>
+                                <div class="nui-form-block">
+                                    <input class="nui-input" name="date" data-check="date"
+                                           data-date="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">性别[单选]</div>
+                            <div class="nui-form-block nui-lh30">
+                                <label class="nui-mr"><input name="radio" value="未知" checked type="radio">未知</label>
+                                <label class="nui-mr"><input name="radio" value="男" type="radio">男</label>
+                                <label class="nui-mr"><input name="radio" value="女" type="radio">女</label>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">爱好[多选]</div>
+                            <div class="nui-form-block nui-lh30">
+                                <label class="nui-block "><input name="checkbox" value="吃饭" checked
+                                                                 type="checkbox">吃饭</label>
+                                <label class="nui-block "><input name="checkbox" value="睡觉" type="checkbox">睡觉</label>
+                                <label class="nui-block "><input name="checkbox" value="打豆豆" type="checkbox">打豆豆</label>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-label">文本框</div>
+                            <div class="nui-form-block">
+                                <textarea class="nui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="nui-form-group">
+                            <div class="nui-form-block">
+                                <button class="nui-btn nui-btn-width">提交表单</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre class="js-pre">
+                    nui.form({
+                        "form": ".nui-form", //必填，要渲染的UI
+                        "url": 'doc/success.json', //请求地址，非form必填
+                        "message": function (name, that) {
+                            nui.toast("请输入");
+                        },
+                        "btn": ".nui-btn-width" //触发form的submit  非form必填
+                    }, function (e) {   // 渲染UI，渲染事件
+                        nui.alert(e.msg)
+                    },{type:'get'});
+                </pre>
+            </div>
+        </div>
+        <!-- floor 1 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">弹窗
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <div class="">
+                    <div class="nui-inline"> <a class="nui-btn nui-btn-black" onclick="window.click.dialog()">dialog</a></div>
+                    <div class="nui-inline"> <a class="nui-btn nui-btn-red" onclick="window.click.alert()">alert</a></div>
+                    <div class="nui-inline"><a class="nui-btn nui-btn-green" onclick="window.click.iframe()">iframe</a></div>
+                    <div class="nui-inline "><input class="nui-input js-dropdown" placeholder="请输入日期"></div>
+                    <a class="nui-btn nui-btn-blue" onclick="window.click.notice()">toptip</a>
+                    <div class="nui-inline js-dropdown fr"><a class="nui-btn"> 请选择查询日期 </a></div>
+                </div>
+                <table class="nui-mt nui-table">
+                    <tbody><tr class="thead"> <th>属性</th> <th>描述</th> </tr>
+                    <tr> <td> options.type:int</td> <td>弹出层的类型，<code class="code">0:dialog,1:alert,2:iframe,3:toptip,4:dropdown</code></td> </tr>
+                    <tr> <td> options.shadow</td> <td><code class="code">false</code>:没有遮罩层,<code class="code">0.0-1.0</code> 有透明度对应的遮罩层</td> </tr>
+                    <tr> <td> options.fixed:boolean</td> <td>定位</td> </tr>
+                    <tr> <td> options.full:boolean</td> <td>是否可以全屏</td> </tr>
+                    <tr> <td> options.content:string</td> <td>弹出层的内容</td> </tr>
+                    <tr> <td> options.offset:string</td> <td>弹出层的位置</td> </tr>
+                    <tr> <td> options.width:string</td> <td>弹出层的宽高 ,宽：<code class="code">"100px"</code>,高:<code class="code">["100px","80px"]</code></td> </tr>
+                    <tr> <td> options.success:function(that,index)</td> <td><code class="code">that</code>:弹出层的jQ对象 <code class="code">index</code>:弹出层的索引</td> </tr>
+                    </tbody></table>
+                <script type="text/html" id="_dropdown">
+                    <div class="nui-dropdown">
+                        {{# for(var i=-2,j=2;i<=j;i++){ }}
+                        <a class="nui-dropdown-item {{ i==0?'this':'' }}"> {{ nui.util.date.now(i) }} </a>
+                        {{# } }}
+                    </div>
+                </script>
+                <pre class="js-pre nui-mt">
+
+window.click = {
+        dialog:function () {
+            nui.open({ content: "你好啊",shadow:!1, type: 0});
+        },
+        alert:function () {
+            nui.alert("你好啊");
+        },
+        iframe:function () {
+            nui.open({ content: location.href,shadow:.6 ,width: ["60%","60%"],full:true, offset:["10%"],fixed: true, type: 2,
+                success: function(that){ $("#user", this).val("父页传过来的内容").focus() }});
+        },
+        notice:function () {
+            // 暂未预定义皮肤 请自行加skin配置
+            // 可以设置 offset 配置位置
+            // zIndex 可配置层经关系
+            nui.notice({content: "你好啊"})
+        }
+    };
+    $(".js-dropdown").on("click",function (e) {
+        var _this = this;
+        nui.open({ content: nui.tpl(document.getElementById("_dropdown").innerHTML,{_:null}),
+                title:"请选择",type: 4,time: 0, elem: this,
+                success: function(that,index){
+                    $("a",this).on("click",function () {
+                        _this.tagName.toLowerCase() === "input"?
+                        _this.value = this.innerHTML:
+                        nui.alert("你选择了"+this.innerHTML+"日");
+                        nui.close(index)
+                })
+        }});
+    });
+        </pre>
+            </div>
+        </div>
+        <!-- floor 2 -->
+        <div class="nui-box nui-box-large nui-mt">
+            <div class="nui-box-hd">待完善的组件
+                <span class="fr nui-inline">
+                    <a class="js-source" href="javascript:;">查看源码</a>
+                </span></div>
+            <div class="nui-box-bd">
+                <a href="https://www.yanyujiangnan.com.cn/na/" target="_blank">参考文档</a>
+
+            </div>
+        </div>
+        <div class="nui-mt"></div>
+    </div>
+</div>
+<div id="J_food"></div>
+<div id="J_script">
+    <script src="resource/jquery.min.js"></script>
+    <script src="resource/nui.min.js"></script>
+    <script src="doc/index.min.js"></script>
+</div>
+</body>
+</html>

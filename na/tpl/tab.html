@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../nui/resource/nui.css">
+    <link rel="stylesheet" href="../resource/na.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>文档查阅系统</title>
+</head>
+<body>
+<div class="na-page">
+    <div class="nui-box">
+        <div class="nui-box-bd">
+            <div class="nui-tab nui-noborder" data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-tab nui-tab-green nui-mt "  data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-tab nui-tab-red nui-tab-wire nui-mt "  data-tab="a|this|#_tab_page|code">
+                <a class="nui-tab-item this" href="javascript:;">切换组件1</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件2</a>
+                <a class="nui-tab-item" href="javascript:;">切换组件3</a>
+            </div>
+            <div class="nui-mt" id="_tab_page">
+                <code id="page1" class="nui-fcb">page1</code>
+                <code id="page2" class="nui-fcg hide">page2</code>
+                <code id="page3" class="nui-fcr hide">page3</code>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../nui/resource/jquery.min.js"></script>
+<script src="../../nui/resource/nui.js"></script>
+<script>
+    new Function($('.ing-pre').html())()
+</script>
+</body>
+</html>

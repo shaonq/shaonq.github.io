@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <script>window._time_ = +new Date();</script>
+    <link rel="stylesheet" href="../../../nui/resource/nui.min.css">
+    <link rel="stylesheet" href="../css/ing.min.css">
+    <title> 欢迎您！ 一 NUI</title>
+</head>
+<body>
+<script src="header.min.js"></script>
+<div class="ing-content nui-w960 nui-auto ">
+    <!-- nui.get -->
+    <div class="nui-box nui-box-large" id="_get">
+        <div class="nui-box-hd">nui.get</div>
+        <div class="nui-box-bd">
+            <div class="nui-form-group">
+                <table>
+                    <tr class="thead">
+                        <th>属性</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td><code>nui.get.param</code></td>
+                        <td>获取一个浏览器的<code>key</code></td>
+                    </tr>
+                </table>
+            </div>
+            <pre class="ing-pre">
+nui.log("","nui.get demo","green")
+nui.log(nui.get.param("auth_key"),'auth_key')</pre>
+        </div>
+    </div>
+    <!-- nui.is -->
+    <div class="nui-box nui-box-large" id="_is">
+        <div class="nui-box-hd">nui.is</div>
+        <div class="nui-box-bd">
+            <div class="nui-form-group">
+                <table>
+                    <tr class="thead">
+                        <th>属性</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td><code>nui.is.android</code></td>
+                        <td>是否是安卓平台</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.is.ios</code></td>
+                        <td>是否是苹果平台</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.is.ie</code></td>
+                        <td>是否是ie平台,有责显示ie版本</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.is.wechat</code></td>
+                        <td>是否是微信平台</td>
+                    </tr>
+                </table>
+            </div>
+            <pre class="ing-pre">nui.log(nui.is,'nui.is demo',"green")</pre>
+        </div>
+    </div>
+    <!--nui.cookie -->
+    <div class="nui-box nui-box-large" id="_cookie">
+        <div class="nui-box-hd">nui.cookie</div>
+        <div class="nui-box-bd">
+<pre class="ing-pre">
+/**
+    按f12，Application -> Storage -> Cookies ,可查看当前域名下的cookie
+    nui.cookie(key) //读取一个cookie
+    nui.cookie(key,value)  //设置一个带session性质的cookie
+    nui.cookie(key,value,options) //设置一个cookie
+*/
+    nui.log("","nui.cookie demo","green")
+    nui.cookie("cookie",'{"a":"aaa","b":"bbb"}')
+    nui.log(nui.cookie("cookie"),"cookie")
+</pre>
+            <div class="nui-form-group">
+                <table>
+                    <tr class="thead">
+                        <th>属性</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td><code>options.expires</code></td>
+                        <td>生效天数</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.path</code></td>
+                        <td>生效范围</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.domain</code></td>
+                        <td>有效域名</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.secure</code></td>
+                        <td>是否https可读</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--nui.store -->
+    <div class="nui-box nui-box-large" id="_store">
+        <div class="nui-box-hd">*nui.store </div>
+        <div class="nui-box-bd">
+            非htm5 无法使用，但是不会报错！
+<pre class="ing-pre">
+/**
+    按f12，Application -> Storage -> Local Storage ,可查看当前域名下的storage
+    nui.store(key) //读取一个storage
+    nui.store(key,value)  //设置一个storage
+*/
+    nui.log("","nui.store demo","green")
+    nui.store("store",{"a":"aaa","b":"bbb"})
+    nui.log(nui.store("store"),"localStorage.store")
+</pre>
+            <div class="nui-form-group">
+                <table>
+                    <tr class="thead">
+                        <th>属性</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td><code>options.expires</code></td>
+                        <td>生效天数</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.path</code></td>
+                        <td>生效范围</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.domain</code></td>
+                        <td>有效域名</td>
+                    </tr>
+                    <tr>
+                        <td><code>options.secure</code></td>
+                        <td>是否https可读</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--nui.tpl -->
+    <div class="nui-box nui-box-large"  id="_tpl">
+        <div class="nui-box-hd">nui.tpl </div>
+        <div class="nui-box-bd">
+            <pre class=""># 使用
+同步 var html = nui.tpl(tpl,data)
+异步 nui.tpl(tpl,data,function(html){})
+
+# 语法：
+#  console.log(data) === {{ console.log(d) }}
+不转义html：   {{ d.name }}
+并转义html：   {{= d.name }}
+逻辑处理： {{#  JavaScript 表达式 }}
+</pre>
+        </div>
+    </div>
+    <!--nui.http -->
+    <div class="nui-box nui-box-large" id="_http">
+        <div class="nui-box-hd">nui.http </div>
+        <div class="nui-box-bd">
+            <pre class="ing-pre">
+/**
+    nui.http(url,data,callback,options) //发送一个http请求
+    nui.http(url,callback)
+    nui.http(url,data,callback)
+    options 参考 $.ajax options
+*/
+nui.log("","nui.http demo","green")
+nui.http("https://apis.map.qq.com/ws/location/v1/ip",{key:'MUIBZ-Y4KCP-QOUDS-VDXF4-2PTU5-W4F7M',output:'jsonp'},function(e){e.status===0 ? nui.log(e.result.ad_info.province +e.result.ad_info.city,"当前位置","red"): nui.log(e.status,"location","error")},{dataType:"jsonp"})
+</pre>
+        </div>
+    </div>
+    <!--nui.util-->
+    <div class="nui-box nui-box-large" id="_util">
+        <div class="nui-box-hd">nui.util </div>
+        <div class="nui-box-bd">
+            <div class="nui-form-group">
+                <table>
+                    <tr class="thead">
+                        <th>属性</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td><code>*format</code></td>
+                        <td>
+                            <code>yyyy-MM-dd HH:mm:ss</code> /
+                            <code>yyyy-MM-dd</code> /
+                            <code>yyyy-MM</code> /
+                            <code>yyyy</code>
+                        </td>
+                    </tr><tr>
+                        <td><code>nui.util.randomSize(min,max,fixed)</code></td>
+                        <td>生效<code>min-max</code>之间的随机数,<code>fixed</code>为小数位数</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.util.date.now(format)</code></td>
+                        <td>获取当前时间</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.util.date.format(new Date()，format)</code></td>
+                        <td>格式化一个有效时间</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.util.date.toDate('2017-01-01')</code></td>
+                        <td>将日期装换为new Date()对象</td>
+                    </tr>
+                    <tr>
+                        <td><code>nui.util.date.countDown('2018-01-01')</code></td>
+                        <td>倒计时</td>
+                    </tr>
+                </table>
+            </div>
+            <pre class="ing-pre">
+nui.log("","nui.util.date demo","green")
+nui.log(nui.util.date.now(+1,"yyyy-MM-dd HH:mm:ss"),"Tomorrow Date")
+nui.log(nui.util.date.toDate("2015-01-01"),"2015-01-01 toDate")
+nui.log(nui.tpl("还有{{d.d}}天{{d.H}}小时{{d.m}}分{{d.s}}秒就到2019年了",nui.util.date.countDown('2019-01-01 00:00:00')),"友情提示","red")
+</pre>
+        </div>
+    </div>
+    <!--nui.loadJs / nui.loadCss / nui.log -->
+    <div class="nui-box nui-box-large"  id="_other">
+        <div class="nui-box-hd">nui.loadJs / nui.loadCss / nui.log </div>
+        <div class="nui-box-bd">
+            <pre>
+# nui.loadJs(url,callback)  异步加载一条js
+# nui.loadCss(url,id) 异步加载一条css
+# nui.log(value,note,color) 显示注释
+</pre>
+        </div>
+    </div>
+</div>
+</body>
+<script src="footer.min.js"></script>
+<script>
+    console.log("loaded:", +new Date() - window._time_, "ms")
+</script>
+</html>
