@@ -54,7 +54,7 @@ define(function (require) {
         <li class="col col-3"><i class="iconfont icon-git" aria-hidden="true"></i><a href="https://git.oschina.net/progit/" target="_blank">Git</a></li>\
         <li class="col col-3"><i class="iconfont icon-google" aria-hidden="true"></i><a href="http://rj.baidu.com/soft/detail/14744.html" target="_blank">Google Chrome</a></li>\
         <li class="col col-3"><i class="iconfont icon-iconfont" aria-hidden="true"></i><a href="http://www.iconfont.cn/" target="_blank">iconfont</a></li>\
-        <li class="col col-3"><i class="iconfont icon-coding" aria-hidden="true"></i><a href="https://coding.net/" target="_blank">coding</a></li>\
+        <li class="col col-3"><i class="iconfont icon-min-logo" aria-hidden="true"></i><a href="https://shaonq.github.io/" target="_blank">github</a></li>\
         </ul>\
         <div><a href="javascript:;">关于网站</a><a href="about.html">关于我</a></div>\
     </div>\

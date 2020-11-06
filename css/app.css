@@ -43,7 +43,7 @@ blockquote cite{color: #0c8918}
 .header .header-links a{  color: #999;}
 .header .header-main { position: relative; height: 100px; background-color: #fff; }
 .header .header-menu { height: 32px; border-bottom: 2px solid #333; }
-.header .header-logo{ display: block; background: url(../images/logo/logo.png) center no-repeat; width: 320px; height: 100px; }
+.header .header-logo{ display: block; background: url(/images/logo/logo.png) center no-repeat; width: 320px; height: 100px; }
 .header .header-menu .menu-lists { position: relative; width: 220px; height: 32px; padding-left: 35px;  border-bottom: 2px solid #333; font-size: 14px; text-align: center; line-height: 32px; background-color: #333; color: #fff; }
 .header .header-menu .menu-lists i{ position: absolute; line-height: 32px; margin-left: -35px; }
 .header .header-nav{font-size: 0;}
