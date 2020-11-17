@@ -1,6 +1,6 @@
 define(function (require) {
     require.async(['jquery', 'base/TweenMax.min','nui','cdn/markdown-it/8.3.1/markdown-it.min'], function ($, M,nk) {
-        var path = "__file";
+        var path = "file";
         var nav = document.getElementById('m'),warp = document.getElementById('b');
         nk.http(path+".json",function (d) {
             var tpl ="";
