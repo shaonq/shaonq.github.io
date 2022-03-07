@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
@@ -7,179 +8,254 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/nui/resource/nui.css">
     <link rel="stylesheet" href="../resource/na.css">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <title>文档查阅系统</title>
 </head>
-<body>
-<div class="na-page">
-    <div class="nui-grid">
-        <div class="nui-grid-66">
-            <div class="nui-grid">
-                <div class="nui-grid-50">
-                    <div class="nui-box nui-box-large">
-                        <div class="nui-box-hd">页面跳转</div>
-                        <div class="nui-box-bd">
-                            <div class="nui-grid center nui-lh44">
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-100 nui-mt"></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-100 nui-mt"></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                                <div class="nui-grid-25" na-route="tpl/date.html"><p style="background-color: #f8f8f8">跳转</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nui-grid-50">
-                    <div class="nui-box nui-box-large">
-                        <div class="nui-box-hd">其他模块</div>
-                        <div class="nui-box-bd">
-                            <div class="nui-grid center nui-lh44">
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">A</p></div>
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">B</p></div>
-                                <div class="nui-grid-100 nui-mt"></div>
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">C</p></div>
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">B</p></div>
-                                <div class="nui-grid-100 nui-mt"></div>
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">C</p></div>
-                                <div class="nui-grid-50" na-route="tpl/date.html"><p style="background-color: #f8f8f8">B</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="nui-box nui-box-large nui-mt">
-                <div class="nui-box-hd">
-                    数据浏览
-                    <div class="fr">
-                        <div class="nui-tab " data-tab="a|this|.js_tab_one|.js-item">
-                            <a class="nui-tab-item this" href="javascript:;">今日流量</a>
-                            <a class="nui-tab-item" href="javascript:;">浏览器分布</a>
+<body>
+    <div class="na-page">
+        <div class="nui-grid">
+            <div class="nui-grid-66">
+                <div class="nui-box nui-box-large">
+                    <div class="nui-box-hd">使用的组件</div>
+                    <div class="nui-box-bd">
+                        <pre style="display: none;">
+&lt;!-- import jQuery [必选]  --&gt;
+&lt;!-- import nui [必选]  --&gt;
+&lt;script src="https://shaonq.github.io/nui/resource/nui.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="https://shaonq.github.io/nui/resource/nui.css"&gt;
+&lt;!-- import jqGrid v4.6.0 [按需]  --&gt; 
+                        </pre>
+
+                        <div>
+                            <small class="u-mb" style="color:#888">* 只引用基础文件的默认样式</small>
+                            <table id="jqGrid"></table>
+                            <div id="jqGridPager"></div>
                         </div>
                     </div>
                 </div>
-                <div class="nui-box-bd">
-                    <div class="js_tab_one">
-                        <div style="height: 500px;background-color: #f8f8f8;" class="js-item"  id="line1">今日流量</div>
-                        <div style="height: 500px;background-color: #f8f8f8;" class="js-item hide" id="line2">浏览器分布</div>
+            </div>
+            <div class="nui-grid-33">
+                <div class="nui-box nui-box-large">
+                    <div class="nui-box-hd">其他信息</div>
+                    <div class="nui-box-bd">
+                        <div class="nui-table">
+                            <table class="nui-lh24">
+                                <tr>
+                                    <td>版本</td>
+                                    <td>测试版本</td>
+                                </tr>
+                                <tr>
+                                    <td>依赖</td>
+                                    <td><code>jQuery,nui</code></td>
+                                </tr>
+                                <tr>
+                                    <td>完成度</td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td>测试次数</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>线上</td>
+                                    <td>No</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="nui-grid-33">
-            <div class="nui-box nui-box-large">
-                <div class="nui-box-hd">其他信息</div>
-                <div class="nui-box-bd">
-                   <div class="nui-table">
-                       <table class="nui-lh24">
-                           <tr><td>版本</td><td>测试版本</td></tr>
-                           <tr><td>依赖</td><td><code>jQuery,nui</code></td></tr>
-                           <tr><td>完成度</td><td>10%</td></tr>
-                           <tr><td>测试次数</td><td>0</td></tr>
-                           <tr><td>线上</td><td>No</td></tr>
-                       </table>
-                   </div>
-                </div>
-            </div>
-            <div class="nui-box nui-box-large nui-mt">
-                <div class="nui-box-hd">项目进度</div>
-                <div class="nui-box-bd">
-                   <div>
-                       <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                       <div class="nui-progress nui-progress-orange"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                   </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress nui-progress-green"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                    </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress nui-progress-black"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                    </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress nui-progress-red"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                    </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress nui-progress-blue"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                    </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress "><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
-                    </div>
-                    <div class="nui-mt">
-                        <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
-                        <div class="nui-progress nui-progress-orange"><div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div></div>
+                <div class="nui-box nui-box-large nui-mt">
+                    <div class="nui-box-hd">项目进度</div>
+                    <div class="nui-box-bd">
+                        <div>
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-orange">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-green">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-black">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-red">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-blue">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress ">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
+                        <div class="nui-mt">
+                            <div class="nui-lh44">主界面完成进度 <i class="fr" style="font-size: 24px">60%</i></div>
+                            <div class="nui-progress nui-progress-orange">
+                                <div class="progress-bar" style="width: 60%"><i class="progress-ing"></i></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div id="NA_script">
-    <script src="/nui/resource/jquery.min.js"></script>
-    <script src="/nui/resource/nui.js"></script>
-    <script src="../resource/na.js"></script><script>
-    /** 报表  */
-    nui.loadJs("https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js", function () {
-        function setOption(id, option) {
-            var el = document.getElementById(id);
-            if (el) {
-                var chart = echarts.init(el);
-                chart.setOption(option);
-                var resize = nui.debounce(chart.resize,100);
-                $(window).on('resize',resize).on("nui(tab)",resize);
-            }
-        }
-        setOption('line1', {
-            series: [
-                {
-                    color: ['#1780fb', '#F7B824'],
-                    type: 'pie',
-                    hoverAnimation: false,
-                    startAngle: 135,
-                    radius: ['0', '40%'],
-                    label: {
-                        formatter: '{b}\n{c}%'
-                    },
-                    data: [
-                        {value: 450, name: '良品'},
-                        {value: 50, name: '不良品'}
-                    ]
+    <div id="NA_script">
+        <script src="/nui/resource/jquery.min.js"></script>
+        <script src="/nui/resource/nui.js"></script>
+        <script src="../resource/na.js"></script>
+        <script>
+            /** 报表  */
+            if (!1) nui.loadJs("https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js", function () {
+                function setOption(id, option) {
+                    var el = document.getElementById(id);
+                    if (el) {
+                        var chart = echarts.init(el);
+                        chart.setOption(option);
+                        var resize = nui.debounce(chart.resize, 100);
+                        $(window).on('resize', resize).on("nui(tab)", resize);
+                    }
                 }
-            ]
-        });
-        setOption('line2', {
-            series: [
-                {
-                    color: ['#1780fb', '#F7B824'],
-                    type: 'pie',
-                    hoverAnimation: false,
-                    startAngle: 135,
-                    radius: ['0', '40%'],
-                    label: {
-                        formatter: '{b}\n{c}%'
+                setOption('line1', {
+                    series: [{
+                        color: ['#1780fb', '#F7B824'],
+                        type: 'pie',
+                        hoverAnimation: false,
+                        startAngle: 135,
+                        radius: ['0', '40%'],
+                        label: {
+                            formatter: '{b}\n{c}%'
+                        },
+                        data: [{
+                                value: 450,
+                                name: '良品'
+                            },
+                            {
+                                value: 50,
+                                name: '不良品'
+                            }
+                        ]
+                    }]
+                });
+                setOption('line2', {
+                    series: [{
+                        color: ['#1780fb', '#F7B824'],
+                        type: 'pie',
+                        hoverAnimation: false,
+                        startAngle: 135,
+                        radius: ['0', '40%'],
+                        label: {
+                            formatter: '{b}\n{c}%'
+                        },
+                        data: [{
+                                value: 50,
+                                name: '良品'
+                            },
+                            {
+                                value: 450,
+                                name: '不良品'
+                            }
+                        ]
+                    }]
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="../resource/ui.jqgrid.css">
+        <script src="../resource/jquery.jqGrid.src.js"></script>
+        <script src="../resource/grid.locale-cn.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#jqGrid").jqGrid({
+                    url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?qwery=longorders',
+                    mtype: "GET",
+                    datatype: "jsonp",
+                    colModel: [{
+                            label: '序号',
+                            name: 'OrderID',
+                            key: true,
+                            width: 75,
+                            editable: true
+                        },
+                        {
+                            label: '顾客',
+                            name: 'CustomerID',
+                            width: 150,
+                            editable: true,
+                            editoptions: {
+                                size: "20",
+                                maxlength: "30"
+                            }
+                        },
+                        {
+                            label: '日期',
+                            name: 'OrderDate',
+                            width: 150,
+                            formatter: 'date',
+                            formatoptions: {
+                                srcformat: 'Y-m-d H:i:s',
+                                newformat: 'ShortDate'
+                            },
+                            editable: true,
+                            edittype: "checkbox",
+                            editoptions: {
+                                value: "Yes:No"
+                            }
+                        },
+                        {
+                            label: '货物',
+                            name: 'Freight',
+                            width: 150,
+                            editable: true,
+                            edittype: "select",
+                            editoptions: {
+                                value: "FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"
+                            }
+                        },
+                        {
+                            label: '船名',
+                            name: 'ShipName',
+                            width: 150,
+                            editable: true,
+                            edittype: "textarea",
+                            editoptions: {
+                                rows: "2",
+                                cols: "10"
+                            }
+                        }
+                    ],
+                    viewrecords: true,
+                    // width: 780,
+                    height: 250,
+                    rowNum: 20,
+                    rowList: [20, 50, 100],
+                    pager: "#jqGridPager",
+                    onSelectRow: function (id) {
+                        if (id && id !== window.lastsel2) {
+                            $("#jqGrid").jqGrid('restoreRow', window.lastsel2);
+                            $("#jqGrid").jqGrid('editRow', id, true);
+                            window.lastsel2 = id;
+                        }
                     },
-                    data: [
-                        {value: 50, name: '良品'},
-                        {value: 450, name: '不良品'}
-                    ]
-                }
-            ]
-        });
-    });
-</script>
-</div>
+                });
+            });
+        </script>
+    </div>
 
 </body>
+
 </html>

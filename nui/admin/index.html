@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
@@ -7,124 +8,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/nui/resource/nui.css">
     <link rel="stylesheet" href="resource/na.css">
-
     <title>首页 - 烟雨江南后台管理系统</title>
 </head>
+
 <body>
-<div id="NA_app" class="na-app">
-    <!--
+    <div id="NA_app" class="na-app">
+        <!--
      *  侧边伸缩
      *  消息通知
      *  换肤
      -->
-    <div class="na-head" id="NA_head">
-        <div class="na-head__side" style="background: url(/images/logo/logo.png) 20px center no-repeat;background-size: cover"></div>
-        <div class="na-head__content">
-            <a class="na-head__item is-active" href="index.html">首页</a>
-            <a class="na-head__item" href="iconfont.html">字体图标</a>
-            <a class="na-head__item" href="echarts.html">图表</a>
-            <a class="na-head__item" href="demo.html">页面示例</a>
+        <div class="na-head" id="NA_head">
+            <div class="na-head__side"
+                style="background: url(/images/logo/logo.png) 20px center no-repeat;background-size: cover"></div>
+            <div class="na-head__content">
+                <a class="na-head__item is-active" href="index.html">首页</a>
+                <a class="na-head__item" href="iconfont.html">字体图标</a>
+                <a class="na-head__item" href="echarts.html">图表</a>
+                <a class="na-head__item" href="demo.html">页面示例</a>
+            </div>
+            <div class="na-head__fr">
+                <a class="nui-inline nui-mr" tip="刷新" tip-align="bottom" na-click="refresh"><i
+                        class="iconfont icon-danxunhuan" aria-hidden="true"></i></a>
+                <a class="nui-inline nui-mr" tip="浏览前台" tip-align="bottom" href="https://shaonq.github.io"
+                    target="_blank"><i class="iconfont icon-quanqiu" aria-hidden="true"></i></a>
+                <a class="nui-inline nui-mr" tip="看板模式" tip-align="bottom" na-click="fullscreen"><i
+                        class="iconfont icon-shape" aria-hidden="true"></i></a>
+                <div class="nui-inline na-head__user">
+                    <span class="na-head__user-photo"></span>
+                    <span class="na-head__user-name">你好</span>
+                </div>
+            </div>
         </div>
-        <div class="na-head__fr">
-            <a class="nui-inline nui-mr" tip="刷新" tip-align="bottom" na-click="refresh"><i class="iconfont icon-danxunhuan" aria-hidden="true"></i></a>
-            <a class="nui-inline nui-mr" tip="浏览前台" tip-align="bottom" href="https://shaonq.github.io" target="_blank"><i class="iconfont icon-quanqiu" aria-hidden="true"></i></a>
-            <a class="nui-inline nui-mr" tip="看板模式" tip-align="bottom"   na-click="fullscreen"><i class="iconfont icon-shape" aria-hidden="true"></i></a>
-            <div class="nui-inline na-head__user">
-                <span class="na-head__user-photo"></span>
-                <span class="na-head__user-name">你好</span>
+        <div class="na-side" id="NA_side">
+            <!-- 菜单-->
+            <ul class="na-menu">
+                <li class="na-menu__one is-active">
+                    <a href="javascript:;"
+                        onclick='parentNode.className=parentNode.className==="na-menu__one"?"na-menu__one is-active":"na-menu__one"'>
+                        <span class="na-menu__title"><i class="iconfont icon-fenzu" aria-hidden="true"></i>
+                            分类明细</span><span class="na-menu__arrow"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></span>
+                    </a>
+                    <ul>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/index.html"><span class="na-menu__title"> 首页</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a href="javascript:;"
+                                onclick='parentNode.className=parentNode.className==="na-menu__two"?"na-menu__two is-active":"na-menu__two"'>
+                                <span class="na-menu__title"> 栅格系统</span><span class="na-menu__arrow"><i
+                                        class="fa fa-angle-right" aria-hidden="true"></i></span>
+                            </a>
+                            <ul>
+                                <li class="na-menu__three"> <a na-route="tpl/grid.html"> <span class="na-menu__title">
+                                            栅格</span> </a></li>
+                                <li class="na-menu__three"> <a na-route="tpl/flex.html"> <span class="na-menu__title">
+                                            简单栅格</span> </a></li>
+                            </ul>
+                        </li>
+                        <li class="na-menu__two">
+                            <a href="javascript:;"
+                                onclick='parentNode.className=parentNode.className==="na-menu__two"?"na-menu__two is-active":"na-menu__two"'>
+                                <span class="na-menu__title">按钮</span><span class="na-menu__arrow"><i
+                                        class="fa fa-angle-right" aria-hidden="true"></i></span>
+                            </a>
+                            <ul>
+                                <li class="na-menu__three"> <a na-route="tpl/btn.html"> <span class="na-menu__title">
+                                            按钮</span> </a></li>
+                                <li class="na-menu__three"> <a na-route="tpl/btns.html"> <span class="na-menu__title">
+                                            按钮组</span> </a></li>
+                            </ul>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/from.html"><span class="na-menu__title"> 表单</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/table.html"><span class="na-menu__title"> 表格</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="na-menu__one is-active">
+                    <a href="javascript:;"
+                        onclick='parentNode.className=parentNode.className==="na-menu__one"?"na-menu__one is-active":"na-menu__one"'>
+                        <span class="na-menu__title"><i class="iconfont icon-fenzu" aria-hidden="true"></i>
+                            组件</span><span class="na-menu__arrow"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></span>
+                    </a>
+                    <ul>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/open.html"><span class="na-menu__title">弹窗组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/tab.html"><span class="na-menu__title">tab组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/page.html"><span class="na-menu__title">分页组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/date.html"><span class="na-menu__title">时间组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/animate.html"><span class="na-menu__title">动画组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/upload.html"><span class="na-menu__title">上传组件</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                        <li class="na-menu__two">
+                            <a na-route="tpl/css3.html"><span class="na-menu__title">鼠标悬浮</span><span
+                                    class="na-menu__arrow"></span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="na-body" id="NA_body">
+            <div class="na-body__content">
+                <iframe id="NA_iframe" frameborder="0" src="tpl/index.html" class="na-body__iframe"></iframe>
             </div>
         </div>
     </div>
-    <div class="na-side" id="NA_side">
-        <!-- 菜单-->
-        <ul class="na-menu">
-            <li class="na-menu__one is-active">
-                <a href="javascript:;"  onclick='parentNode.className=parentNode.className==="na-menu__one"?"na-menu__one is-active":"na-menu__one"'>
-                    <span class="na-menu__title"><i class="iconfont icon-fenzu" aria-hidden="true"></i> 分类明细</span><span class="na-menu__arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                </a>
-                <ul>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/index.html"><span class="na-menu__title"> 首页</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two" >
-                        <a href="javascript:;" onclick='parentNode.className=parentNode.className==="na-menu__two"?"na-menu__two is-active":"na-menu__two"'>
-                            <span class="na-menu__title"> 栅格系统</span><span class="na-menu__arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                        </a>
-                        <ul>
-                            <li class="na-menu__three"> <a na-route="tpl/grid.html"> <span class="na-menu__title"> 栅格</span> </a></li>
-                            <li class="na-menu__three"> <a na-route="tpl/flex.html"> <span class="na-menu__title"> 简单栅格</span> </a></li>
-                        </ul>
-                    </li>
-                    <li class="na-menu__two" >
-                        <a href="javascript:;" onclick='parentNode.className=parentNode.className==="na-menu__two"?"na-menu__two is-active":"na-menu__two"'>
-                            <span class="na-menu__title">按钮</span><span class="na-menu__arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                        </a>
-                        <ul>
-                            <li class="na-menu__three"> <a na-route="tpl/btn.html"> <span class="na-menu__title"> 按钮</span> </a></li>
-                            <li class="na-menu__three"> <a na-route="tpl/btns.html"> <span class="na-menu__title"> 按钮组</span> </a></li>
-                        </ul>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/from.html"><span class="na-menu__title"> 表单</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/table.html"><span class="na-menu__title"> 表格</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="na-menu__one is-active">
-                <a href="javascript:;"  onclick='parentNode.className=parentNode.className==="na-menu__one"?"na-menu__one is-active":"na-menu__one"'>
-                    <span class="na-menu__title"><i class="iconfont icon-fenzu" aria-hidden="true"></i> 组件</span><span class="na-menu__arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                </a>
-                <ul>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/open.html"><span class="na-menu__title">弹窗组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/tab.html"><span class="na-menu__title">tab组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/page.html"><span class="na-menu__title">分页组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/date.html"><span class="na-menu__title">时间组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/animate.html"><span class="na-menu__title">动画组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/upload.html"><span class="na-menu__title">上传组件</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                    <li class="na-menu__two">
-                        <a na-route="tpl/css3.html"><span class="na-menu__title">鼠标悬浮</span><span class="na-menu__arrow"></span></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="na-body" id="NA_body">
-        <div class="na-body__content">
-            <iframe id="NA_iframe" frameborder="0" src="tpl/index.html" class="na-body__iframe"></iframe>
-        </div>
-    </div>
-</div>
-<div id="NA_script">
-    <script src="/nui/resource/jquery.min.js"></script>
-    <script src="/nui/resource/nui.js"></script>
-    <script src="resource/na.js"></script>
-    <script>
-        $('.na-head__user').on("click", function () {
-            nui.open({
-                content: nui.createDropdown(['个人中心', '我的资料', '其他']),
-                title: "用户中心", type: 4, shadow:0.1,time: 0, elem: this, success: function (that, index) {
-                    $("a", this).on("click", function () {
-                        nui.toast("你选择了" + this.innerHTML);
-                        nui.close(index)
-                    })
-                }
+    <div id="NA_script">
+        <script src="/nui/resource/jquery.min.js"></script>
+        <script src="/nui/resource/nui.js"></script>
+        <script src="resource/na.js"></script>
+        <script>
+            $('.na-head__user').on("click", function () {
+                nui.open({
+                    content: nui.createDropdown(['个人中心', '我的资料', '其他']),
+                    title: "用户中心",
+                    type: 4,
+                    shadow: 0.1,
+                    time: 0,
+                    elem: this,
+                    success: function (that, index) {
+                        $("a", this).on("click", function () {
+                            nui.toast("你选择了" + this.innerHTML);
+                            nui.close(index)
+                        })
+                    }
+                })
             })
-        })
-    </script>
-</div>
+        </script>
+    </div>
 </body>
+
 </html>

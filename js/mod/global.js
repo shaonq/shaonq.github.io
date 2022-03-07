@@ -52,15 +52,15 @@ define(function (require) {
         <div class="main center">\
         <ul class="nui-flex ">\
         <li class="col col-3"><i class="iconfont icon-git" aria-hidden="true"></i><a href="https://git.oschina.net/progit/" target="_blank">Git</a></li>\
-        <li class="col col-3"><i class="iconfont icon-google" aria-hidden="true"></i><a href="http://rj.baidu.com/soft/detail/14744.html" target="_blank">Google Chrome</a></li>\
-        <li class="col col-3"><i class="iconfont icon-iconfont" aria-hidden="true"></i><a href="http://www.iconfont.cn/" target="_blank">iconfont</a></li>\
+        <li class="col col-3"><i class="iconfont icon-google" aria-hidden="true"></i><a href="https://google.cn/chrome/?p=help&ctx=settings" target="_blank">Google Chrome</a></li>\
+        <li class="col col-3"><i class="iconfont icon-iconfont" aria-hidden="true"></i><a href="https://www.iconfont.cn/" target="_blank">iconfont</a></li>\
         <li class="col col-3"><i class="iconfont icon-min-logo" aria-hidden="true"></i><a href="https://shaonq.github.io/" target="_blank">github</a></li>\
         </ul>\
         <div><a href="javascript:;">关于网站</a><a href="about.html">关于我</a></div>\
     </div>\
     </div>';
     if (document.getElementById("J_header")) document.getElementById("J_header").innerHTML = header;
-    if (document.getElementById("J_footer"))document.getElementById("J_footer").innerHTML = footer;
+    if (document.getElementById("J_footer")) document.getElementById("J_footer").innerHTML = footer;
     var use = $("[data-use]");
     use.length && use.each(function () { try { var a = this.getAttribute("data-use"); a && require.async("auto/" + a) } catch (e) { } });
 
@@ -69,12 +69,12 @@ define(function (require) {
     scroll.length && require.async("cdn/iScroll/5.2.0/iscroll-lite.min", function () {
         (nui.is.ios || nui.is.android) && scroll.each(function () {
             this.innerHTML = "<div style='white-space: nowrap;display: inline-block;'>" + this.innerHTML + "</div>";
-            var Scroll = new IScroll(this, {snap: true, tap: true, click: true, scrollX: true, scrollY: false});
+            var Scroll = new IScroll(this, { snap: true, tap: true, click: true, scrollX: true, scrollY: false });
         })
     });
     var J_loading = $("#J_loading");
     J_loading.length && setTimeout(function () { J_loading.hide(); }, 300);
-    try{
+    try {
         var c = require('base/nui/0.2.0/nui.canvas');
         var d = new c();
         d.getImageData({
@@ -87,23 +87,23 @@ define(function (require) {
                     for (var i in d) {
                         context.fillStyle = d[i].fillStyle;
                         if (Math.random() < 0.96) {
-                            context.fillRect(d[i].x + Math.random() , d[i].y + Math.random() , 1, 1);
+                            context.fillRect(d[i].x + Math.random(), d[i].y + Math.random(), 1, 1);
                         }
                     }
                     requestAnimationFrame(update);
                 };
-            canvas.style.marginTop= '12.5px';
+            canvas.style.marginTop = '12.5px';
             $(".header-logo").html(canvas).css({
-                background:'none'
+                background: 'none'
             });
             //document.body.appendChild();
             update();
         });
-    }catch (e){
+    } catch (e) {
 
     }
     var loadChatModel = 'models/chat.js';
-    nui.loadJs("/nui/resource/"+loadChatModel,function () {
+    nui.loadJs("/nui/resource/" + loadChatModel, function () {
         nui[loadChatModel]($(".search-box form"))
     });
 });
