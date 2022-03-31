@@ -41,7 +41,7 @@ define(function (require) {
         <div class="header-nav fl" data-scroll>\
         <a href="animation.html">动画</a>\
         <!--<a href="mod/note/" target="_blank">笔记</a>-->\
-        <a href="vision.html">设计</a>\
+        <a href="game/" target="_blank">思维</a>\
         <a href="vue/" target="_blank">Vue</a> \
         <a href="nui/" target="_blank">Nui</a> </div>\
         <div class="header-nav fr"><a href="javascript:;">我也感兴趣</a></div>\

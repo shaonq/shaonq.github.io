@@ -66,14 +66,14 @@
                     } else {
                         type.all();
                     }
-                });
+                },{type:'get'});
             },
             all: function () {
                 nui.http("https://bird.ioliu.cn/v1?url=http://www.tuling123.com/openapi/api", {
                     key: "71d42b94bc57459a9a99017b53377579", info: text
                 }, function (e) {
                     if (e && e.text) callback(e.text)
-                });
+                },{type:'get'});
             }
         };
         try {

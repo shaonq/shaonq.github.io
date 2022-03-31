@@ -144,7 +144,7 @@
                     key: "71d42b94bc57459a9a99017b53377579", info: text
                 }, function (e) {
                     othis.send({text: e.text});
-                });
+                },{type:'get'});
             }, 100)();
         }
     };
