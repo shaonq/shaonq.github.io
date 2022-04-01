@@ -90,6 +90,7 @@
         }
 
         .layout-body .u-quill-body {
+            font-size: 15px;
             padding: 16px 20px;
         }
 
@@ -156,17 +157,24 @@
                     <div class="u-flex__item is-clamp">
                         <div class="u-card">
                             <div class="u-quill-body">
-                                <h2>例子</h2>
+                                <h2>Demo</h2>
                                 <div style="min-height:280px">
                                     <table id="table"></table>
                                 </div>
                                 <h2>Api</h2>
-                                <pre>
+<pre>
+/** 
+ *   名词解释
+ *   rowid - 数据行的id
+ *   cellname - 单元格名称（colModel定义的name）
+ *   value - 单元格内容
+ *   iRow - 单元格所在行的行号（注意不要和rowid搞混），iRow从1开始
+ *   iCol - 单元格处于行中的列号，iCol从0开始
+ */                                               
 <span class="u-color-light">
 url	字符串	""	是	获取数据的地址
 mtype	字符串	"GET"	否	请求的类型一般有GET和POST
 datatype	字符串	"json"	否	数据传递的类型一般有xml和json
-height	数字	150	 	当值为100%时会随数据的数量而自动调整高度
 page	数字	1	 	当前页数
 rowNum	数字	20	 	每页行数
 records	数字	0	 	 
@@ -174,6 +182,8 @@ pager	字符串或对象	 	否	工具条所显示的容器
 pgbuttons	布尔值	true	否	是否显示上一页下一页的按钮
 pginput	布尔值	true	否	是否显示录入跳转页数的文本框
 </span>
+height	数字	150	 	当值为100%时会随数据的数量而自动调整高度
+autowidth	true 自动宽度
 colModel	数组	[]	是	定义数据列
 rowList	数组	[]	否	每页行数下拉选项 未设置为不显示该下拉选项
 colNames	数组	[]	是	显示的列名 ，需要和colModel的列数匹配
@@ -265,9 +275,9 @@ direction	字符串	"ltr"
                                 </pre>
                                 <pre>
 getRowData	(rowid)		返回rowid 数据，不填返回所有 
-setRowData  (rowid,data) 返回布尔值
-getCell (rowid,name) 返回单元格
-setCell	(rowid,name，value) 设置单元格
+setRowData  (rowid,rowData) 返回布尔值
+getCell (rowid,cellname) 返回单元格
+setCell	(rowid,cellname,value) 设置单元格
 trigger('reloadGrid')   重载
                                 </pre>
                                 <h2>Code</h2>
@@ -280,7 +290,7 @@ trigger('reloadGrid')   重载
         </div>
     </div>
     <div id="J_script">
-        <script> shaonq.showLoading("资源加载") </script>
+        <script> shaonq.showLoading("cdnload") </script>
         <script src="resource/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.13.1/jquery-ui.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.13.1/jquery-ui.min.css" rel="stylesheet">
@@ -290,9 +300,10 @@ trigger('reloadGrid')   重载
         <link href="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.css" rel="stylesheet">
         <script src="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.js"></script>
         <script>
+
             var $table = $("#table");
             $table.jqGrid({
-                datatype: 'local',
+                datatype: 'local', // 禁用ajax
                 height: 250,
                 autowidth: true,
                 colNames: ["Client", "Date", "Closed", "Shipped via", "Notes", "Tax", "Amount", "Total"],
@@ -311,8 +322,15 @@ trigger('reloadGrid')   重载
                     { name: "total", width: 60 }
                 ],
                 cellEdit: true,
-                gridComplete: function (data) {}
+                cellsubmit:"clientArray", // 禁用自动保存
+                gridComplete: function (data) {},
+                //编辑 编辑触发change后触发
+                afterSaveCell:function(rowid, cellname, value, iRow, iCol){                
+                    var rowData = $table.getRowData(rowid);                    
+                   shaonq.toast(JSON.stringify(rowData))
+                },
             });
+            // 加载数据
             var rows = [
                     { id: "10",  invdate: "2007-10-01", name: "test1", note: "note1",  amount: "200.00", tax: "10.00", closed: true,  ship_via: "TN", total: "210.00" },
                     { id: "20",  invdate: "2007-10-02", name: "test1", note: "note2",  amount: "300.00", tax: "20.00", closed: false, ship_via: "FE", total: "320.00" },
@@ -330,7 +348,8 @@ trigger('reloadGrid')   重载
             rows.forEach(function (item, index) {
                 $table.jqGrid("addRowData", index + 1, item);
             })
-            shaonq.hideToast()
+
+            shaonq.hideToast();
         </script>
     </div>
     <script>        
