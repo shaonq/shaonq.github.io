@@ -7,217 +7,36 @@
     <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaonq/dist/index.css">
     <script src="https://cdn.jsdelivr.net/npm/shaonq/dist/index.js"></script>
-    <!-- reset.css -->
     <style>
         body {
+            font-family: PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             font-size: 14px;
             line-height: 1.428571428;
             color: #212121;
-            background-color: #fff
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-size: 100%;
-            margin: 0;
-            font-weight: 400
-        }
-
-        body,
-        dd,
-        dl,
-        form,
-        input,
-        ol,
-        p,
-        ul {
-            margin: 0
-        }
-
-        ol,
-        ul {
-            list-style-type: none;
-            padding: 0
-        }
-
-        address,
-        cite,
-        dfn,
-        em,
-        i,
-        var {
-            font-style: normal
-        }
-
-        em,
-        i {
-            font-weight: 400
-        }
-
-        img {
-            border-style: none;
-            display: inline-block;
-            height: auto;
-            vertical-align: top;
-            max-width: 100%;
-            width: auto\9
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            outline-width: 0
-        }
-
-        a {
-            text-decoration: none;
-            background-color: transparent
-        }
-
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        menu,
-        nav,
-        section {
-            display: block
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%
+            background-color: #fff;
         }
 
         code,
-        kbd,
-        pre,
-        samp {
+        pre {
             font-family: monaco, menlo, consolas, courier new, courier, monospace;
             white-space: pre-wrap;
             word-wrap: break-word
         }
 
-        body,
-        button,
-        input,
-        select,
-        textarea {
-            font-family: PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif
+        pre {
+            margin: 1.4em 0;
+            padding: 0.88889em;
+            font-size: .9em;
+            word-break: normal;
+            word-wrap: normal;
+            white-space: pre-wrap;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            background: #f6f6f6;
+            border-radius: 4px;
         }
 
-        <style>* {
-            padding: 0;
-            margin: 0;
-        }
-
-        .layout-doc {
-            background: #f5f5f5;
-            min-height: 100vh;
-        }
-
-        .layout-warp {
-            width: 1000px;
-            margin: 0 auto;
-        }
-
-        .layout-body {
-            position: relative;
-            padding-bottom: 60px;
-            margin: 10px auto 0;
-        }
-
-        .layout-side {
-            position: relative;
-            width: 240px;
-            margin-left: 10px;
-        }
-
-        .layout-hd {
-            position: fixed;
-            width: 100%;
-            z-index: 999;
-        }
-
-        .layout-hd__fill,
-        .layout-hd {
-            height: 60px;
-            background-color: #fff;
-            -webkit-box-shadow: 0 0 1px 0px rgba(22, 22, 22, 0.2), 0 0 6px 2px rgba(22, 22, 22, 0.05);
-            box-shadow: 0 0 1px 0px rgba(22, 22, 22, 0.2), 0 0 6px 2px rgba(22, 22, 22, 0.05);
-        }
-
-        .layout-hd__link {
-            text-decoration: none;
-            color: #888;
-            display: inline-block;
-            padding: 0 22px;
-            height: 60px;
-            line-height: 60px;
-            font-size: 16px;
-        }
-
-        .layout-hd__link.is-active {
-            color: #444;
-            font-weight: 600;
-        }
-
-        .layout-body .u-quill-body {
-            padding: 16px 20px;
-        }
-
-        .layout-body .u-quill-body h1,
-        .layout-body .u-quill-body h2 {
-            margin-top: 2em;
-            margin-block: 1em;
-        }
-
-        .layout-side .u-card__bd {
-            color: #212121;
-        }
-
-        @media (max-width: 750px) {
-            .layout-warp {
-                width: 100%;
-            }
-
-            .layout-warp>div {
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            }
-
-            .layout-warp>div>div {
-                max-width: 100%;
-                -webkit-box-flex: 0;
-                -ms-flex: 0 0 100%;
-                flex: 0 0 100%;
-            }
-
-            .layout-mobile-hide {
-                display: none !important;
-            }
-
-            .layout-side {
-                margin-left: 0;
-                margin-top: 16px;
-            }
-        }
-
-        .layout-side a {
-            color: #212121;
-        }
-    </style>
-    <style>
         .layout-doc {
             background: #f5f5f5;
             min-height: 100vh;
@@ -314,36 +133,19 @@
         .layout-side a {
             color: #212121;
         }
-
-        .u-quill-body pre {
-            margin: 1.4em 0;
-            padding: 0.88889em;
-            font-size: .9em;
-            word-break: normal;
-            word-wrap: normal;
-            white-space: pre-wrap;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-            background: #f6f6f6;
-            border-radius: 4px;
-        }
-
-        .ui-widget-overlay {
-            display: none !important;
-        }
     </style>
 </head>
 
 <body>
     <div id="root" class="layout-doc">
-        <header>
+        <header class="layout-mobile-hide">
             <div class="layout-hd">
                 <div class="layout-warp">
-                    <div class="u-flex u-flex--start"><a href="./" class="layout-mobile-hide"><img
+                    <div class="u-flex u-flex--start"><a href="./"><img
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABLBAMAAADzDkPuAAAAMFBMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBh6VdmPAAAAD3RSTlMAd7tE7hHdIplmM6qIVcziHAk6AAAEKUlEQVRo3u2WPa8SQRiFB/wAvaCLxqhRg65a+JG4amG5akKMJgYS0cZCGgurJcZe9A+wlYkVaG2C2lhYQG2j/wAba7Kw8iHCOjPvO/tKNuuusbGYk1z27uyZc56bGWYv09LS0tLS0tLS0tLS0tLS0voHvX4L1/ddedltdhkoexIGzoiPczC2dRZGwDCA6y6Ta4AjGMp9INOCARdu35wKrn+K5Mc2C+3x5CWzhof5oIW2vdOauGyTz0eGHCt/hREwHIfrtlKpVD6OI6D2nKGCh/Jiw/z7wbvLR4LTkfyYZoj35V19Ag+3B1eVLTDIZlfE546qFQWk32mk6oeA3m+AOecD/3wMjZQf3yzVl3efcaWHH1fK5vwg25b8LCxZKsDisv+FgaZBlwCzP7FxMz++WerpTKy330Tcl0tlOzEmWy4Qz3s30gFuLTpvGWhcPk6Ava9y7E4kP65ZKiP2SxZvdvh3qzW0nXYMspXFBrlgpAN8UKl/V4D3PAIsu0yJ8hOacWMNH+I3cs7ahuq0K2jDPVqc1tIBdlp5TwHCHkdAi5EoP74ZJBbBwT2zZ8WGX5Vta062zJixnSuWDnD0pbhWgKzfigPE/IRm3rsQ9aCnDbZzpmy5qkU2x+V/STrA3JTbmwrwySQGkPLjm6Fwyur4iH0esMLPsLPcIJvd2FFtpgLkCTIIATPTOEDMT2iWe7+Ncczpst3T0LbHI1vWy8P8ZMCd/JToNRAQDvkoIOX/oRn19LZfw25hcSxl2x00Q1vOH1ZSAtoNDjkJAXuz3wHvXL58+cpmfnwzKu8v1G8enijY9vk42dpVNyVg24DDCwEL/IcA7SAIvEh+bDMeNFgFe/FpJbTVF2Srj1k6QLlXc7goY3HvEiAFUH5SM8dVL6bO2DTNC4vQVvRroa2wSgm4KzC5AlcBsmElBhDyE5o3Nm//WalUOrSkzgut0JaZpATcmpe42m9DwOw8BhDyE5sJUKwLLhHankz+GhAXqj4LAfmpFgWk/MRmAsSd3TZCW2b914C41fMeAMK/kVFAyk9sJkA8G+wGtY32RwBza7gOB2LUgCktmuJYcG4Q4B4PADsD2M2LjfzEZgLsNfCgJZt9MwLIRha+ceE9KdR31ZTwuHW6IeA2v2PQ4sPqU35iMwF+NgDlJ9nyfhTQviWfyO6iLzh2rWmhCx6GDgAQzlCZXFjLnTYyNvITmwmw2sTvyu+HWhRwl3+Ak42+Qfe1Gsv1bxHg9hm+n64SYD0wwPyIJ76Ys438pGYCLI7Vy/kLfQc6UUB2KTh/xOFgcpJz/eho2aTOIX53sisC3IWAmer10infBTPlxzejLuK/KfvVvSXCXMhUg9sOslCvnpvHOB8Q7jOfwXw+BSdT2mG4KVloPmK+Ewwb+fHNWlpaWlpaWlpaWlpaWlpa/7V+AZ+C6JOWCa6FAAAAAElFTkSuQmCC"
                                 width="256" draggable="false"></a>
                         <div class="u-flex__item layout-mobile-hide"></div>
-                        <div><a href="javascript:;" class="layout-hd__link">其他</a>
+                        <div><a href="javascript:;" class="layout-hd__link">v4.6.0</a>
                         </div>
                     </div>
                 </div>
@@ -353,12 +155,15 @@
                 <div class="u-flex u-flex--start">
                     <div class="u-flex__item is-clamp">
                         <div class="u-card">
-                            <div style="min-height:250px">
-                                <table id="list4"></table>
-                            </div>
                             <div class="u-quill-body">
+                                <div style="min-height:280px">
+                                    <table id="list4"></table>
+                                </div>
                                 <pre>
+<span class="u-color-light">
 url	字符串	""	是	获取数据的地址
+mtype	字符串	"GET"	否	请求的类型一般有GET和POST
+datatype	字符串	"json"	否	数据传递的类型一般有xml和json
 height	数字	150	 	当值为100%时会随数据的数量而自动调整高度
 page	数字	1	 	当前页数
 rowNum	数字	20	 	每页行数
@@ -366,19 +171,26 @@ records	数字	0
 pager	字符串或对象	 	否	工具条所显示的容器
 pgbuttons	布尔值	true	否	是否显示上一页下一页的按钮
 pginput	布尔值	true	否	是否显示录入跳转页数的文本框
+</span>
 colModel	数组	[]	是	定义数据列
 rowList	数组	[]	否	每页行数下拉选项 未设置为不显示该下拉选项
 colNames	数组	[]	是	显示的列名 ，需要和colModel的列数匹配
 sortorder	字符串	"asc"	否	排序字段的排序类型为asc和desc
 sortname	字符串	""	 	要排序列名
-datatype	字符串	"xml"	否	数据传递的类型一般有xml和json
-mtype	字符串	"GET"	否	请求的类型一般有GET和POST
-altRows	布尔值	false	否	设置表格是否显示斑马条纹
+<b class="u-color-blue">altRows	布尔值	false	否	设置表格是否显示斑马条纹</b>
 selarrrow	数组	[]	否	 
 savedRow	数组	[]	否	 
 shrinkToFit	布尔值	true	否	 
 xmlReader	对象	{}	否	 
-jsonReader	对象	{}	否	 
+<span class="u-color-light">
+jsonReader: { 
+    root: 'rows', // 返回的数组集合
+    page: 'pageControlData.currentPage', // 当前页数
+    total: 'pageCount',  // 总的页数 
+    records: 'resultCount',  // 代表数据总行数
+    repeatitems: false // 每行的数据不可重复 , 并且返回的数据中按名字来搜索元素
+},
+</span>
 subGrid	布尔值	false	否	 
 subGridModel	数组	[]	 	 
 reccount	数字	0	 	 
@@ -386,14 +198,15 @@ lastpage	数字	0
 lastsort	数字	0	 	 
 selrow	方法	null	 	 
 beforeSelectRow	方法	null	 	 
-onSelectRow	方法	null	 	当选择一行时引发的事件
-onSortCol	方法	null	 	 
-ondblClickRow	方法	null	 	当双击一行时引发的事件
-onRightClickRow	方法	null	 	 
+<b class="u-color-red">onSelectRow 方法 (rowid,[是否选中]) 选中行</b>
+onSortCol	方法	    null	 	 
+ondblClickRow	方法	null 双击行
+onCellSelect	方法	null (rowid,[索引],[内容])	 	 
+onRightClickRow	方法	
 onPaging	方法	null	 	 
 onSelectAll	方法	null	 	 
-loadComplete	方法	null	 	 
-gridComplete	方法	null	 	 
+<b class="u-color-red">loadComplete	方法 数据加载完毕  </b>
+<b class="u-color-red">gridComplete	方法 表格渲染完毕  </b>	 
 loadError	方法	null	 	 
 loadBeforeSend	方法	null	 	 
 afterInsertRow	方法	null	 	 
@@ -403,9 +216,9 @@ viewrecords	布尔值	false
 loadonce	布尔值	false	 	 
 multiselect	布尔值	false	 	 
 multikey	布尔值	false	 	 
-editurl	字符串	null	 	添加编辑删除操作时数据提交的页面
+editurl	字符串	null  添加编辑删除操作时数据提交的页面
 search	布尔值	false	否	是否显示搜索按钮
-caption	字符串	""	否	表格上方的标题，不写为不显示
+<b class="u-color-red">caption	字符串	""	否	表格标题</b>
 hidegrid	布尔值	true	 	 
 hiddengrid	布尔值	false	 	 
 postData	对象	{}	 	 
@@ -414,21 +227,13 @@ treeGrid	布尔值	false	否	是否为树型GRID
 treeGridModel	字符串	'nested'	否	树型GRID的数据源格式一般分为nested和adjacency
 treeReader	对象	{}	 	 
 treeANode	数字	-1	 	 
-ExpandColumn	字符串	null	否	为树型GRID时 按钮所在的列
-(在定义treeGrid情况下，指明那一列用来伸展树)
+ExpandColumn	字符串	null	否	为树型GRID时 按钮所在的列 (在定义treeGrid情况下，指明那一列用来伸展树)
 tree_root_level	数字	0	否	 
-prmNames	对象	 
-{page:"page",rows:"rows", sort: "sidx",order: "sord", search:"_search", nd:"nd"}
-
-否	数据请求时的request的参数设定
+prmNames 对象 {page:"page",rows:"rows", sort: "sidx",order: "sord", search:"_search", nd:"nd"} 请求时参数
 forceFit	布尔值	false	 	 
-gridstate	字符串	 
-"visible"
-
- 	 
-cellEdit	布尔值	false	 	设置表格单元是否可以编辑
+gridstate	字符串	 "visible" 	 
+<b class="u-color-red">cellEdit	布尔值	false 行编辑</b>
 cellsubmit	字符串	"remote"	 	 
-nv	 	0	 	 
 loadui	字符串	"enable"	 	 
 toolbar	数组	[false,""]	 	 
 scroll	布尔值	false	 	 
@@ -447,7 +252,7 @@ pagerpos	字符串	'center'
 recordpos	字符串	'right'	 	 
 footerrow	布尔值	false	 	 
 userDataOnFooter	布尔值	false	 	 
-hoverrows	布尔值	true	 	 
+<b class="u-color-blue">hoverrows 布尔值	true 表行是否有鼠标悬停效果</b>
 altclass	字符串	'ui-priority-secondary'	 	 
 viewsortcols	数组	[false,'vertical',true]	 	 
 resizeclass	字符串	''	 	 
@@ -456,32 +261,14 @@ remapColumns	数组	[]
 ajaxGridOptions	对象	{}	 	 
 direction	字符串	"ltr"	 	 
                                 </pre>
+                                <pre>
+getRowData	(rowid)		返回rowid 数据，不填返回所有 
+setRowData  (rowid,data) 返回布尔值
+getCell (rowid,name) 返回单元格
+setCell	(rowid,name，value) 设置单元格
+trigger('reloadGrid')   重载
+                                </pre>
                             </div>
-                        </div>
-                    </div>
-                    <div class="layout-side">
-                        <div class="u-card">
-                            <div class="u-card__bd" style="padding: 8px 0px;"><a href="#/developer/5bcc6587672c"
-                                    class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">富文本</a><a
-                                    href="#/developer/65e57a0b8868" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">日程表</a><a
-                                    href="#/developer/6d417a0b56fe" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">流程图</a><a
-                                    href="#/developer/7518727956fe" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">甘特图</a><a
-                                    href="#/developer/753b7b145de55177" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">画笔工具</a><a
-                                    href="#/developer/7f519875622a56fe" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">网页截图</a><a
-                                    href="#/developer/96058bfbpdf" class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">阅读pdf</a><a
-                                    href="#/developer/5bfc51faxlsx"
-                                    class="u-dialog--dropdown-item is-exact-active is-active"
-                                    style="display: block; font-size: 14px; line-height: 36px;"
-                                    aria-current="page">导出xlsx</a><a href="#/developer/echarts5.0"
-                                    class="u-dialog--dropdown-item"
-                                    style="display: block; font-size: 14px; line-height: 36px;">echarts5.0</a></div>
                         </div>
                     </div>
                 </div>
@@ -503,41 +290,54 @@ direction	字符串	"ltr"
             module.exports && module.exports(window.jQuery)
         </script>
         <script src="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/js/i18n/grid.locale-cn.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/plugins/ui.multiselect.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/plugins/ui.multiselect.css">
         <script>
             module.exports && module.exports(window.jQuery)
         </script>
         <link href="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/css/ui.jqgrid.css" />
         <script>
-            $("#list4").jqGrid({
+            var $table = $("#list4");
+            $table.jqGrid({
+                datatype: 'local',
                 height: 250,
-                colNames: ["ID", "代码", "名称", "列1"],
-                colModel: [{
-                        name: 'id',
-                        index: 'id',
-                        width: 50,
-                        hidden: true,
-                        key: true
-                    },
-                    {
-                        name: 'dm',
-                        index: 'dm',
-                        width: 50,
-                        align: "center"
-                    },
-                    {
-                        name: 'mc',
-                        index: 'mc',
-                        width: 180
-                    },
-                    {
-                        name: 'dd',
-                        index: 'dd',
-                        align: "center"
-                    }
+                autowidth: true,
+                colNames: ["Client", "Date", "Closed", "Shipped via", "Notes", "Tax", "Amount", "Total"],
+                colModel: [
+                    { name: "name", align: "center", editable: true, width: 65, editrules: {required: true} },
+                    { name: "invdate", width: 80, align: "center", sorttype: "date",  formatter: "date" },
+                    { name: "closed", width: 70, align: "center", editable: true, formatter: "checkbox",
+                        edittype: "checkbox", editoptions: {value: "Yes:No", defaultValue: "Yes"},
+                        stype: "select", searchoptions: { sopt: ["eq", "ne"], value: ":Any;true:Yes;false:No" } },
+                    { name: "ship_via", width: 105, align: "center", editable: true, formatter: "select",
+                        edittype: "select", editoptions: { value: "FE:FedEx;TN:TNT;IN:Intim", defaultValue: "IN" },
+                        stype: "select", searchoptions: { sopt: ["eq", "ne"], value: ":Any;FE:FedEx;TN:TNT;IN:IN" } },
+                    { name: "note", width: 60, sortable: false, editable: true, edittype: "textarea" },
+                    { name: "tax", width: 52, editable: true,  hidden: true  },
+                    { name: "amount", width: 75, editable: true, },
+                    { name: "total", width: 60 }
                 ],
-                rowNum: 10,
-                rowList: [5, 8, 10]
+                cellEdit: true,
+                gridComplete: function (data) {}
             });
+            $("#lui_list4").remove()
+            var rows = [
+                    { id: "10",  invdate: "2007-10-01", name: "test1", note: "note1",  amount: "200.00", tax: "10.00", closed: true,  ship_via: "TN", total: "210.00" },
+                    { id: "20",  invdate: "2007-10-02", name: "test1", note: "note2",  amount: "300.00", tax: "20.00", closed: false, ship_via: "FE", total: "320.00" },
+                    { id: "30",  invdate: "2007-09-01", name: "test3", note: "note3",  amount: "400.00", tax: "30.00", closed: false, ship_via: "FE", total: "430.00" },
+                    { id: "40",  invdate: "2007-10-04", name: "test2", note: "note4",  amount: "200.00", tax: "10.00", closed: true,  ship_via: "TN", total: "210.00" },
+                    { id: "50",  invdate: "2007-10-31", name: "test2", note: "note5",  amount: "300.00", tax: "20.00", closed: false, ship_via: "FE", total: "320.00" },
+                    { id: "60",  invdate: "2007-09-06", name: "test3", note: "note6",  amount: "400.00", tax: "30.00", closed: false, ship_via: "FE", total: "430.00" },
+                    { id: "70",  invdate: "2007-10-04", name: "test3", note: "note7",  amount: "200.00", tax: "10.00", closed: true,  ship_via: "TN", total: "210.00" },
+                    { id: "80",  invdate: "2007-10-03", name: "test1", note: "note8",  amount: "300.00", tax: "20.00", closed: false, ship_via: "FE", total: "320.00" },
+                    { id: "90",  invdate: "2007-09-01", name: "test3", note: "note9",  amount: "400.00", tax: "30.00", closed: false, ship_via: "TN", total: "430.00" },
+                    { id: "100", invdate: "2007-09-08", name: "test2", note: "note10", amount: "500.00", tax: "30.00", closed: true,  ship_via: "TN", total: "530.00" },
+                    { id: "110", invdate: "2007-09-08", name: "test2", note: "note11", amount: "500.00", tax: "30.00", closed: false, ship_via: "FE", total: "530.00" },
+                    { id: "120", invdate: "2007-09-10", name: "test3", note: "note12", amount: "500.00", tax: "30.00", closed: false, ship_via: "FE", total: "530.00" }
+                ];
+            rows.forEach(function (item, index) {
+                $table.jqGrid("addRowData", index + 1, item);
+            })
             shaonq.hideToast()
         </script>
     </div>
