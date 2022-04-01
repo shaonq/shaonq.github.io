@@ -156,9 +156,11 @@
                     <div class="u-flex__item is-clamp">
                         <div class="u-card">
                             <div class="u-quill-body">
+                                <h2>例子</h2>
                                 <div style="min-height:280px">
-                                    <table id="list4"></table>
+                                    <table id="table"></table>
                                 </div>
+                                <h2>Api</h2>
                                 <pre>
 <span class="u-color-light">
 url	字符串	""	是	获取数据的地址
@@ -233,7 +235,7 @@ prmNames 对象 {page:"page",rows:"rows", sort: "sidx",order: "sord", search:"_s
 forceFit	布尔值	false	 	 
 gridstate	字符串	 "visible" 	 
 <b class="u-color-red">cellEdit	布尔值	false 行编辑</b>
-cellsubmit	字符串	"remote"	 	 
+cellsubmit	字符串	"remote"
 loadui	字符串	"enable"	 	 
 toolbar	数组	[false,""]	 	 
 scroll	布尔值	false	 	 
@@ -245,8 +247,8 @@ scrollOffset	数字	18
 cellLayout	数字	5	 	 
 subGridWidth	数字	20	 	 
 multiselectWidth	数字	20	 	 
-gridview	布尔值	false	 	在工具条上是否显示总条数等信息
-rownumWidth	数字	25	 	 
+gridview	布尔值	false 在工具条上是否显示总条数等信息
+rownumWidth	数字    25
 rownumbers	布尔值	false	 	 
 pagerpos	字符串	'center'	 	 
 recordpos	字符串	'right'	 	 
@@ -268,6 +270,8 @@ getCell (rowid,name) 返回单元格
 setCell	(rowid,name，value) 设置单元格
 trigger('reloadGrid')   重载
                                 </pre>
+                                <h2>Code</h2>
+                            <pre id="pre"></pre>
                             </div>
                         </div>
                     </div>
@@ -276,28 +280,17 @@ trigger('reloadGrid')   重载
         </div>
     </div>
     <div id="J_script">
-        <script>
-            shaonq.showLoading("资源加载")
-        </script>
+        <script> shaonq.showLoading("资源加载") </script>
         <script src="resource/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.13.1/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.13.1/jquery-ui.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.13.1/jquery-ui.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/js/jquery.jqGrid.min.js"></script>
+        <link href="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/css/ui.jqgrid.css" rel="stylesheet">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/js/i18n/grid.locale-cn.js"></script>
+        <link href="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.css" rel="stylesheet">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jqgrid/4.6.0/plugins/ui.multiselect.js"></script>
         <script>
-            if (typeof module === 'undefined') window.module = {};
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/js/jquery.jqGrid.src.js"></script>
-        <script>
-            module.exports && module.exports(window.jQuery)
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/js/i18n/grid.locale-cn.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/plugins/ui.multiselect.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/plugins/ui.multiselect.css">
-        <script>
-            module.exports && module.exports(window.jQuery)
-        </script>
-        <link href="https://cdn.jsdelivr.net/npm/jqgrid@4.6.0/css/ui.jqgrid.css" />
-        <script>
-            var $table = $("#list4");
+            var $table = $("#table");
             $table.jqGrid({
                 datatype: 'local',
                 height: 250,
@@ -320,7 +313,6 @@ trigger('reloadGrid')   重载
                 cellEdit: true,
                 gridComplete: function (data) {}
             });
-            $("#lui_list4").remove()
             var rows = [
                     { id: "10",  invdate: "2007-10-01", name: "test1", note: "note1",  amount: "200.00", tax: "10.00", closed: true,  ship_via: "TN", total: "210.00" },
                     { id: "20",  invdate: "2007-10-02", name: "test1", note: "note2",  amount: "300.00", tax: "20.00", closed: false, ship_via: "FE", total: "320.00" },
@@ -341,6 +333,9 @@ trigger('reloadGrid')   重载
             shaonq.hideToast()
         </script>
     </div>
+    <script>        
+        $("#pre").text($("#J_script").html())
+    </script>
 </body>
 
 </html>
