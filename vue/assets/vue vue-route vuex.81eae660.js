@@ -1,4 +1,4 @@
-import{_ as e}from"./index.b388db61.js";import{e as t,o as r,m as n}from"./vendor.c8610fdc.js";const s={mounted(){}},a={class:"u-quill-body"},o=n(`<h1> vue \u5E38\u7528\u751F\u547D\u5468\u671F <br></h1><ul style><li style><a href="https://cn.vuejs.org/v2/guide/syntax.html">\u6A21\u677F\u6587\u6863</a></li><li style><a href="https://cn.vuejs.org/v2/api/">API\u6587\u6863</a></li></ul><pre><code class="language-javascript">\r
+import{_ as e}from"./index.0f92aa36.js";import{e as t,o as r,m as n}from"./vendor.c8610fdc.js";const s={mounted(){}},a={class:"u-quill-body"},o=n(`<h1> vue \u5E38\u7528\u751F\u547D\u5468\u671F <br></h1><ul style><li style><a href="https://cn.vuejs.org/v2/guide/syntax.html">\u6A21\u677F\u6587\u6863</a></li><li style><a href="https://cn.vuejs.org/v2/api/">API\u6587\u6863</a></li></ul><pre><code class="language-javascript">\r
 <span style="color:#ff4e20;">vue3.x \u517C\u5BB9\uFF0C\u4F46\u662F\u4E0D\u5EFA\u8BAE\u4F7F\u7528</span>\r
 export default {\r
   /** * data : \u53EF\u7528\u7684\u6570\u636E\uFF0C\u6A21\u677F\u4E2D\u7684\u6570\u636E\u5FC5\u987B\u9884\u5B9A\u4E49 */\r
