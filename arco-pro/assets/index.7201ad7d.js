@@ -1,0 +1,1 @@
+import{_ as o}from"./index.dcc93f30.js";import{A as t,aC as a,aF as _,aL as r,ba as c}from"./arco.820dc93e.js";const s={},n=r("Arco Pro");function d(f,i){const e=c;return t(),a(e,{class:"footer"},{default:_(()=>[n]),_:1})}var u=o(s,[["render",d],["__scopeId","data-v-00335417"]]);export{u as F};
