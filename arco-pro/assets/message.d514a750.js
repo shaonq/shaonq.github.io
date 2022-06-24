@@ -1,0 +1,1 @@
+import{b as s}from"./index.e95f60a7.js";function e(){return s.post("/api/message/list")}function i(t){return s.post("/api/message/read",t)}function r(){return s.post("/api/chat/list")}export{e as a,r as q,i as s};
