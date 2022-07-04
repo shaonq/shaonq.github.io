@@ -1,4 +1,4 @@
-import{c as t,g as e}from"../nprogress/nprogress.18cafdd9.js";var n,r={exports:{}};
+import{c as t,g as e}from"../mockjs/mockjs.69e5819b.js";var n,r={exports:{}};
 /*!
  * Quill Editor v1.3.7
  * https://quilljs.com/
